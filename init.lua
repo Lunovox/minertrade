@@ -12,7 +12,7 @@ dofile(modpath.."/item_strongbox.lua")
 
 
 dofile(modpath.."/item_miner_cash.lua")
--- dofile(modpath.."/item_barter_table.lua")
+dofile(modpath.."/item_barter_table.lua")
 dofile(modpath.."/item_dispensing_machine.lua")
 -- --dofile(path.."/item_rent_door.lua")
 
