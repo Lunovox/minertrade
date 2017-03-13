@@ -1,5 +1,5 @@
-minetest.register_privilege("checkchest",  {
-	description="Jogador pode usar cheat", 
+minetest.register_privilege("checkstrongbox",  {
+	description="Permite verificar o conteúdo do cofre de outro jogador", 
 	give_to_singleplayer=false,
 })
 
@@ -26,8 +26,8 @@ end
 
 minetest.register_chatcommand("checkstrongbox", {
 	params = "<JogadorAlvo>",
-	description = "verifica o Cofre do jogador alvo",
-	privs = {checkchest=true},
+	description = "Verifica o conteúdo do cofre de um jogador",
+	privs = {checkstrongbox=true},
 	func = function(playername, param)
 		return modMinerTrade.doCheckStrongBox(playername, param)
 	end,
@@ -35,8 +35,8 @@ minetest.register_chatcommand("checkstrongbox", {
 
 minetest.register_chatcommand("csb", {
 	params = "<JogadorAlvo>",
-	description = "verifica o Cofre do jogador alvo",
-	privs = {checkchest=true},
+	description = "Verifica o conteúdo do cofre de um jogador",
+	privs = {checkstrongbox=true},
 	func = function(playername, param)
 		return modMinerTrade.doCheckStrongBox(playername, param)
 	end,
@@ -44,8 +44,8 @@ minetest.register_chatcommand("csb", {
 
 minetest.register_chatcommand("checarcofre", {
 	params = "<JogadorAlvo>",
-	description = "verifica o Cofre do jogador alvo",
-	privs = {checkchest=true},
+	description = "Verifica o conteúdo do cofre de um jogador",
+	privs = {checkstrongbox=true},
 	func = function(playername, param)
 		return modMinerTrade.doCheckStrongBox(playername, param)
 	end,

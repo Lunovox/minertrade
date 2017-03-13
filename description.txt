@@ -1,10 +1,28 @@
-Habilita itens:
- * Minemoedas
+Habilita itens interessantes para criação de um comércio no servidor.
+
+Itens adicionados:
+ * Dinheiro de Mineiros (
+	→ Moeda 
+	→ Cédula
+	→ Porquinho
+	→ Cartão de Crédito
  * Mesa de Escambo (P2P)
- * Maquina de Escambo
- 
+	→ Permite fazer trocas seguras com outros jogadores sem precisa derrubar itens no chão.
+ * Maquina Dispensadora
+ 	→ Permite por seus itens a venda mesmo que você não esteja online.
+ * Cofre Particular
+	→ O Cofre está interligado com o Caixa Eletrônico para guardar seu dinheiros e pertences valiosos, mas precisa de 30 minutos para serem ativados apos seu posicionamento no mapa para evitar que os jogadores levem o cofre para sua exploracao do mapa. 
+ * Caixa Eletrônico Público 
+	→ O Caixa Eletrônico só pode ser posicionado próximo a uma máquina dispensadora.
+
 Licence: 
  * GNU AGPL: https://pt.wikipedia.org/wiki/GNU_Affero_General_Public_License
 
 Developers:
  * Lunovox <lunovox@openmailbox.org>
+ 
+Comandos:
+ * Exibe o que um jogador tem no cofre (necessita de priv 'checkstrongbox').
+ 	* /checkstrongbox <player_name>
+ 	* /csb <player_name>
+ 	* /checarcofre <nome_do_jogador>
