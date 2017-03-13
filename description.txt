@@ -1,0 +1,10 @@
+Habilita itens:
+ * Minemoedas
+ * Mesa de Escambo (P2P)
+ * Maquina de Escambo
+ 
+Licence: 
+ * GNU AGPL: https://pt.wikipedia.org/wiki/GNU_Affero_General_Public_License
+
+Developers:
+ * Lunovox <lunovox@openmailbox.org>

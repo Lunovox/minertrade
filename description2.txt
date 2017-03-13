@@ -1,0 +1,10 @@
+Adiciona cofre interligado com o caixa eletronico para guardar seu dinheiros e pertences valiosos. O cofre precisa de 30 minutos para serem ativados apos seu posicionamento no mapa para evitar que os jogadores levem o cofre para sua exploracao do mapa. Se o mod lunotrades estiver ativado, o Caixa Eletronico so pode ser posicionado proximo a uma maquina de escambo.
+
+Licence: 
+ * GNU AGPL: https://pt.wikipedia.org/wiki/GNU_Affero_General_Public_License
+
+Developers:
+ * Lunovox <lunovox@openmailbox.org>
+ 
+Comandos:
+ * /csb ou /checkstrongbox -- Exibe o que um jogador tem no inventario (necessita de priv 'server').
