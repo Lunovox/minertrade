@@ -1,8 +1,12 @@
 minetest.register_node("strongbox:safe", {
 	description = "Cofre (12 Espacos)",
 	--inventory_image = "safe_front.png",
+	
 	paramtype = "light",
-	paramtype2 = "facedir",
+	sunlight_propagates = true,
+	light_source = default.LIGHT_MAX,
+	paramtype2 = "facedir",	
+	
 	tiles = {
 		"safe_side.png",
 		"safe_side.png",
@@ -12,7 +16,8 @@ minetest.register_node("strongbox:safe", {
 		"safe_front.png",
 	},
 	is_ground_content = false,
-	groups = {cracky=1},
+	--groups = {cracky=1},
+	groups = {cracky=3,oddly_breakable_by_hand=3},
 	after_place_node = function(pos, placer)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("owner", placer:get_player_name() or "")

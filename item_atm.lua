@@ -6,19 +6,28 @@ minetest.register_node("minertrade:atm", {
 	sunlight_propagates = true,
 	light_source = default.LIGHT_MAX,
 	paramtype2 = "facedir",
+	
 	--legacy_facedir_simple = true, --<=Nao sei para que serve!
+	is_ground_content = false,
+	groups = {cracky=1},
+	--groups = {cracky=3,oddly_breakable_by_hand=3},
+	--sounds = default.node_sound_glass_defaults(),
 	tiles = {
+		--[[
 		"default_wood.png",
 		"default_wood.png",
 		"default_wood.png",
 		"default_wood.png",
 		"default_wood.png",
 		"text_atm_front_1.png",
+		--]]
+		"safe_side.png",
+		"safe_side.png",
+		"safe_side.png",
+		"safe_side.png",
+		"safe_side.png",
+		"text_atm_front_2.png",
 	},
-	is_ground_content = false,
-	--groups = {cracky=1},
-	groups = {cracky=3,oddly_breakable_by_hand=3},
-	--sounds = default.node_sound_glass_defaults(),
 
 	on_place = function(itemstack, placer, pointed_thing)
 		local playername = placer:get_player_name()
@@ -88,9 +97,9 @@ minetest.register_node("minertrade:atm", {
 minetest.register_craft({
 	output = 'minertrade:atm',
 	recipe = {
-		{"default:wood"	,"default:wood"				,"default:wood"},
-		{"default:wood"	,"default:obsidian_glass"	,"default:wood"},
-		{"default:wood"	,"default:mese"				,"default:wood"},
+		{"default:steel_ingot"	,"default:steel_ingot"		,"default:steel_ingot"},
+		{"default:steel_ingot"	,"default:obsidian_glass"	,"default:steel_ingot"},
+		{"default:steel_ingot"	,"default:mese"				,"default:steel_ingot"},
 	}
 })
 

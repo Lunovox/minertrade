@@ -1,8 +1,14 @@
 minetest.register_node("minertrade:strongbox", {
 	description = "Cofre - Guarde seu dinheiro neste cofre e retire seu dinheiro em qualquer loja que possua um Caixa Eletrônico",
 	--inventory_image = "safe_front.png",
+	
 	paramtype = "light",
+	sunlight_propagates = true,
+	light_source = default.LIGHT_MAX,
 	paramtype2 = "facedir",
+	
+	is_ground_content = false,
+	groups = {cracky=1},
 	tiles = {
 		"safe_side.png",
 		"safe_side.png",
@@ -11,8 +17,6 @@ minetest.register_node("minertrade:strongbox", {
 		"safe_side.png",
 		"safe_front.png",
 	},
-	is_ground_content = false,
-	groups = {cracky=1},
 	after_place_node = function(pos, placer)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("owner", placer:get_player_name() or "")
