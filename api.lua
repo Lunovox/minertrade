@@ -1,7 +1,7 @@
 --FONTE: https://forum.minetest.net/viewtopic.php?pid=48124
 
 minetest.register_privilege("checkchest",  {
-	description="O poder abrir  os baus trancados de outros jogadores", 
+	description=modMinerTrade.translate("Permission to open locked chests of other players"), 
 	give_to_singleplayer=false,
 })
 
@@ -28,7 +28,7 @@ modMinerTrade.doSave = function()
 		file:close()
 		--minetest.log('action',"[MINERTRADE] Banco de dados salvo !")
 	else
-		minetest.log('error',"[MINERTRADE:ERRO] O arquivo '"..modMinerTrade.urlTabela.."' não esta no formato de tabela!")
+		minetest.log('error',"[MINERTRADE:ERRO] "..modMinerTrade.translate("The file '%s' is not in table format!"):format(modMinerTrade.urlTabela))
 	end
 end
 
@@ -38,10 +38,10 @@ modMinerTrade.doLoad = function()
 		modMinerTrade.safe = minetest.deserialize(file:read("*all"))
 		file:close()
 		if not modMinerTrade.safe or type(modMinerTrade.safe) ~= "table" then
-			minetest.log('error',"[MINERTRADE:ERRO] O arquivo '"..modMinerTrade.urlTabela.."' não esta no formato de tabela!")
+			minetest.log('error',"[MINERTRADE:ERRO] "..modMinerTrade.translate("The file '%s' is not in table format!"):format(modMinerTrade.urlTabela))
 			return { }
 		else
-			minetest.log('action',"[MINERTRADE] Abrindo '"..modMinerTrade.urlTabela.."' !")
+			minetest.log('action',"[MINERTRADE] "..modMinerTrade.translate("Opening '%s'!"):format(modMinerTrade.urlTabela))
 		end
 	end
 end
@@ -130,11 +130,11 @@ modMinerTrade.getDetachedInventory = function(playername)
 		end,
 		on_put = function(inv, listname, index, stack, player) 
 			modMinerTrade.setSafeInventory(playername, inv:get_list("safe"))
-			minetest.log('action',playername.." colocou "..stack:get_count().." '"..stack:get_name().."' em seu cofre!")
+			minetest.log('action',modMinerTrade.translate("Player '%s' has placed %02d '%s' in his safe!"):format(playername, stack:get_count(), stack:get_name()))
 		end,
 		on_take = function(inv, listname, index, stack, player) 
 			modMinerTrade.setSafeInventory(playername, inv:get_list("safe"))
-			minetest.log('action',playername.." retirou "..stack:get_count().." '"..stack:get_name().."' de seu cofre!")
+			minetest.log('action',modMinerTrade.translate("Player '%s' has removed %02d '%s' in his safe!"):format(playername, stack:get_count(), stack:get_name()))
 		end,
 		
 	})

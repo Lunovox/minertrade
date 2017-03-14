@@ -4,6 +4,7 @@ local modpath = minetest.get_modpath(modname)
 
 
 dofile(modpath.."/config.lua")
+dofile(modpath.."/translate.lua")
 dofile(modpath.."/api.lua")
 dofile(modpath.."/commands.lua")
 dofile(modpath.."/item_atm.lua")

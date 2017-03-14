@@ -1,0 +1,34 @@
+#Transdutor: Lunovox <lunovox@openmailbox.org>
+
+#------- api.lua ---------------------------------------------------------------------------
+Permission to open locked chests of other players=Permissão de abertura de baús trancados de outros jogadores
+The file '%s' is not in table format!=O arquivo '%s' não esta no formato de tabela!
+Opening '%s'!=Abrindo '%s'!
+Player '%s' has placed %02d '%s' in his safe!=O jogador '%s' colocou %02d '%s' em seu cofre!
+Player '% s' has removed %02d '% s' in his safe!=O jogador '%s' retirou %02d '%s' em seu cofre!
+
+#------- item_dispensing_machine.lua ---------------------------------------------------------------------------
+DISPENSING MACHINE=MÁQUINA DE DISPENSADORA
+Customer Offer=Cliente Oferece
+Customer Receive=Cliente Recebe
+ACCEPT=ACEITAR
+Current customer inventory=Inventário atual do cliente
+The Machine Need=A Maquina Precisa
+The Machine Offer=A Maquina Oferece
+Items Received (Your Profit)=Itens Recebido (Seu Lucro)
+Stock to Offer=Estoque a Oferetar
+You need=Você Precisa
+You offer=Você Oferece
+Make an announcement about what this machine will do=Faça um anúncio sobre o que esta máquina dispensará
+Seller current inventory=Inventario atual do vendedor
+Customer Interface=Interface do Cliente
+Dispensing Machine (Sell items for you)=Maquina Dispensadora (Vende itens por você)
+Dispensing Machine of '%s'.=Maquina Dispensadora de '%s'.
+The Dispensing Machine can not be removed before being emptied!=A Máquina Dispensadora não pode ser retirada antes de ser esvaziada!
+You can not change your own machine!=Voce nao pode trocar na sua propria maquina!
+The stock of '%s' is gone. Contact him!=O estoque de '%s' acabou. Contacte-o!
+the barter can not be done. Make sure you offer what the machine asks for!=O escambo nao pode ser feito. Verifique se voce ofereceu o que a maquina pede!
+
+
+# ------- alias ---------------------------------------------------------------------------
+dispensingmachine=dispensadora

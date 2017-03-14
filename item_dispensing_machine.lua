@@ -13,26 +13,26 @@ modMinerTrade.dispensing.formspec = {
 		--listcolors[slot_bg_normal;slot_bg_hover;slot_border;tooltip_bgcolor;tooltip_fontcolor]
 		.."listcolors[#00000055;#008800;#FFFFFF]"
 
-		.."label[2,-0.25;MÁQUINA DE DISPENSADORA]"
+		.."label[2,-0.25;"..minetest.formspec_escape(modMinerTrade.translate("DISPENSING MACHINE")).."]"
 		.."label[0,0.25;"..minetest.formspec_escape("* "..minetest.env:get_meta(pos):get_string("offer")).."]"
 		
-		.."label[0,1.0;O Cliente Oferece:]"
+		.."label[0,1.0;"..minetest.formspec_escape(modMinerTrade.translate("Customer Offer"))..":]"
 		.."list[current_player;customer_gives;0,1.5;3,2;]"
 		
-		.."label[0,3.5;O Cliente Recebe:]"
+		.."label[0,3.5;"..minetest.formspec_escape(modMinerTrade.translate("Customer Receive"))..":]"
 		.."list[current_player;customer_gets;0,4.0;3,2;]"
 
-		.."button[3,2.0;2,1;exchange;ACEITAR]"
+		.."button[3,2.0;2,1;exchange;"..minetest.formspec_escape(modMinerTrade.translate("ACCEPT")).."]"
 
-		.."label[0,6.0;Inventario atual do cliente:]"
+		.."label[0,6.0;"..minetest.formspec_escape(modMinerTrade.translate("Current customer inventory"))..":]"
 		.."list[current_player;main;0,6.5;8,4;]"
 
 
 
-		.."label[5,1.0;A Maquina Precisa:]"
+		.."label[5,1.0;"..minetest.formspec_escape(modMinerTrade.translate("The Machine Need"))..":]"
 		.."list["..list_name..";owner_wants;5,1.5;3,2;]"
 		
-		.."label[5,3.5;A Maquina Oferece:]"
+		.."label[5,3.5;"..minetest.formspec_escape(modMinerTrade.translate("The Machine Offer"))..":]"
 		.."list["..list_name..";owner_gives;5,4.0;3,2;]"
 
 		--.."listcolors[#00000000;#00000022;#00000000;#00000033;#FFFFFFFF]"
@@ -46,45 +46,34 @@ modMinerTrade.dispensing.formspec = {
 		.."bgcolor[#000000CC;false]"
 		--listcolors[slot_bg_normal;slot_bg_hover;slot_border;tooltip_bgcolor;tooltip_fontcolor]
 		.."listcolors[#88888844;#888888;#FFFFFF]"
-		.."label[0,0;Itens Recebido (Seu Lucro):]"
+		
+		.."label[0,0;"..minetest.formspec_escape(modMinerTrade.translate("Items Received (Your Profit)"))..":]"
 		.."list["..list_name..";customers_gave;0,0.5;3,2;]"
-		.."label[0,2.5;Estoque a Oferetar:]"
+		.."label[0,2.5;"..minetest.formspec_escape(modMinerTrade.translate("Stock to Offer"))..":]"
 		.."list["..list_name..";stock;0,3;3,2;]"
-		.."label[5,0;Voce Precisa:]"
+		.."label[5,0;"..minetest.formspec_escape(modMinerTrade.translate("You need"))..":]"
 		.."list["..list_name..";owner_wants;5,0.5;3,2;]"
-		.."label[5,2.5;Voce Oferece:]"
+		.."label[5,2.5;"..minetest.formspec_escape(modMinerTrade.translate("You offer"))..":]"
 		.."list["..list_name..";owner_gives;5,3;3,2;]"
 		--.."label[0,5;Proprietario: Pressione (E) + Botao(RMB) no Mouse para a interface com o cliente]"
 		--.."label[0,5;Vendedor: Evite o estoque baixo e guardar lucros no balcao.]"
 		.."field[0.29,5.75;8,0.85;txtOffer;"
-			.."Faça um anúncio sobre o que esta máquina dispensará:;"
+			..minetest.formspec_escape(modMinerTrade.translate("Make an announcement about what this machine will do"))..":;"
 			..minetest.formspec_escape(
 				minetest.env:get_meta(pos):get_string("offer")
 			).."]"
-		.."label[0,6.25;Inventario atual do vendedor:]"
+		.."label[0,6.25;"..minetest.formspec_escape(modMinerTrade.translate("Seller current inventory"))..":]"
 		.."list[current_player;main;0,6.75.0;8,4;]"
-		.."label[2,10.75;(CTRL + Mouse = Interface do Cliente)]"
+		.."label[0,10.75;(CTRL + Mouse = "..minetest.formspec_escape(modMinerTrade.translate("Customer Interface"))..")]"
 		return formspec
 	end,
 }
 
+--[[
 modMinerTrade.dispensing.getPrivilegio = function(listname,playername,meta)
-	--[[if listname == "pl1" then
-		if playername ~= meta:get_string("pl1") then
-			return false
-		elseif meta:get_int("pl1step") ~= 1 then
-			return false
-		end
-	end
-	if listname == "pl2" then
-		if playername ~= meta:get_string("pl2") then
-			return false
-		elseif meta:get_int("pl2step") ~= 1 then
-			return false
-		end
-	end]]
 	return true
 end
+--]]
 
 
 modMinerTrade.dispensing.getInventario = function(inv,list,playername)
@@ -132,7 +121,7 @@ local box_format = {
 }
 
 minetest.register_node("minertrade:dispensingmachine", {
-	description = "Maquina Dispensadora (Vende itens por você)",
+	description = modMinerTrade.translate("Dispensing Machine (Sell items for you)"),
 	--tiles = {"balcao_topo.png", "balcao2_baixo.png", "balcao2_lado.png"},
 	
 	drawtype = "nodebox",
@@ -155,7 +144,7 @@ minetest.register_node("minertrade:dispensingmachine", {
 	after_place_node = function(pos, placer, itemstack)
 		local owner = placer:get_player_name()
 		local meta = minetest.env:get_meta(pos)
-		meta:set_string("infotext", "Maquina Dispensadora de '"..owner.."'")
+		meta:set_string("infotext", modMinerTrade.translate("Dispensing Machine of '%s'."):format(owner))
 		meta:set_string("owner",owner)
 		--[[meta:set_string("pl1","")
 		meta:set_string("pl2","")]]
@@ -203,7 +192,7 @@ minetest.register_node("minertrade:dispensingmachine", {
 		local inv = meta:get_inventory()
 		local isCanDig = inv:is_empty("stock") and inv:is_empty("customers_gave") and inv:is_empty("owner_wants") and inv:is_empty("owner_gives")
 		if isCanDig~=true then
-			minetest.chat_send_player(playername,"[AVISO]: A Máquina Dispensadora não pode ser retirada antes de ser esvaziada!")
+			minetest.chat_send_player(playername,"[MINERTRADE]: "..modMinerTrade.translate("The Dispensing Machine can not be removed before being emptied!"))
 			minetest.sound_play("sfx_alert", {object=player, max_hear_distance=5.0,})
 		end
 		return isCanDig
@@ -222,7 +211,7 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 		
 		
 		if modMinerTrade.dispensing.canOpen(pos, name) and sender:get_player_control().aux1 then
-			minetest.chat_send_player(name,"Voce nao pode trocar na sua propria maquina!")
+			minetest.chat_send_player(name,modMinerTrade.translate("You can not change your own machine!"))
 			minetest.sound_play("sfx_alert", {object=sender, max_hear_distance=5.0,})
 			return
 		else
@@ -231,13 +220,12 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 				if fields.txtOffer ~= "" then
 					meta:set_string("offer", fields.txtOffer)
 					meta:set_string("infotext", 
-						"Maquina Dispensadora de '"..owner.."'.\n\n"
-						--.."Oferta: \n"..
+						modMinerTrade.translate("Dispensing Machine of '%s'."):format(owner).."\n\n"
 						.."    * "..fields.txtOffer
 					)
 				else
 					meta:set_string("offer", "")
-					meta:set_string("infotext", "Maquina Dispensadora de '"..owner.."'.")
+					meta:set_string("infotext", modMinerTrade.translate("Dispensing Machine of '%s'."):format(owner))
 				end
 			end
 			
@@ -281,9 +269,9 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 				minetest.sound_play("sfx_cash_register", {object=sender, max_hear_distance=5.0,})
 			elseif fields.quit==nil then
 				if owners_fault then
-					minetest.chat_send_player(name,"O estoque de '"..owner.."' acabou. Contacte-o!")
+					minetest.chat_send_player(name,modMinerTrade.translate("The stock of '%s' is gone. Contact him!"):format(owner))
 				else
-					minetest.chat_send_player(name,"O escambo nao pode ser feito. Verifique se voce ofereceu o que a maquina pede!")
+					minetest.chat_send_player(name,modMinerTrade.translate("the barter can not be done. Make sure you offer what the machine asks for!"))
 				end
 				minetest.sound_play("sfx_alert", {object=sender, max_hear_distance=5.0,})
 			end
@@ -302,9 +290,8 @@ minetest.register_craft({
 })
 
 
-minetest.register_alias("maquinadispensadora"	,"minertrade:dispensingmachine")
-minetest.register_alias("dispensadora"				,"minertrade:dispensingmachine")
-minetest.register_alias("maquinadeloja"			,"minertrade:dispensingmachine")
-minetest.register_alias("balcaodeloja"				,"minertrade:dispensingmachine")
-minetest.register_alias("caixadeloja"				,"minertrade:dispensingmachine")
-minetest.register_alias("loja"						,"minertrade:dispensingmachine")
+minetest.register_alias("dispensingmachine"	,"minertrade:dispensingmachine")
+minetest.register_alias(
+	modMinerTrade.translate("dispensingmachine"),
+	"minertrade:dispensingmachine"
+)
