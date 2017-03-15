@@ -25,7 +25,7 @@ It adds various types of money, exchange table, Dispensing Machines, Strongbox i
   * [intllib](https://github.com/minetest-mods/intllib) → Facilitates the translation of several other mods into your native language, or other languages.
   * [tradelands](https://github.com/Lunovox/tradelands) → Protection of rent door (not yet implemented). 
 
-**Licence: **
+**Licence:**
  * GNU AGPL: https://pt.wikipedia.org/wiki/GNU_Affero_General_Public_License
 
 **Developers:**
