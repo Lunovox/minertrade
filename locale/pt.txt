@@ -12,6 +12,7 @@ DISPENSING MACHINE=MÁQUINA DE DISPENSADORA
 Customer Offer=Cliente Oferece
 Customer Receive=Cliente Recebe
 ACCEPT=ACEITAR
+Exchange done!=Escambo feito!
 Current customer inventory=Inventário atual do cliente
 The Machine Need=A Maquina Precisa
 The Machine Offer=A Maquina Oferece
@@ -21,14 +22,27 @@ You need=Você Precisa
 You offer=Você Oferece
 Make an announcement about what this machine will do=Faça um anúncio sobre o que esta máquina dispensará
 Seller current inventory=Inventario atual do vendedor
-Customer Interface=Interface do Cliente
-Dispensing Machine (Sell items for you)=Maquina Dispensadora (Vende itens por você)
+Ctrl + Right Click Mouse → Customer Interface=Ctrl + Clique Direito do Mouse → Interface do Cliente
+DISPENSING MACHINE\n* Sells your items, even if you are not online.=MÁQUINA DE DISPENSADORA\n* Vende seus itens, mesmo se você não estiver online.
 Dispensing Machine of '%s'.=Maquina Dispensadora de '%s'.
 The Dispensing Machine can not be removed before being emptied!=A Máquina Dispensadora não pode ser retirada antes de ser esvaziada!
 You can not change your own machine!=Voce nao pode trocar na sua propria maquina!
 The stock of '%s' is gone. Contact him!=O estoque de '%s' acabou. Contacte-o!
 the barter can not be done. Make sure you offer what the machine asks for!=O escambo nao pode ser feito. Verifique se voce ofereceu o que a maquina pede!
 
+#------- item_barter_table.lua ---------------------------------------------------------------------------
+EXCHANGE TABLE\n(Player to Player)=MESA DE ESCAMBO\n(Jogador para Jogador)
+EXCHANGE TABLE\n* It makes safe exchanges from player to player without the need to put your items on the ground.=MESA DE ESCAMBO\n* Faz trocas seguras jogador a jogador sem a necessidade de colocar seu itens no chão.
+'%s' offer='%s' oferece
+Your inventory=Seu inventario
+Open=Abrir
+Offer=Oferecer
+Cancel=Cancelar
+Confirm=Confirmar
+
+#------- on_final.lua ---------------------------------------------------------------------------
+Saving strongbox from all players in the file '%s'!=Salvando cofre de todos os jogadores no arquivo '%s'!
 
 # ------- alias ---------------------------------------------------------------------------
 dispensingmachine=dispensadora
+exchangetable=mesadetroca

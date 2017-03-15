@@ -64,7 +64,7 @@ modMinerTrade.dispensing.formspec = {
 			).."]"
 		.."label[0,6.25;"..minetest.formspec_escape(modMinerTrade.translate("Seller current inventory"))..":]"
 		.."list[current_player;main;0,6.75.0;8,4;]"
-		.."label[0,10.75;(CTRL + Mouse = "..minetest.formspec_escape(modMinerTrade.translate("Customer Interface"))..")]"
+		.."label[0,10.75;("..minetest.formspec_escape(modMinerTrade.translate("Ctrl + Right Click Mouse → Customer Interface"))..")]"
 		return formspec
 	end,
 }
@@ -121,7 +121,7 @@ local box_format = {
 }
 
 minetest.register_node("minertrade:dispensingmachine", {
-	description = modMinerTrade.translate("Dispensing Machine (Sell items for you)"),
+	description = modMinerTrade.translate("DISPENSING MACHINE\n* Sells your items, even if you are not online."),
 	--tiles = {"balcao_topo.png", "balcao2_baixo.png", "balcao2_lado.png"},
 	
 	drawtype = "nodebox",
@@ -207,9 +207,6 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 		local owner = meta:get_string("owner")
 		--minetest.chat_send_player(name,"owner('"..owner.."') == name('"..name.."')")
 		
-		
-		
-		
 		if modMinerTrade.dispensing.canOpen(pos, name) and sender:get_player_control().aux1 then
 			minetest.chat_send_player(name,modMinerTrade.translate("You can not change your own machine!"))
 			minetest.sound_play("sfx_alert", {object=sender, max_hear_distance=5.0,})
@@ -227,8 +224,8 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 					meta:set_string("offer", "")
 					meta:set_string("infotext", modMinerTrade.translate("Dispensing Machine of '%s'."):format(owner))
 				end
+				return
 			end
-			
 			
 			local minv = meta:get_inventory()
 			local pinv = sender:get_inventory()
@@ -256,25 +253,28 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 					owners_fault = true
 				end
 			end
-			if can_exchange then
-				for i, item in pairs(wants) do
-					pinv:remove_item("customer_gives",item)
-					minv:add_item("customers_gave",item)
-				end
-				for i, item in pairs(gives) do
-					minv:remove_item("stock",item)
-					pinv:add_item("customer_gets",item)
-				end
-				minetest.chat_send_player(name,"Escambo feito!")
-				minetest.sound_play("sfx_cash_register", {object=sender, max_hear_distance=5.0,})
-			elseif fields.quit==nil then
-				if owners_fault then
-					minetest.chat_send_player(name,modMinerTrade.translate("The stock of '%s' is gone. Contact him!"):format(owner))
+				
+			if fields.quit==nil then
+				if can_exchange then
+					for i, item in pairs(wants) do
+						pinv:remove_item("customer_gives",item)
+						minv:add_item("customers_gave",item)
+					end
+					for i, item in pairs(gives) do
+						minv:remove_item("stock",item)
+						pinv:add_item("customer_gets",item)
+					end
+					minetest.chat_send_player(name,modMinerTrade.translate("Exchange done!"))
+					minetest.sound_play("sfx_cash_register", {object=sender, max_hear_distance=5.0,})
 				else
-					minetest.chat_send_player(name,modMinerTrade.translate("the barter can not be done. Make sure you offer what the machine asks for!"))
+					if owners_fault then
+						minetest.chat_send_player(name,modMinerTrade.translate("The stock of '%s' is gone. Contact him!"):format(owner))
+					else
+						minetest.chat_send_player(name,modMinerTrade.translate("the barter can not be done. Make sure you offer what the machine asks for!"))
+					end
+					minetest.sound_play("sfx_alert", {object=sender, max_hear_distance=5.0,})
 				end
-				minetest.sound_play("sfx_alert", {object=sender, max_hear_distance=5.0,})
-			end
+			end --if fields.quit==nil then
 		end
 	end
 end)
