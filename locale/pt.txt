@@ -36,7 +36,7 @@ You can not change your own machine!=Voce nao pode trocar na sua propria maquina
 The stock of '%s' is gone. Contact him!=O estoque de '%s' acabou. Contacte-o!
 The dispending can not be done. Make sure you offer what the machine asks for!=A dispensa não pode ser feita. Verifique se você ofereceu o que a máquina pede!
 
-#------- item_barter_table.lua ---------------------------------------------------------------------------
+#------- item_exchange_table.lua ---------------------------------------------------------------------------
 EXCHANGE TABLE\n(Player to Player)=MESA DE ESCAMBO\n(Jogador para Jogador)
 EXCHANGE TABLE\n* It makes safe exchanges from player to player without the need to put your items on the ground.=MESA DE ESCAMBO\n* Faz trocas seguras jogador a jogador sem a necessidade de colocar seu itens no chão.
 '%s' offer='%s' oferece
@@ -47,8 +47,8 @@ Cancel=Cancelar
 Confirm=Confirmar
 
 #------- item_strongbox.lua ---------------------------------------------------------------------------
-STRONGBOX\n* Save your money in this safe and withdraw your money at any store that has an ATM.=COFRE\n* Guarde seu dinheiro neste cofre e retire seu dinheiro em qualquer loja que possua um Caixa Eletrônico.
-STRONGBOX (Property of '%s')\n* Save your money in this safe and withdraw your money at any store that has an ATM.=COFRE (Propriedade de '%s')\n* Guarde seu dinheiro neste cofre e retire seu dinheiro em qualquer loja que possua um Caixa Eletrônico.
+STRONGBOX\n* Save your money in this safe and withdraw your money at any shop that has an ATM.=COFRE\n* Guarde seu dinheiro neste cofre e retire seu dinheiro em qualquer loja que possua um Caixa Eletrônico.
+STRONGBOX (Property of '%s')\n* Save your money in this safe and withdraw your money at any shop that has an ATM.=COFRE (Propriedade de '%s')\n* Guarde seu dinheiro neste cofre e retire seu dinheiro em qualquer loja que possua um Caixa Eletrônico.
 [MINERTRADE] The safe is going to work %02d seconds after it is installed!=[MINERTRADE] O cofre sá vai funcionar %02d segundos depois de instalado!
 [MINERTRADE] You do not have access to the safe belonging to '%s'!=[MINERTRADE] Você não tem acesso ao cofre pertencente a '%s'!
 
@@ -56,6 +56,12 @@ STRONGBOX (Property of '%s')\n* Save your money in this safe and withdraw your m
 PUBLIC ATM\n* Save your money in the ATM, and withdraw your money in your Personal Safe or other ATM in the shops scattered around the map.=CAIXA ELETRÔNICO\n* Guarde o seu dinheiro neste Caixa Eletrônico, e retire seu dinheiro em seu Cofre Pessoal ou qualquer outro Caixa Eletrônico nas lojas espalhadas pelo mapa.
 [MINERTRADE] You can not install this 'ATM' too far from a 'Dispensing Machine'!=[MINERTRADE] Você não pode instalar este 'Caixa Eletrônico' muito longe de uma 'Máquina Dispensadora'!
 [MINERTRADE] The ATM will only run %02d seconds after it is installed!=[MINERTRADE] O Caixa Eletrônico só vai funcionar %02d segundos depois de instalado!
+
+#------- commands.lua ---------------------------------------------------------------------------
+checkstrongbox=checacofre
+Lets you check the contents of another players strongbox.=Permite verificar o conteúdo do cofre de outro jogador.
+The strongbox of %s was not created yet!=O Cofre de %s não foi criado ainda!
+You do not have permission to run this command without the privileges 'checkstrongbox'!=Você não tem permissão para executar este comando sem o privilégio 'checkstrongbox'!
 
 #------- on_final.lua ---------------------------------------------------------------------------
 Saving strongbox from all players in the file '%s'!=Salvando cofre de todos os jogadores no arquivo '%s'!

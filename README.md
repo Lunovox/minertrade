@@ -1,2 +1,66 @@
-# minertrade
-It adds various types of money, barter table, dispensing machines, safe in homes interconnected with ATMs in stores.
+# MINERTRADE
+
+It adds various types of money, exchange table, Dispensing Machines, Strongbox in homes interconnected with ATMs in stores.
+
+**SCREENSHOT IN PORTUGUESE:**
+![](https://github.com/Lunovox/tradelands/raw/master/screenshot.png)
+
+**Itens adicionados:**
+ * Types of Moneys:
+	* Minercoin 
+	* Minermoney
+	* Piggy Bank
+	* Credit Card
+ * Exchange Table (P2P)
+	* It makes safe exchanges from player to player without the need to put your items on the ground.
+ * Dispensing Machine
+ 	* Sells your items, even if you are not online.
+ * Personal Strongbox
+	* Save your money in this safe and withdraw your money at any shop that has an ATM.
+ * Public ATM
+	* Save your money in the ATM, and withdraw your money in your Personal Safe or other ATM in the shops scattered around the map.
+
+**Dependencies:**
+  * default → Minetest Game Included
+  * dye → Minetest Game Included
+
+**Optional Dependencies:**
+  * [intllib](https://github.com/minetest-mods/intllib) → Facilitates the translation of several other mods into your native language, or other languages.
+  * [tradelands](https://github.com/Lunovox/tradelands) → Protection of rent door (not yet implemented). 
+
+**Licence: **
+ * GNU AGPL: https://pt.wikipedia.org/wiki/GNU_Affero_General_Public_License
+
+**Developers:**
+ * Lunovox <lunovox@openmailbox.org>
+ 
+**Comandos:**
+ * Lets you check the contents of another players strongbox.
+ 	* /checkstrongbox <player_name>
+ 	* /csb <player_name>
+
+**Settings:**
+  * Change the file **'config.lua'** to change the initial settings of the mod, such as:
+	* Path of Database
+	* Delay of Install Strongbox and ATM,
+	* Size of inventory of Strongbox and ATM,
+
+**Translate to Others Languages:**
+
+* This mod currently are configured to language:
+	* English
+	* Portuguese
+
+* To add a new language to this mod just follow the steps below:
+	* Enable the complementary mod **'intllib'.**
+	* Set your language in **'minetest.conf'** by adding the [````language = <your language>````] property.
+		* Example for French Language: ````language = fr````
+	* Make a copy of the file [ **pt.txt** ] in the [ **locale** ] folder that is inside the mod for [````locale/<your_language>.txt````]. 
+		* Example for French language: ````locale/fr.txt````
+	* Open the file [````locale/<your_language>.txt````] in a simple text editor.
+	* Translate all lines. But, just here that stems the right of the equals symbol (=). 
+		* Example for French Language: ````DISPENSING MACHINE = MACHINE DE DISTRIBUTION````
+
+![](https://github.com/Lunovox/tradelands/raw/master/screenshot2.png)
+
+![](https://github.com/Lunovox/tradelands/raw/master/screenshot3.png)

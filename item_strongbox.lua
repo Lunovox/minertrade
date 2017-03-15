@@ -1,5 +1,5 @@
 minetest.register_node("minertrade:strongbox", {
-	description = modMinerTrade.translate("STRONGBOX\n* Save your money in this safe and withdraw your money at any store that has an ATM."),
+	description = modMinerTrade.translate("STRONGBOX\n* Save your money in this safe and withdraw your money at any shop that has an ATM."),
 	--inventory_image = "safe_front.png",
 	
 	paramtype = "light",
@@ -21,7 +21,7 @@ minetest.register_node("minertrade:strongbox", {
 		local meta = minetest.get_meta(pos)
 		local ownername = placer:get_player_name() or ""
 		meta:set_string("owner", ownername)
-		meta:set_string("infotext", modMinerTrade.translate("STRONGBOX (Property of '%s')\n* Save your money in this safe and withdraw your money at any store that has an ATM."):format(ownername))
+		meta:set_string("infotext", modMinerTrade.translate("STRONGBOX (Property of '%s')\n* Save your money in this safe and withdraw your money at any shop that has an ATM."):format(ownername))
 		local now = os.time() --Em milisegundos
 		meta:set_string("opentime", now+modMinerTrade.delayConstruct)
 	end,
@@ -37,7 +37,7 @@ minetest.register_node("minertrade:strongbox", {
 		local playername = clicker:get_player_name()
 		local meta = minetest.get_meta(pos)
 		local ownername = meta:get_string("owner")
-		meta:set_string("infotext", modMinerTrade.translate("STRONGBOX (Property of '%s')\n* Save your money in this safe and withdraw your money at any store that has an ATM."):format(ownername))
+		meta:set_string("infotext", modMinerTrade.translate("STRONGBOX (Property of '%s')\n* Save your money in this safe and withdraw your money at any shop that has an ATM."):format(ownername))
 		if modMinerTrade.isOpen(meta, clicker) then
 			local opentime = tonumber(meta:get_string("opentime")) or 0
 			local now = os.time() --Em milisegundos
