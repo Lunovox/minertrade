@@ -2,9 +2,6 @@
 
 It adds various types of money, exchange table, Dispensing Machines, Strongbox in homes interconnected with ATMs in stores.
 
-**SCREENSHOT IN PORTUGUESE:**
-![](https://raw.githubusercontent.com/Lunovox/minertrade/master/screenshot.png)
-
 **Itens adicionados:**
  * Types of Moneys:
 	* Minercoin 
@@ -60,6 +57,9 @@ It adds various types of money, exchange table, Dispensing Machines, Strongbox i
 	* Open the file [````locale/<your_language>.txt````] in a simple text editor.
 	* Translate all lines. But, just here that stems the right of the equals symbol (=). 
 		* Example for French Language: ````DISPENSING MACHINE = MACHINE DE DISTRIBUTION````
+
+**SCREENSHOT IN PORTUGUESE:**
+![](https://raw.githubusercontent.com/Lunovox/minertrade/master/screenshot.png)
 
 ![](https://raw.githubusercontent.com/Lunovox/minertrade/master/screenshot2.png)
 
