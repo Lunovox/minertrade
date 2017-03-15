@@ -1,5 +1,5 @@
 minetest.register_node("minertrade:strongbox", {
-	description = "Cofre - Guarde seu dinheiro neste cofre e retire seu dinheiro em qualquer loja que possua um Caixa Eletrônico",
+	description = modMinerTrade.translate("STRONGBOX\n* Save your money in this safe and withdraw your money at any store that has an ATM."),
 	--inventory_image = "safe_front.png",
 	
 	paramtype = "light",
@@ -19,17 +19,15 @@ minetest.register_node("minertrade:strongbox", {
 	},
 	after_place_node = function(pos, placer)
 		local meta = minetest.get_meta(pos)
-		meta:set_string("owner", placer:get_player_name() or "")
-		meta:set_string("infotext", "Cofre (Propriedade de "..meta:get_string("owner")..") - Guarde seu dinheiro neste cofre e retire seu dinheiro em qualquer loja que possua um Caixa Eletrônico.")
+		local ownername = placer:get_player_name() or ""
+		meta:set_string("owner", ownername)
+		meta:set_string("infotext", modMinerTrade.translate("STRONGBOX (Property of '%s')\n* Save your money in this safe and withdraw your money at any store that has an ATM."):format(ownername))
 		local now = os.time() --Em milisegundos
 		meta:set_string("opentime", now+modMinerTrade.delayConstruct)
 	end,
 	can_dig = function(pos,player)
 		local meta = minetest.get_meta(pos);
 		if modMinerTrade.isOpen(meta, player) then
-			--local inv = meta:get_inventory()
-			--inv:set_list("safe", { })
-			--return inv:is_empty("main") and modMinerTrade.isOpen(meta, player)
 			return true
 		else
 			return false
@@ -39,6 +37,7 @@ minetest.register_node("minertrade:strongbox", {
 		local playername = clicker:get_player_name()
 		local meta = minetest.get_meta(pos)
 		local ownername = meta:get_string("owner")
+		meta:set_string("infotext", modMinerTrade.translate("STRONGBOX (Property of '%s')\n* Save your money in this safe and withdraw your money at any store that has an ATM."):format(ownername))
 		if modMinerTrade.isOpen(meta, clicker) then
 			local opentime = tonumber(meta:get_string("opentime")) or 0
 			local now = os.time() --Em milisegundos
@@ -50,10 +49,10 @@ minetest.register_node("minertrade:strongbox", {
 					modMinerTrade.getFormspec(ownername)
 				)
 			else
-				minetest.chat_send_player(playername, "[COFRE] O cofre so vai funcionar "..(opentime-now).." segundos depois de instalado!")
+				minetest.chat_send_player(playername, modMinerTrade.translate("[MINERTRADE] The safe is going to work %02d seconds after it is installed!"):format(opentime-now))
 			end
 		else
-			minetest.chat_send_player(playername, "[COFRE] Este cofre pertence a '"..ownername.."'!")
+			minetest.chat_send_player(playername, modMinerTrade.translate("[MINERTRADE] You do not have access to the safe belonging to '%s'!"):format(ownername))
 		end
 	end,
 })
@@ -68,6 +67,7 @@ minetest.register_craft({
 })
 
 minetest.register_alias("strongbox"		,"minertrade:strongbox")
-minetest.register_alias("cofre"			,"minertrade:strongbox")
-minetest.register_alias("cofreforte"	,"minertrade:strongbox")
-minetest.register_alias("caixaforte"	,"minertrade:strongbox")
+minetest.register_alias(
+	modMinerTrade.translate("strongbox"),
+	"minertrade:strongbox"
+)

@@ -1,5 +1,5 @@
 minetest.register_node("minertrade:atm", {
-	description = "Caixa Eletronico (ATM) - Guarde o seu dinheiro neste Caixa Eletrônico, e retire seu dinheiro em seu Cofre Pessoal ou qualquer outro Caixa Eletrônico espalhado pelo mapa.",
+	description = modMinerTrade.translate("PUBLIC ATM\n* Save your money in the ATM, and withdraw your money in your Personal Safe or other ATM in the shops scattered around the map."),
 	--inventory_image =  minetest.inventorycube("text_atm_front_1.png"),
 	--inventory_image =  "text_atm_front_1.png",
 	paramtype = "light",
@@ -60,7 +60,7 @@ minetest.register_node("minertrade:atm", {
 				param2 = facedir,
 			})
 			local meta = minetest.get_meta(posAbove)
-			meta:set_string("infotext", "Caixa Eletronico (ATM) - Guarde o seu dinheiro neste Caixa Eletrônico, e retire seu dinheiro em seu Cofre Pessoal ou qualquer outro Caixa Eletrônico espalhado pelo mapa.")
+			meta:set_string("infotext", modMinerTrade.translate("PUBLIC ATM\n* Save your money in the ATM, and withdraw your money in your Personal Safe or other ATM in the shops scattered around the map."))
 			local now = os.time() --Em milisegundos
 			if not minetest.get_player_privs(playername).server then
 				meta:set_string("opentime", now+modMinerTrade.delayConstruct)
@@ -69,7 +69,7 @@ minetest.register_node("minertrade:atm", {
 			end
 			itemstack:take_item() -- itemstack:take_item() = Ok
 		else
-			minetest.chat_send_player(playername, "[ATM] Voce nao pode por este caixa eletronico muito longe de uma Maquina Dispensadora!")
+			minetest.chat_send_player(playername, modMinerTrade.translate("[MINERTRADE] You can not install this 'ATM' too far from a 'Dispensing Machine'!"))
 			--return itemstack -- = Cancel
 		end
 		
@@ -79,6 +79,7 @@ minetest.register_node("minertrade:atm", {
 	on_rightclick = function(pos, node, clicker)
 		local playername = clicker:get_player_name()
 		local meta = minetest.get_meta(pos)
+		meta:set_string("infotext", modMinerTrade.translate("PUBLIC ATM\n* Save your money in the ATM, and withdraw your money in your Personal Safe or other ATM in the shops scattered around the map."))
 		local opentime = tonumber(meta:get_string("opentime")) or 0
 		local now = os.time() --Em milisegundos
 		if now >= opentime or minetest.get_player_privs(playername).server then
@@ -89,7 +90,7 @@ minetest.register_node("minertrade:atm", {
 				modMinerTrade.getFormspec(playername)
 			)
 		else
-			minetest.chat_send_player(playername, "[ATM] O Caixa Eletronico so vai funcionar "..(opentime-now).." segundos depois de instalado!")
+			minetest.chat_send_player(playername, modMinerTrade.translate("[MINERTRADE] The ATM will only run %02d seconds after it is installed!"):format(opentime-now))
 		end
 	end,
 })
@@ -103,6 +104,8 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_alias("atm"					,"minertrade:atm")
-minetest.register_alias("atmbox"				,"minertrade:atm")
-minetest.register_alias("caixaeletronico"	,"minertrade:atm")
+minetest.register_alias("atm"	,"minertrade:atm")
+minetest.register_alias(
+	modMinerTrade.translate("atm"),
+	"minertrade:atm"
+)
