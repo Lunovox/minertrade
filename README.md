@@ -37,7 +37,7 @@ It adds various types of money, exchange table, Dispensing Machines, Strongbox i
  	* /csb <player_name>
 
 **Settings:**
-  * Change the file **'config.lua'** to change the initial settings of the mod, such as:
+  * Change the file **'[config.lua](https://github.com/Lunovox/minertrade/blob/master/config.lua)'** to change the initial settings of the mod, such as:
 	* Path of Database
 	* Delay of Install Strongbox and ATM,
 	* Size of inventory of Strongbox and ATM,
@@ -57,7 +57,8 @@ It adds various types of money, exchange table, Dispensing Machines, Strongbox i
 	* Open the file [````locale/<your_language>.txt````] in a simple text editor.
 	* Translate all lines. But, just here that stems the right of the equals symbol (=). 
 		* Example for French Language: ````DISPENSING MACHINE = MACHINE DE DISTRIBUTION````
-
+	* Send your translated file to [lunovox@openmailbox.org](mailto:lunovox@openmailbox.org).
+	
 **SCREENSHOT IN PORTUGUESE:**
 ![](https://raw.githubusercontent.com/Lunovox/minertrade/master/screenshot.png)
 
