@@ -3,7 +3,7 @@
 It adds various types of money, exchange table, Dispensing Machines, Strongbox in homes interconnected with ATMs in stores.
 
 **SCREENSHOT IN PORTUGUESE:**
-![](https://github.com/Lunovox/tradelands/raw/master/screenshot.png)
+![](https://raw.githubusercontent.com/Lunovox/minertrade/master/screenshot.png)
 
 **Itens adicionados:**
  * Types of Moneys:
@@ -61,6 +61,6 @@ It adds various types of money, exchange table, Dispensing Machines, Strongbox i
 	* Translate all lines. But, just here that stems the right of the equals symbol (=). 
 		* Example for French Language: ````DISPENSING MACHINE = MACHINE DE DISTRIBUTION````
 
-![](https://github.com/Lunovox/tradelands/raw/master/screenshot2.png)
+![](https://raw.githubusercontent.com/Lunovox/minertrade/master/screenshot2.png)
 
-![](https://github.com/Lunovox/tradelands/raw/master/screenshot3.png)
+![](https://raw.githubusercontent.com/Lunovox/minertrade/master/screenshot3.png)
