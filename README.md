@@ -45,8 +45,8 @@ It adds various types of money, exchange table, Dispensing Machines, Strongbox i
 **Translate to Others Languages:**
 
 * This mod currently are configured to language:
-	* English
-	* Portuguese
+	* English (DEFAULT)
+	* [Portuguese](https://raw.githubusercontent.com/Lunovox/minertrade/master/locale/pt.txt)
 
 * To add a new language to this mod just follow the steps below:
 	* Enable the complementary mod **'intllib'.**
