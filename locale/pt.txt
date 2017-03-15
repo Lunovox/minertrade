@@ -7,12 +7,18 @@ Opening '%s'!=Abrindo '%s'!
 Player '%s' has placed %02d '%s' in his safe!=O jogador '%s' colocou %02d '%s' em seu cofre!
 Player '% s' has removed %02d '% s' in his safe!=O jogador '%s' retirou %02d '%s' em seu cofre!
 
+#------- item_miner_cahs.lua ---------------------------------------------------------------------------
+MINERCOIN\n* Basic craftable money with gold and steel.=MINERMOEDA\n* Dinheiro básico criado com ouro e aço.
+MINERMONEY\n* equals 09 Minercoins.=MINERCÉDULA\n* Equivale a 09 Minermoedas.
+PIGGY BANK\n* equals 09 Minermoneys.=COFRE PORQUINHO\n* Equivale a 09 Minercédulas.
+CREDIT CARD\n* equals 09 Piggy Banks.=CARTÃO DE CRÉDITO\n* Equivale a 09 Cofre-Porquinhos.
+
 #------- item_dispensing_machine.lua ---------------------------------------------------------------------------
 DISPENSING MACHINE=MÁQUINA DE DISPENSADORA
 Customer Offer=Cliente Oferece
 Customer Receive=Cliente Recebe
 ACCEPT=ACEITAR
-Exchange done!=Escambo feito!
+Dispending done!=Dispensa Concluida!
 Current customer inventory=Inventário atual do cliente
 The Machine Need=A Maquina Precisa
 The Machine Offer=A Maquina Oferece
@@ -28,7 +34,7 @@ Dispensing Machine of '%s'.=Maquina Dispensadora de '%s'.
 The Dispensing Machine can not be removed before being emptied!=A Máquina Dispensadora não pode ser retirada antes de ser esvaziada!
 You can not change your own machine!=Voce nao pode trocar na sua propria maquina!
 The stock of '%s' is gone. Contact him!=O estoque de '%s' acabou. Contacte-o!
-the barter can not be done. Make sure you offer what the machine asks for!=O escambo nao pode ser feito. Verifique se voce ofereceu o que a maquina pede!
+The dispending can not be done. Make sure you offer what the machine asks for!=A dispensa não pode ser feita. Verifique se você ofereceu o que a máquina pede!
 
 #------- item_barter_table.lua ---------------------------------------------------------------------------
 EXCHANGE TABLE\n(Player to Player)=MESA DE ESCAMBO\n(Jogador para Jogador)
@@ -44,5 +50,9 @@ Confirm=Confirmar
 Saving strongbox from all players in the file '%s'!=Salvando cofre de todos os jogadores no arquivo '%s'!
 
 # ------- alias ---------------------------------------------------------------------------
+minercoin=minermoeda
+minermoney=minercedula
+piggybank=cofreporquinho
+creditcard=cartaodecredito
 dispensingmachine=dispensadora
 exchangetable=mesadetroca

@@ -224,6 +224,7 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 					meta:set_string("offer", "")
 					meta:set_string("infotext", modMinerTrade.translate("Dispensing Machine of '%s'."):format(owner))
 				end
+				minetest.sound_play("sfx_alert", {object=sender, max_hear_distance=5.0,})
 				return
 			end
 			
@@ -264,15 +265,15 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 						minv:remove_item("stock",item)
 						pinv:add_item("customer_gets",item)
 					end
-					minetest.chat_send_player(name,modMinerTrade.translate("Exchange done!"))
+					minetest.chat_send_player(name,modMinerTrade.translate("Dispending done!"))
 					minetest.sound_play("sfx_cash_register", {object=sender, max_hear_distance=5.0,})
 				else
 					if owners_fault then
 						minetest.chat_send_player(name,modMinerTrade.translate("The stock of '%s' is gone. Contact him!"):format(owner))
 					else
-						minetest.chat_send_player(name,modMinerTrade.translate("the barter can not be done. Make sure you offer what the machine asks for!"))
+						minetest.chat_send_player(name,modMinerTrade.translate("The dispending can not be done. Make sure you offer what the machine asks for!"))
 					end
-					minetest.sound_play("sfx_alert", {object=sender, max_hear_distance=5.0,})
+					minetest.sound_play("sfx_failure", {object=sender, max_hear_distance=5.0,})
 				end
 			end --if fields.quit==nil then
 		end

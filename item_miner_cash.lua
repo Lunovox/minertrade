@@ -2,15 +2,15 @@
 
 --#########################################################################################
 
-minetest.register_craftitem("minertrade:minecoin", {
-	description = "Minermoeda (Dinheiro Craftável)",
+minetest.register_craftitem("minertrade:minercoin", {
+	description = modMinerTrade.translate("MINERCOIN\n* Basic craftable money with gold and steel."),
 	inventory_image = "obj_minecoin.png",
 	stack_max=9, --Acumula 9 por slot
-	groups = { mobs=1 },
+	groups = {cash=1, trade=1},
 })
 
 minetest.register_craft({
-	output = "minertrade:minecoin",
+	output = "minertrade:minercoin",
 	recipe = {
 		{"default:gold_ingot","default:steel_ingot","default:gold_ingot"},
 	},
@@ -20,63 +20,69 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "cooking",
 	output = "default:gold_ingot",
-	recipe = "minertrade:minecoin",
+	recipe = "minertrade:minercoin",
 	cooktime = 5,
 })
 
-minetest.register_alias("minecoin", "minertrade:minecoin")
-minetest.register_alias("minemoeda", "minertrade:minecoin")
+minetest.register_alias("minercoin", "minertrade:minercoin")
+minetest.register_alias(
+	modMinerTrade.translate("minercoin"), 
+	"minertrade:minercoin"
+)
 
 --##########################################################################################################
 
-minetest.register_craftitem("minertrade:minemoney", {
-	description = "Minercedula (Vale 9 Minermoedas)",
+minetest.register_craftitem("minertrade:minermoney", {
+	description = modMinerTrade.translate("MINERMONEY\n* equals 09 Minercoins."),
 	inventory_image = "obj_minemoney.png",
 	stack_max=9, --Acumula 9 por slot
-	groups = { mobs=1 },
+	groups = {cash=1, trade=1},
 })
 
 minetest.register_craft({
-	output = "minertrade:minemoney",
+	output = "minertrade:minermoney",
 	recipe = {
-		{"minertrade:minecoin", "minertrade:minecoin", "minertrade:minecoin"},
-		{"minertrade:minecoin", "minertrade:minecoin", "minertrade:minecoin"},
-		{"minertrade:minecoin", "minertrade:minecoin", "minertrade:minecoin"}
+		{"minertrade:minercoin", "minertrade:minercoin", "minertrade:minercoin"},
+		{"minertrade:minercoin", "minertrade:minercoin", "minertrade:minercoin"},
+		{"minertrade:minercoin", "minertrade:minercoin", "minertrade:minercoin"}
 	},
 })
 
 minetest.register_craft({
-	output = "minertrade:minecoin 9",
+	output = "minertrade:minercoin 9",
 	recipe = {
-		{"minertrade:minemoney"},
+		{"minertrade:minermoney"},
 	},
 })
 
 
-minetest.register_alias("minemoney", "minertrade:minemoney")
-minetest.register_alias("minedinheiro", "minertrade:minemoney")
+minetest.register_alias("minermoney", "minertrade:minermoney")
+minetest.register_alias(
+	modMinerTrade.translate("minermoney"), 
+	"minertrade:minermoney"
+)
 
 --##########################################################################################################
 
 
 minetest.register_craftitem("minertrade:piggybank", {
-	description = "Cofre Porquinho (Vale 9 Minercedulas)",
+	description = modMinerTrade.translate("PIGGY BANK\n* equals 09 Minermoneys."),
 	inventory_image = "obj_piggy_bank.png",
 	stack_max=9, --Acumula 9 por slot
-	groups = { mobs=1 },
+	groups = {cash=1, trade=1},
 })
 
 minetest.register_craft({
 	output = "minertrade:piggybank",
 	recipe = {
-		{"minertrade:minemoney", "minertrade:minemoney", "minertrade:minemoney"},
-		{"minertrade:minemoney", "minertrade:minemoney", "minertrade:minemoney"},
-		{"minertrade:minemoney", "minertrade:minemoney", "minertrade:minemoney"}
+		{"minertrade:minermoney", "minertrade:minermoney", "minertrade:minermoney"},
+		{"minertrade:minermoney", "minertrade:minermoney", "minertrade:minermoney"},
+		{"minertrade:minermoney", "minertrade:minermoney", "minertrade:minermoney"}
 	},
 })
 
 minetest.register_craft({
-	output = "minertrade:minemoney 9",
+	output = "minertrade:minermoney 9",
 	recipe = {
 		{"minertrade:piggybank"},
 	},
@@ -84,15 +90,18 @@ minetest.register_craft({
 
 
 minetest.register_alias("piggybank"			, "minertrade:piggybank")
-minetest.register_alias("cofreporquinho"	, "minertrade:piggybank")
+minetest.register_alias(
+	modMinerTrade.translate("piggybank"), 
+	"minertrade:piggybank"
+)
 
 --##########################################################################################################
 
 minetest.register_craftitem("minertrade:creditcard", {
-	description = "Cartão de Crédito (Vale 9 Cofre-Porquinhos)",
+	description = modMinerTrade.translate("CREDIT CARD\n* equals 09 Piggy Banks."),
 	inventory_image = "obj_credit_card.png",
 	stack_max=9, --Acumula 9 por slot
-	groups = { mobs=1 },
+	groups = {cash=1, trade=1},
 })
 
 minetest.register_craft({
@@ -113,7 +122,10 @@ minetest.register_craft({
 
 
 minetest.register_alias("creditcard"		, "minertrade:creditcard")
-minetest.register_alias("cataodecredito"	, "minertrade:creditcard")
+minetest.register_alias(
+	modMinerTrade.translate("creditcard"), 
+	"minertrade:creditcard"
+)
 
 --##########################################################################################################
 

@@ -133,7 +133,7 @@ minetest.register_node("minertrade:exchangetable", {
 					if n == "pl2" and meta:get_int("pl1step") == 3 then modMinerTrade.exchangetable.exchange(meta) end
 				end
 				if fields[n.."_cancel"] then 
-					minetest.sound_play("sfx_alert", {object=sender, max_hear_distance=5.0,})
+					minetest.sound_play("sfx_failure", {object=sender, max_hear_distance=5.0,})
 					modMinerTrade.exchangetable.cancel(meta) 
 				end
 			end
