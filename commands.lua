@@ -34,5 +34,5 @@ modMinerTrade.propCheckStrongBox = function(playername, param)
 	}
 end
 
-minetest.register_chatcommand(modMinerTrade.translate("checkstrongbox"), modMinerTrade.propCheckStrongBox(playername, param))
-minetest.register_chatcommand("csb", modMinerTrade.propCheckStrongBox(playername, param))
+minetest.register_chatcommand(modMinerTrade.translate("checkstrongbox"), modMinerTrade.propCheckStrongBox())
+minetest.register_chatcommand("csb", modMinerTrade.propCheckStrongBox())
