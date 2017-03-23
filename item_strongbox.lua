@@ -49,10 +49,16 @@ minetest.register_node("minertrade:strongbox", {
 					modMinerTrade.getFormspec(ownername)
 				)
 			else
-				minetest.chat_send_player(playername, modMinerTrade.translate("[MINERTRADE] The safe is going to work %02d seconds after it is installed!"):format(opentime-now))
+				minetest.chat_send_player(playername, 
+					core.colorize("#00ff00", "["..modMinerTrade.translate("STRONGBOX").."]: ")
+					..modMinerTrade.translate("The safe is going to work %02d seconds after it is installed!"):format(opentime-now)
+				)
 			end
 		else
-			minetest.chat_send_player(playername, modMinerTrade.translate("[MINERTRADE] You do not have access to the safe belonging to '%s'!"):format(ownername))
+			minetest.chat_send_player(playername, 
+				core.colorize("#00ff00", "["..modMinerTrade.translate("STRONGBOX").."]: ")
+				..modMinerTrade.translate("You do not have access to the safe belonging to '%s'!"):format(ownername)
+			)
 		end
 	end,
 })

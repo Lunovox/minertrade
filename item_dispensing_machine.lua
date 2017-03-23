@@ -192,7 +192,9 @@ minetest.register_node("minertrade:dispensingmachine", {
 		local inv = meta:get_inventory()
 		local isCanDig = inv:is_empty("stock") and inv:is_empty("customers_gave") and inv:is_empty("owner_wants") and inv:is_empty("owner_gives")
 		if isCanDig~=true then
-			minetest.chat_send_player(playername,"[MINERTRADE]: "..modMinerTrade.translate("The Dispensing Machine can not be removed before being emptied!"))
+			minetest.chat_send_player(playername,
+				core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")
+				..modMinerTrade.translate("The Dispensing Machine can not be removed before being emptied!"))
 			minetest.sound_play("sfx_alert", {object=player, max_hear_distance=5.0,})
 		end
 		return isCanDig
@@ -208,7 +210,10 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 		--minetest.chat_send_player(name,"owner('"..owner.."') == name('"..name.."')")
 		
 		if modMinerTrade.dispensing.canOpen(pos, name) and sender:get_player_control().aux1 then
-			minetest.chat_send_player(name,modMinerTrade.translate("You can not change your own machine!"))
+			minetest.chat_send_player(name,
+				core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")
+				..modMinerTrade.translate("You can not change your own machine!")
+			)
 			minetest.sound_play("sfx_alert", {object=sender, max_hear_distance=5.0,})
 			return
 		else
@@ -265,13 +270,22 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 						minv:remove_item("stock",item)
 						pinv:add_item("customer_gets",item)
 					end
-					minetest.chat_send_player(name,modMinerTrade.translate("Dispending done!"))
+					minetest.chat_send_player(name,
+						core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")
+						..modMinerTrade.translate("Dispending done!")
+					)
 					minetest.sound_play("sfx_cash_register", {object=sender, max_hear_distance=5.0,})
 				else
 					if owners_fault then
-						minetest.chat_send_player(name,modMinerTrade.translate("The stock of '%s' is gone. Contact him!"):format(owner))
+						minetest.chat_send_player(name,
+							core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")
+							..modMinerTrade.translate("The stock of '%s' is gone. Contact him!"):format(owner)
+						)
 					else
-						minetest.chat_send_player(name,modMinerTrade.translate("The dispending can not be done. Make sure you offer what the machine asks for!"))
+						minetest.chat_send_player(name,
+							core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")
+							..modMinerTrade.translate("The dispending can not be done. Make sure you offer what the machine asks for!")
+						)
 					end
 					minetest.sound_play("sfx_failure", {object=sender, max_hear_distance=5.0,})
 				end

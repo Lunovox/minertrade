@@ -69,7 +69,10 @@ minetest.register_node("minertrade:atm", {
 			end
 			itemstack:take_item() -- itemstack:take_item() = Ok
 		else
-			minetest.chat_send_player(playername, modMinerTrade.translate("[MINERTRADE] You can not install this 'ATM' too far from a 'Dispensing Machine'!"))
+			minetest.chat_send_player(playername, 
+				core.colorize("#00ff00", "["..modMinerTrade.translate("ATM").."]: ")
+				..modMinerTrade.translate("You can not install this 'ATM' too far from a 'Dispensing Machine'!")
+			)
 			--return itemstack -- = Cancel
 		end
 		
@@ -90,7 +93,10 @@ minetest.register_node("minertrade:atm", {
 				modMinerTrade.getFormspec(playername)
 			)
 		else
-			minetest.chat_send_player(playername, modMinerTrade.translate("[MINERTRADE] The ATM will only run %02d seconds after it is installed!"):format(opentime-now))
+			minetest.chat_send_player(playername, 
+				core.colorize("#00ff00", "["..modMinerTrade.translate("ATM").."]: ")
+				..modMinerTrade.translate("The ATM will only run %02d seconds after it is installed!"):format(opentime-now)
+			)
 		end
 	end,
 })
