@@ -24,7 +24,6 @@ minetest.register_craft({
 	cooktime = 5,
 })
 
-minetest.register_alias("minercoin", "minertrade:minercoin")
 minetest.register_alias(
 	modMinerTrade.translate("minercoin"), 
 	"minertrade:minercoin"
@@ -56,7 +55,6 @@ minetest.register_craft({
 })
 
 
-minetest.register_alias("minermoney", "minertrade:minermoney")
 minetest.register_alias(
 	modMinerTrade.translate("minermoney"), 
 	"minertrade:minermoney"
@@ -89,7 +87,6 @@ minetest.register_craft({
 })
 
 
-minetest.register_alias("piggybank"			, "minertrade:piggybank")
 minetest.register_alias(
 	modMinerTrade.translate("piggybank"), 
 	"minertrade:piggybank"
@@ -121,7 +118,6 @@ minetest.register_craft({
 })
 
 
-minetest.register_alias("creditcard"		, "minertrade:creditcard")
 minetest.register_alias(
 	modMinerTrade.translate("creditcard"), 
 	"minertrade:creditcard"

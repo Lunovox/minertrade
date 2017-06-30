@@ -305,7 +305,6 @@ minetest.register_craft({
 })
 
 
-minetest.register_alias("dispensingmachine"	,"minertrade:dispensingmachine")
 minetest.register_alias(
 	modMinerTrade.translate("dispensingmachine"),
 	"minertrade:dispensingmachine"

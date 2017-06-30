@@ -72,7 +72,6 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_alias("strongbox"		,"minertrade:strongbox")
 minetest.register_alias(
 	modMinerTrade.translate("strongbox"),
 	"minertrade:strongbox"

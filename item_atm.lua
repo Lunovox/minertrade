@@ -110,7 +110,6 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_alias("atm"	,"minertrade:atm")
 minetest.register_alias(
 	modMinerTrade.translate("atm"),
 	"minertrade:atm"

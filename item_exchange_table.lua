@@ -171,7 +171,6 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_alias("exchangetable"	, "minertrade:exchangetable")
 minetest.register_alias(
 	modMinerTrade.translate("exchangetable"), 
 	"minertrade:exchangetable"
