@@ -34,6 +34,8 @@ Dispensing Machine of '%s'.=Maquina Dispensadora de '%s'.
 The Dispensing Machine can not be removed before being emptied!=A Máquina Dispensadora não pode ser retirada antes de ser esvaziada!
 You can not change your own machine!=Voce nao pode trocar na sua propria maquina!
 The stock of '%s' is gone. Contact him!=O estoque de '%s' acabou. Contacte-o!
+Without enough space in Dispensing Machine to receive the customer item. (Please, contact the seller '%s'!)=Sem espaço suficiente na Maquina Dispensadora para receber o item do cliente. (Por favor, entre em contato com o vendedor '%s'!)
+Without enough space in Dispensing Machine to receive the seller's item. (Please, empty the receiving box!)=Sem espaço suficiente na Maquina Dispensadora para receber o item do vendedor. (Por favor, esvazie a caixa de recebimento!)
 The dispending can not be done. Make sure you offer what the machine asks for!=A dispensa não pode ser feita. Verifique se você ofereceu o que a máquina pede!
 
 #------- item_exchange_table.lua ---------------------------------------------------------------------------

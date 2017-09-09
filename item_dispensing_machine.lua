@@ -247,28 +247,40 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 			if wants == nil or gives == nil then return end -- do not crash the server
 			-- Check if we can exchange
 			local can_exchange = true
-			local owners_fault = false
+			local error_name = ""
 			for i, item in pairs(wants) do
 				if not pinv:contains_item("customer_gives",item) then
 					can_exchange = false
+					break
+				end
+				if not minv:room_for_item("customers_gave",item) then -- verifica se compartimento de Recebimento de pagamento do vendedor tem espaço
+					can_exchange = false
+					error_name = "without_space_to_profit"
+					break
 				end
 			end
 			for i, item in pairs(gives) do
 				if not minv:contains_item("stock",item) then
 					can_exchange = false
-					owners_fault = true
+					error_name = "owners_fault"
+					break
+				end
+				if not pinv:room_for_item("customer_gets",item) then -- verifica se a caixa de entrega ao jogador tem espaço
+					can_exchange = false
+					error_name = "without_space_to_offer"
+					break
 				end
 			end
 				
 			if fields.quit==nil then
 				if can_exchange then
 					for i, item in pairs(wants) do
-						pinv:remove_item("customer_gives",item)
-						minv:add_item("customers_gave",item)
+						pinv:remove_item("customer_gives",item) --Remove do compartimento de Oferta de pagamento
+						minv:add_item("customers_gave",item) --Adiciona do compartimento de Recebimento de pagamento
 					end
 					for i, item in pairs(gives) do
-						minv:remove_item("stock",item)
-						pinv:add_item("customer_gets",item)
+						minv:remove_item("stock",item) -- Remove do Estoque
+						pinv:add_item("customer_gets",item) -- Entrega ao jogador.
 					end
 					minetest.chat_send_player(name,
 						core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")
@@ -276,10 +288,20 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 					)
 					minetest.sound_play("sfx_cash_register", {object=sender, max_hear_distance=5.0,})
 				else
-					if owners_fault then
+					if error_name == "owners_fault" then
 						minetest.chat_send_player(name,
 							core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")
 							..modMinerTrade.translate("The stock of '%s' is gone. Contact him!"):format(owner)
+						)
+					elseif error_name == "without_space_to_profit" then
+						minetest.chat_send_player(name,
+							core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")
+							..modMinerTrade.translate("Without enough space in Dispensing Machine to receive the customer item. (Please, contact the seller '%s'!)"):format(owner)
+						)
+					elseif error_name == "without_space_to_offer" then
+						minetest.chat_send_player(name,
+							core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")
+							..modMinerTrade.translate("Without enough space in Dispensing Machine to receive the seller's item. (Please, empty the receiving box!)")
 						)
 					else
 						minetest.chat_send_player(name,
