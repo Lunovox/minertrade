@@ -26,7 +26,7 @@ minetest.register_node("minertrade:atm", {
 		"safe_side.png",
 		"safe_side.png",
 		"safe_side.png",
-		"text_atm_front_2.png",
+		"safe_side.png^text_atm_front_0.png",
 	},
 
 	on_place = function(itemstack, placer, pointed_thing)
