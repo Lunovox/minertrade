@@ -54,12 +54,14 @@ STRONGBOX\n* Save your money in this safe and withdraw your money at any shop th
 STRONGBOX (Property of '%s')\n* Save your money in this safe and withdraw your money at any shop that has an ATM.=COFRE (Propriedade de '%s')\n* Guarde seu dinheiro neste cofre e retire seu dinheiro em qualquer loja que possua um Caixa Eletrônico.
 The safe is going to work %02d seconds after it is installed!=O cofre sá vai funcionar %02d segundos depois de instalado!
 You do not have access to the safe belonging to '%s'!=Você não tem acesso ao cofre pertencente a '%s'!
+STRONGBOX owned by '%s':=COFRE FORTE de '%s':
 
 #------- item_atm.lua ---------------------------------------------------------------------------
 ATM=CAIXA ELETRÔNICO
 PUBLIC ATM\n* Save your money in the ATM, and withdraw your money in your Personal Safe or other ATM in the shops scattered around the map.=CAIXA ELETRÔNICO\n* Guarde o seu dinheiro neste Caixa Eletrônico, e retire seu dinheiro em seu Cofre Pessoal ou qualquer outro Caixa Eletrônico nas lojas espalhadas pelo mapa.
 You can not install this 'ATM' too far from a 'Dispensing Machine'!=Você não pode instalar este 'Caixa Eletrônico' muito longe de uma 'Máquina Dispensadora'!
 The ATM will only run %02d seconds after it is installed!=O Caixa Eletrônico só vai funcionar %02d segundos depois de instalado!
+PUBLIC ATM - Account of '%s':=CAIXA ELETRÔNICO - Conta de '%s':
 
 #------- commands.lua ---------------------------------------------------------------------------
 checkstrongbox=checacofre

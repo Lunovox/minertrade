@@ -46,7 +46,10 @@ minetest.register_node("minertrade:strongbox", {
 				minetest.show_formspec(
 					playername,
 					"safe_"..ownername,
-					modMinerTrade.getFormspec(ownername)
+					modMinerTrade.getFormspec(
+						ownername,
+						modMinerTrade.translate("STRONGBOX owned by '%s':"):format(ownername)
+					)
 				)
 			else
 				minetest.chat_send_player(playername, 

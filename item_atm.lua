@@ -90,7 +90,10 @@ minetest.register_node("minertrade:atm", {
 			minetest.show_formspec(
 				playername,
 				"safe_"..playername,
-				modMinerTrade.getFormspec(playername)
+				modMinerTrade.getFormspec(
+					playername,
+					modMinerTrade.translate("PUBLIC ATM - Account of '%s':"):format(playername)
+				)
 			)
 		else
 			minetest.chat_send_player(playername, 

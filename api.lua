@@ -72,17 +72,16 @@ modMinerTrade.getSafeInventory = function(playername)
 end
 
 
-modMinerTrade.getFormspec = function(playername)
-	--local playername = player:get_player_name()
+modMinerTrade.getFormspec = function(playername, title)
+	if not title then title = "" end
 	local formspec = "size[8,9]"
 		.."bgcolor[#636D76FF;false]"
 		--..default.gui_bg
 		--..default.gui_bg_img
 		..default.gui_slots
-		--.."list[detached:safe_"..playername .. ";safe;1,1;"..modMinerTrade.size.width..","..modMinerTrade.size.height..";]" -- <= ATENCAO: Nao pode esquecer o prefixo 'detached:xxxxxxx'
-
+		.."label[0,0;"..minetest.formspec_escape(title).."]"
 		.."list[detached:safe_"..playername .. ";safe;"
-			..((8 - modMinerTrade.size.width)/2)..","..((4 - modMinerTrade.size.height)/2)..";"
+			..((8 - modMinerTrade.size.width)/2)..","..(((4 - modMinerTrade.size.height)/2)+0.62)..";"
 			..modMinerTrade.size.width..","..modMinerTrade.size.height
 		..";]" -- <= ATENCAO: Nao pode esquecer o prefixo 'detached:xxxxxxx'
 		.."list[current_player;main;0,5;8,4;]"
