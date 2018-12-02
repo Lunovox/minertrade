@@ -60,7 +60,7 @@ end
 modMinerTrade.getSafeInventory = function(playername)
 	local newInv = minetest.create_detached_inventory_raw("safe_"..playername)
 	newInv:set_size("safe", modMinerTrade.size.width*modMinerTrade.size.height)	
-	local listInventory = { }
+	--local listInventory = { }
 	for i=1,(modMinerTrade.size.width*modMinerTrade.size.height) do
 		if modMinerTrade.safe and modMinerTrade.safe[playername] and modMinerTrade.safe[playername][i] then
 			newInv:set_stack("safe", i, ItemStack(modMinerTrade.safe[playername][i]))
