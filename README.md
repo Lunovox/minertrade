@@ -29,7 +29,7 @@ It adds various types of money, exchange table, Dispensing Machines, Strongbox i
  * GNU AGPL: https://pt.wikipedia.org/wiki/GNU_Affero_General_Public_License
 
 **Developers:**
- * Lunovox <lunovox@openmailbox.org>
+ * [Lunovox](https://libreplanet.org/wiki/User:Lunovox)
  
 **Comandos:**
  * Lets you check the contents of another players strongbox.
