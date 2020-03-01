@@ -2,3 +2,4 @@ default
 dye
 intllib?
 tradelands?
+areas?
