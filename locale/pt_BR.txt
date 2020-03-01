@@ -1,0 +1,83 @@
+#Transdutor: Lunovox <lunovox@openmailbox.org>
+
+#------- api.lua ---------------------------------------------------------------------------
+Permission to open locked chests of other players=Permissão de abertura de baús trancados de outros jogadores
+The file '%s' is not in table format!=O arquivo '%s' não esta no formato de tabela!
+Opening '%s'!=Abrindo '%s'!
+Player '%s' has placed %02d '%s' in his safe!=O jogador '%s' colocou %02d '%s' em seu cofre!
+Player '% s' has removed %02d '% s' in his safe!=O jogador '%s' retirou %02d '%s' em seu cofre!
+
+#------- item_miner_cahs.lua ---------------------------------------------------------------------------
+MINERCOIN\n* Basic craftable money with gold and steel.=MINERMOEDA\n* Dinheiro básico criado com ouro e aço.
+MINERMONEY\n* equals 09 Minercoins.=MINERCÉDULA\n* Equivale a 09 Minermoedas.
+PIGGY BANK\n* equals 09 Minermoneys.=COFRE PORQUINHO\n* Equivale a 09 Minercédulas.
+CREDIT CARD\n* equals 09 Piggy Banks.=CARTÃO DE CRÉDITO\n* Equivale a 09 Cofre-Porquinhos.
+
+#------- item_dispensing_machine.lua ---------------------------------------------------------------------------
+DISPENSING MACHINE=MÁQUINA DE DISPENSADORA
+Customer Offer=Cliente Oferece
+Customer Receive=Cliente Recebe
+ACCEPT=ACEITAR
+Dispending done!=Dispensa Concluida!
+Current customer inventory=Inventário atual do cliente
+The Machine Need=A Maquina Precisa
+The Machine Offer=A Maquina Oferece
+Items Received (Your Profit)=Itens Recebido (Seu Lucro)
+Stock to Offer=Estoque a Oferetar
+You need=Você Precisa
+You offer=Você Oferece
+Make an announcement about what this machine will do=Faça um anúncio sobre o que esta máquina dispensará
+Seller current inventory=Inventario atual do vendedor
+Ctrl + Right Click Mouse → Customer Interface=Ctrl + Clique Direito do Mouse → Interface do Cliente
+DISPENSING MACHINE\n* Sells your items, even if you are not online.=MÁQUINA DE DISPENSADORA\n* Vende seus itens, mesmo se você não estiver online.
+Dispensing Machine of '%s'.=Maquina Dispensadora de '%s'.
+The Dispensing Machine can not be removed before being emptied!=A Máquina Dispensadora não pode ser retirada antes de ser esvaziada!
+You can not change your own machine!=Voce nao pode trocar na sua propria maquina!
+The stock of '%s' is gone. Contact him!=O estoque de '%s' acabou. Contacte-o!
+Without enough space in Dispensing Machine to receive the customer item. (Please, contact the seller '%s'!)=Sem espaço suficiente na Maquina Dispensadora para receber o item do cliente. (Por favor, entre em contato com o vendedor '%s'!)
+Without enough space in Dispensing Machine to receive the seller's item. (Please, empty the receiving box!)=Sem espaço suficiente na Maquina Dispensadora para receber o item do vendedor. (Por favor, esvazie a caixa de recebimento!)
+The dispending can not be done. Make sure you offer what the machine asks for!=A dispensa não pode ser feita. Verifique se você ofereceu o que a máquina pede!
+
+#------- item_exchange_table.lua ---------------------------------------------------------------------------
+EXCHANGE TABLE\n(Player to Player)=MESA DE ESCAMBO\n(Jogador para Jogador)
+EXCHANGE TABLE\n* It makes safe exchanges from player to player without the need to put your items on the ground.=MESA DE ESCAMBO\n* Faz trocas seguras jogador a jogador sem a necessidade de colocar seu itens no chão.
+'%s' offer='%s' oferece
+Your inventory=Seu inventario
+Open=Abrir
+Offer=Oferecer
+Cancel=Cancelar
+Confirm=Confirmar
+
+#------- item_strongbox.lua ---------------------------------------------------------------------------
+STRONGBOX=COFRE
+STRONGBOX\n* Save your money in this safe and withdraw your money at any shop that has an ATM.=COFRE\n* Guarde seu dinheiro neste cofre e retire seu dinheiro em qualquer loja que possua um Caixa Eletrônico.
+STRONGBOX (Property of '%s')\n* Save your money in this safe and withdraw your money at any shop that has an ATM.=COFRE (Propriedade de '%s')\n* Guarde seu dinheiro neste cofre e retire seu dinheiro em qualquer loja que possua um Caixa Eletrônico.
+The safe is going to work %02d seconds after it is installed!=O cofre só vai funcionar %02d segundos depois de instalado!
+You do not have access to the safe belonging to '%s'!=Você não tem acesso ao cofre pertencente a '%s'!
+STRONGBOX owned by '%s':=COFRE FORTE de '%s':
+
+#------- item_atm.lua ---------------------------------------------------------------------------
+ATM=CAIXA ELETRÔNICO
+PUBLIC ATM\n* Save your money in the ATM, and withdraw your money in your Personal Safe or other ATM in the shops scattered around the map.=CAIXA ELETRÔNICO\n* Guarde o seu dinheiro neste Caixa Eletrônico, e retire seu dinheiro em seu Cofre Pessoal ou qualquer outro Caixa Eletrônico nas lojas espalhadas pelo mapa.
+You can not install this 'ATM' too far from a 'Dispensing Machine'!=Você não pode instalar este 'Caixa Eletrônico' muito longe de uma 'Máquina Dispensadora'!
+The ATM will only run %02d seconds after it is installed!=O Caixa Eletrônico só vai funcionar %02d segundos depois de instalado!
+PUBLIC ATM - Account of '%s':=CAIXA ELETRÔNICO - Conta de '%s':
+
+#------- commands.lua ---------------------------------------------------------------------------
+checkstrongbox=checacofre
+Lets you check the contents of another players strongbox.=Permite verificar o conteúdo do cofre de outro jogador.
+The strongbox of %s was not created yet!=O Cofre de %s não foi criado ainda!
+You do not have permission to run this command without the privileges 'checkstrongbox'!=Você não tem permissão para executar este comando sem o privilégio 'checkstrongbox'!
+
+#------- on_final.lua ---------------------------------------------------------------------------
+Saving strongbox from all players in the file '%s'!=Salvando cofre de todos os jogadores no arquivo '%s'!
+
+# ------- alias ---------------------------------------------------------------------------
+minercoin=minermoeda
+minermoney=minercedula
+piggybank=cofreporquinho
+creditcard=cartaodecredito
+dispensingmachine=dispensadora
+exchangetable=mesadetroca
+strongbox=caixaforte
+atm=caixaeletronico

@@ -8,9 +8,7 @@ minetest.register_craftitem('testmod:test', {
 })
 --]]
 
-if minetest.get_translator ~= nil and minetest.get_current_modname ~= nil and minetest.get_modpath(minetest.get_current_modname()) then
-	modMinerTrade.translate = minetest.get_translator(minetest.get_current_modname())
-elseif minetest.get_modpath("intllib") then
+if minetest.get_modpath("intllib") then
 	if intllib.make_gettext_pair then
 		-- New method using gettext.
 		modMinerTrade.translate, ngettext = intllib.make_gettext_pair()
@@ -18,6 +16,8 @@ elseif minetest.get_modpath("intllib") then
 		-- Old method using text files.
 		modMinerTrade.translate = intllib.Getter()
 	end
+elseif minetest.get_translator ~= nil and minetest.get_current_modname ~= nil and minetest.get_modpath(minetest.get_current_modname()) then
+	modMinerTrade.translate = minetest.get_translator(minetest.get_current_modname())
 else
 	modMinerTrade.translate = function(s) return s end
 end
