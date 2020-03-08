@@ -105,15 +105,22 @@ modMinerTrade.dispensing.exchange = function(meta)
 end
 
 modMinerTrade.dispensing.canOpen = function(pos, playername)
-	local meta = minetest.env:get_meta(pos)
-	if 
-		meta:get_string("owner")==playername 
-		or (minetest.get_modpath("tradelands") and modTradeLands.getOwnerName(pos)~="" and modTradeLands.canInteract(pos, playername))
-  or (minetest.get_modpath("areas") and #areas:getNodeOwners(pos)>=1 and areas.canInteract(pos, playername))
-	then
-		return true
-	end
-	return false
+   local meta = minetest.env:get_meta(pos)
+   if 
+      meta:get_string("owner")==playername 
+      or (
+         minetest.get_modpath("tradelands") 
+         and modTradeLands.getOwnerName(pos)~="" 
+         and modTradeLands.canInteract(pos, playername)
+      ) or (
+         minetest.get_modpath("areas") 
+         and #areas:getNodeOwners(pos)>=1 
+         and areas:canInteract(pos, playername)
+      )
+   then
+      return true
+   end
+   return false
 end
 
 local box_format = {
