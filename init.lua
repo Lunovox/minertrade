@@ -14,7 +14,8 @@ dofile(modpath.."/item_exchange_table.lua")
 dofile(modpath.."/item_dispensing_machine.lua")
 -- --dofile(path.."/item_rent_door.lua")
 
+dofile(modpath.."/payday.lua") -- <== Pay diary per playing in server.
 dofile(modpath.."/commands.lua")
-dofile(modpath.."/on_final.lua") -- <== Depois que carregou tudo!
+dofile(modpath.."/on_final.lua") -- <== Only after load all code!
 
 minetest.log('action',"["..modname:upper().."] Loaded!")
