@@ -1,3 +1,63 @@
+minetest.register_privilege("salary",  {
+   description=modMinerTrade.translate("Only players with this privilege received a daily payment."), 
+   give_to_singleplayer=false,
+})
+
+modMinerTrade.payday = {
+   salary = (minetest.setting_get("minertrade.payday.salary") or "minertrade:minercoin 1"),
+   interval = (tonumber(minetest.setting_get("minertrade.payday.interval")) or 60)
+}
+
+minetest.after(3.5, function()
+   modMinerTrade.payday.time = 0
+   minetest.register_globalstep(function(dtime)
+      modMinerTrade.payday.time = modMinerTrade.payday.time + dtime
+      if modMinerTrade.payday.time >= modMinerTrade.payday.interval then
+         modMinerTrade.payday.time = 0
+         local dc = minetest.get_day_count()
+         local players = minetest.get_connected_players()
+         if #players >= 1 then
+            for _, player in ipairs(players) do
+               local lp = tonumber(player:get_meta():get_int("last_pay")) or 0
+               if lp ~= dc then
+                  local playername = player:get_player_name()
+                  if minetest.get_player_privs(playername).salary then
+                     local nameInvList = "safe"
+                     local inv = modMinerTrade.getDetachedInventory(playername)
+                     --minetest.chat_send_player(playername, "vazio = "..dump(inv:is_empty(nameInvList)))
+                     local stack = ItemStack(modMinerTrade.payday.salary) 
+                     local leftover = inv:add_item(nameInvList, stack) 
+                     modMinerTrade.setSafeInventory(playername, inv:get_list(nameInvList))
+                     if leftover:get_count() > 0 then 
+                        minetest.chat_send_player(
+                           playername,
+                           core.colorize("#00ff00", "["..modMinerTrade.translate("CITY HALL").."]: ")
+                           ..modMinerTrade.translate("Your Strongbox is full! %2d items weren't added in your back account."):format(leftover:get_count())
+                        )
+                        minetest.sound_play("sfx_alert", {object=player, max_hear_distance=5.0,})
+                     else
+                        minetest.chat_send_player(
+                           playername,
+                           core.colorize("#00ff00", "["..modMinerTrade.translate("CITY HALL").."]: ")
+                           ..modMinerTrade.translate("The city hall deposited your %2d° salary in your bank account!"):format(dc)
+                        )
+                        minetest.sound_play("sfx_cash_register", {object=player, max_hear_distance=5.0,})
+                     end 
+                  end
+                  player:get_meta():set_int("last_pay",dc)
+               end
+            end
+         end
+      end
+   end)
+end)
+
+
+
+
+
+
+
 --[[
 minetest.after(3.5, function()
    modMinerTrade.payday = { 
@@ -14,34 +74,4 @@ minetest.after(3.5, function()
 end)
 --]]
 
-minetest.after(3.5, function()
-   local interval = 5
-   local time = 0
-   minetest.register_globalstep(function(dtime)
-      time = time + dtime
-      if time >= interval then
-         time = 0
-         local dc = minetest.get_day_count()
-         local players = minetest.get_connected_players()
-         local salary = "minertrade:minercoin 1"
-         if #players >= 1 then
-            for _, player in ipairs(players) do
-               local playername = player:get_player_name()
-               local inv = modMinerTrade.getSafeInventory(ownername)
-               local lp = tonumber(player:get_meta("last_pay")) or 0
-               if lp ~= dc then
-                  player:set_meta("last_pay",dc)
-                  minetest.chat_send_player(
-                     playername,
-                     core.colorize("#00ff00", "["..modMinerTrade.translate("CITY HALL").."]: ")
-                     ..modMinerTrade.translate("The city hall deposited your salary in your bank account!")
-                  )
-                  minetest.sound_play("sfx_cash_register", {object=player, max_hear_distance=5.0,})
-                  inv:add_item("safe_"..playername, salary)
-               end
-            end
-         end
-      end
-   end)
-end)
 

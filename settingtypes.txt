@@ -1,0 +1,12 @@
+# MINERTRADE SETTINGS
+# Only players with "salary" privilege received a daily payment.
+
+# MINERTRADE:
+# Prize given per virtual day to the online player.
+# Default: 'minertrade:minercoin 1'
+minertrade.payday.salary (Daily Salary) string minertrade:minercoin 1
+
+# MINERTRADE:
+# Time interval in seconds to check for rewardable players.
+# Deafault: 60 | Min: 1
+minertrade.payday.interval (Interval Check Salary) int 60 1
