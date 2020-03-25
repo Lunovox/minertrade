@@ -63,6 +63,12 @@ You can not install this 'ATM' too far from a 'Dispensing Machine'!=Você não p
 The ATM will only run %02d seconds after it is installed!=O Caixa Eletrônico só vai funcionar %02d segundos depois de instalado!
 PUBLIC ATM - Account of '%s':=CAIXA ELETRÔNICO - Conta de '%s':
 
+#------- payday.lua ---------------------------------------------------------------------------
+CITY HALL=PREFEITURA
+Only players with this privilege will receive a daily payment.=Somente jogadores com esse privilégio receberão um pagamento diário.
+Your Strongbox is full! %2d items weren't added in your bank account.=O seu cofre está cheio! %2d itens não foram adicionados à sua conta bancária.
+The city hall deposited the %2d° salary in your bank account!=A prefeitura depositou o %2d° salário em sua conta bancária!
+
 #------- commands.lua ---------------------------------------------------------------------------
 checkstrongbox=checacofre
 Lets you check the contents of another players strongbox.=Permite verificar o conteúdo do cofre de outro jogador.

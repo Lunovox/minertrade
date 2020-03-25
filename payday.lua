@@ -1,5 +1,5 @@
 minetest.register_privilege("salary",  {
-   description=modMinerTrade.translate("Only players with this privilege received a daily payment."), 
+   description=modMinerTrade.translate("Only players with this privilege will receive a daily payment."), 
    give_to_singleplayer=false,
 })
 
@@ -32,14 +32,14 @@ minetest.after(3.5, function()
                         minetest.chat_send_player(
                            playername,
                            core.colorize("#00ff00", "["..modMinerTrade.translate("CITY HALL").."]: ")
-                           ..modMinerTrade.translate("Your Strongbox is full! %2d items weren't added in your back account."):format(leftover:get_count())
+                           ..modMinerTrade.translate("Your Strongbox is full! %2d items weren't added in your bank account."):format(leftover:get_count())
                         )
                         minetest.sound_play("sfx_alert", {object=player, max_hear_distance=5.0,})
                      else
                         minetest.chat_send_player(
                            playername,
                            core.colorize("#00ff00", "["..modMinerTrade.translate("CITY HALL").."]: ")
-                           ..modMinerTrade.translate("The city hall deposited your %2d° salary in your bank account!"):format(dc)
+                           ..modMinerTrade.translate("The city hall deposited the %2d° salary in your bank account!"):format(dc)
                         )
                         minetest.sound_play("sfx_cash_register", {object=player, max_hear_distance=5.0,})
                      end 
