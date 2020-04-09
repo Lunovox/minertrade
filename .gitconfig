@@ -1,3 +1,10 @@
+[user]
+	email = lunovox@disroot.org
+	name = Lunovox Heavenfinder
+	
+[alias]
+  nlog = log --oneline --decorate --all --graph -n 10
+  
 # Add the following to your .gitconfig file.
 [diff]
     tool = meld
