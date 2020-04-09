@@ -99,46 +99,42 @@ minetest.register_craftitem("minertrade:creditcard", {
 	inventory_image = "obj_credit_card.png",
 	--stack_max=9, --Acumula 9 por slot
 	groups = {cash=1, trade=1},
-on_use = function(itemstack, player)
+	on_use = function(itemstack, player)
 		local playername = player:get_player_name()
-local meta = itemstack:get_meta()
+		local meta = itemstack:get_meta()
 		local old_data = minetest.deserialize(itemstack:get_metadata())
 		if old_data then
 			meta:from_table({ fields = old_data })
 		end
 		local tmpDatabase = meta:to_table().fields
-   if type(tmpDatabase.ownername)~="string" or tmpDatabase.ownername=="" then
-      tmpDatabase.ownername = playername
-      tmpDatabase.description = modMinerTrade.translate("CREDIT CARD of '%s'"):format(tmpDatabase.ownername)
-      local invPlayer = player:get_inventory()
-      local new_stack
-      local count = itemstack:get_count()
-      itemstack:set_count(count - 1)
-      new_stack = ItemStack("minertrade:creditcard")
-      new_stack:get_meta():from_table({ fields = tmpDatabase })
-      if invPlayer:room_for_item("main", new_stack) then
-         invPlayer:add_item("main", new_stack)
-      else
-         minetest.add_item(player:get_pos(), new_stack)
-      end
-      minetest.chat_send_player(playername,
-      				core.colorize("#00ff00", "["..modMinerTrade.translate("CREDIT CARD").."]: ")
-      				..modMinerTrade.translate("Your name has been saved to this credit card. Anyone using this credit card will be able to access the '%s' bank account."):format(tmpDatabase.ownername)
-      )
-      minetest.sound_play("sfx_alert", {object=player, max_hear_distance=5.0,})
-      return itemstack
-   end
-
-   local inv = modMinerTrade.getDetachedInventory(tmpDatabase.ownername)
-			minetest.show_formspec(
-				playername,
-				"safe_"..tmpDatabase.ownername,
-				modMinerTrade.getFormspec(
-					tmpDatabase.ownername,
-					modMinerTrade.translate("ACCOUNT BANK of '%s':"):format(tmpDatabase.ownername)
-				)
+		
+		if type(tmpDatabase.ownername)~="string" or tmpDatabase.ownername=="" then
+			tmpDatabase.ownername = playername
+			tmpDatabase.description = modMinerTrade.translate("CREDIT CARD of '%s'"):format(tmpDatabase.ownername)
+			local invPlayer = player:get_inventory()
+			local new_stack
+			local count = itemstack:get_count()
+			itemstack:set_count(count - 1)
+			new_stack = ItemStack("minertrade:creditcard")
+			new_stack:get_meta():from_table({ fields = tmpDatabase })
+			if invPlayer:room_for_item("main", new_stack) then
+				invPlayer:add_item("main", new_stack)
+			else
+				minetest.add_item(player:get_pos(), new_stack)
+			end
+			minetest.chat_send_player(playername,
+				core.colorize("#00ff00", "["..modMinerTrade.translate("CREDIT CARD").."]: ")
+				..modMinerTrade.translate("Your name has been saved to this credit card. Anyone using this credit card will be able to access the '%s' bank account."):format(tmpDatabase.ownername)
 			)
-   --return itemstack
+			minetest.sound_play("sfx_alert", {object=player, max_hear_distance=5.0,})
+			return itemstack
+		end
+		modMinerTrade.showInventory(
+			playername, 
+			tmpDatabase.ownername, 
+			modMinerTrade.translate("ACCOUNT BANK of '%s':"):format(tmpDatabase.ownername)
+		)
+		return itemstack
 	end,
 })
 
