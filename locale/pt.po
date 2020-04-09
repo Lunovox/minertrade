@@ -3,62 +3,65 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-08 19:09-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2020-04-08 20:03-0300\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: pt\n"
 
 #: api.lua:4
 msgid "Permission to open locked chests of other players"
-msgstr ""
+msgstr "Permissão de abertura de baús trancados de outros jogadores"
 
 #: api.lua:31 api.lua:41
 #, lua-format
 msgid "The file '%s' is not in table format!"
-msgstr ""
+msgstr "O arquivo '%s' não esta no formato de tabela!"
 
 #: api.lua:44
 #, lua-format
 msgid "Opening '%s'!"
-msgstr ""
+msgstr "Abrindo '%s'!"
 
 #: api.lua:132
 #, lua-format
 msgid "Player '%s' has placed %02d '%s' in his safe!"
-msgstr ""
+msgstr "O jogador '%s' colocou %02d '%s' em seu cofre!"
 
 #: api.lua:136
 #, lua-format
 msgid "Player '%s' has removed %02d '%s' in his safe!"
-msgstr ""
+msgstr "O jogador '%s' retirou %02d '%s' em seu cofre!"
 
 #: commands.lua:2 commands.lua:9 commands.lua:27
 msgid "Lets you check the contents of another players strongbox."
-msgstr ""
+msgstr "Permite verificar o conteúdo do cofre de outro jogador."
 
 #: commands.lua:24
 #, lua-format
 msgid "The strongbox of %s was not created yet!"
-msgstr ""
+msgstr "O Cofre de %s não foi criado ainda!"
 
 #: commands.lua:27 commands.lua:37
 msgid "checkstrongbox"
-msgstr ""
+msgstr "checacofre"
 
 #: commands.lua:30
 msgid ""
 "You do not have permission to run this command without the privileges "
 "'checkstrongbox'!"
 msgstr ""
+"Você não tem permissão para executar este comando sem o privilégio "
+"'checkstrongbox'!"
 
 #: item_atm.lua:2 item_atm.lua:63 item_atm.lua:85
 msgid ""
@@ -66,116 +69,124 @@ msgid ""
 "* Save your money in the ATM, and withdraw your money in your Personal Safe "
 "or other ATM in the shops scattered around the map."
 msgstr ""
+"CAIXA ELETRÔNICO\n"
+"* Guarde o seu dinheiro neste Caixa Eletrônico, e retire seu dinheiro em seu "
+"Cofre Pessoal ou qualquer outro Caixa Eletrônico nas lojas espalhadas pelo "
+"mapa."
 
 #: item_atm.lua:73 item_atm.lua:100
 msgid "ATM"
-msgstr ""
+msgstr "CAIXA ELETRÔNICO"
 
 #: item_atm.lua:74
 msgid "You can not install this 'ATM' too far from a 'Dispensing Machine'!"
 msgstr ""
+"Você não pode instalar este 'Caixa Eletrônico' muito longe de uma 'Máquina "
+"Dispensadora'!"
 
 #: item_atm.lua:95
 #, lua-format
 msgid "PUBLIC ATM - Account of '%s':"
-msgstr ""
+msgstr "CAIXA ELETRÔNICO - Conta de '%s':"
 
 #: item_atm.lua:101
 #, lua-format
 msgid "The ATM will only run %02d seconds after it is installed!"
-msgstr ""
+msgstr "O Caixa Eletrônico só vai funcionar %02d segundos depois de instalado!"
 
 #: item_atm.lua:117
 msgid "atm"
-msgstr ""
+msgstr "caixaeletronico"
 
 #: item_dispensing_machine.lua:16 item_dispensing_machine.lua:204
 #: item_dispensing_machine.lua:222 item_dispensing_machine.lua:294
 #: item_dispensing_machine.lua:301 item_dispensing_machine.lua:306
 #: item_dispensing_machine.lua:311 item_dispensing_machine.lua:316
 msgid "DISPENSING MACHINE"
-msgstr ""
+msgstr "MÁQUINA DE DISPENSADORA"
 
 #: item_dispensing_machine.lua:19
 msgid "Customer Offer"
-msgstr ""
+msgstr "Cliente Oferece"
 
 #: item_dispensing_machine.lua:22
 msgid "Customer Receive"
-msgstr ""
+msgstr "Cliente Recebe"
 
 #: item_dispensing_machine.lua:25
 msgid "ACCEPT"
-msgstr ""
+msgstr "ACEITAR"
 
 #: item_dispensing_machine.lua:27
 msgid "Current customer inventory"
-msgstr ""
+msgstr "Inventário atual do cliente"
 
 #: item_dispensing_machine.lua:32
 msgid "The Machine Need"
-msgstr ""
+msgstr "Máquina Precisa"
 
 #: item_dispensing_machine.lua:35
 msgid "The Machine Offer"
-msgstr ""
+msgstr "Máquina Oferece"
 
 #: item_dispensing_machine.lua:50
 msgid "Items Received (Your Profit)"
-msgstr ""
+msgstr "Itens Recebido (Seu Lucro)"
 
 #: item_dispensing_machine.lua:52
 msgid "Stock to Offer"
-msgstr ""
+msgstr "Estoque a Oferetar"
 
 #: item_dispensing_machine.lua:54
 msgid "You need"
-msgstr ""
+msgstr "Você Precisa"
 
 #: item_dispensing_machine.lua:56
 msgid "You offer"
-msgstr ""
+msgstr "Você Oferece"
 
 #: item_dispensing_machine.lua:61
 msgid "Make an announcement about what this machine will do"
-msgstr ""
+msgstr "Faça um anúncio sobre o que esta máquina dispensará"
 
 #: item_dispensing_machine.lua:65
 msgid "Seller current inventory"
-msgstr ""
+msgstr "Inventario atual do vendedor"
 
 #: item_dispensing_machine.lua:67
 msgid "Ctrl + Right Click Mouse → Customer Interface"
-msgstr ""
+msgstr "Ctrl + Clique Direito do Mouse → Interface do Cliente"
 
 #: item_dispensing_machine.lua:132
 msgid ""
 "DISPENSING MACHINE\n"
 "* Sells your items, even if you are not online."
 msgstr ""
+"MÁQUINA DE DISPENSADORA\n"
+"* Vende seus itens, mesmo se você não estiver online."
 
 #: item_dispensing_machine.lua:155 item_dispensing_machine.lua:233
 #: item_dispensing_machine.lua:238
 #, lua-format
 msgid "Dispensing Machine of '%s'."
-msgstr ""
+msgstr "Maquina Dispensadora de '%s'."
 
 #: item_dispensing_machine.lua:205
 msgid "The Dispensing Machine can not be removed before being emptied!"
-msgstr ""
+msgstr "A Máquina Dispensadora não pode ser retirada antes de ser esvaziada!"
 
 #: item_dispensing_machine.lua:223
 msgid "You can not change your own machine!"
-msgstr ""
+msgstr "Você não pode trocar na sua própria maquina!"
 
 #: item_dispensing_machine.lua:295
 msgid "Dispending done!"
-msgstr ""
+msgstr "Dispensa Concluida!"
 
 #: item_dispensing_machine.lua:302
 #, lua-format
 msgid "The stock of '%s' is gone. Contact him!"
-msgstr ""
+msgstr "O estoque de '%s' acabou. Contacte-o!"
 
 #: item_dispensing_machine.lua:307
 #, lua-format
@@ -183,54 +194,62 @@ msgid ""
 "Without enough space in Dispensing Machine to receive the customer item. "
 "(Please, contact the seller '%s'!)"
 msgstr ""
+"Sem espaço suficiente na Maquina Dispensadora para receber o item do "
+"cliente. (Por favor, entre em contato com o vendedor '%s'!)"
 
 #: item_dispensing_machine.lua:312
 msgid ""
 "Without enough space in Dispensing Machine to receive the seller's item. "
 "(Please, empty the receiving box!)"
 msgstr ""
+"Sem espaço suficiente na Maquina Dispensadora para receber o item do "
+"vendedor. (Por favor, esvazie a caixa de recebimento!)"
 
 #: item_dispensing_machine.lua:317
 msgid ""
 "The dispending can not be done. Make sure you offer what the machine asks "
 "for!"
 msgstr ""
+"A dispensa não pode ser feita. Verifique se você ofereceu o que a máquina "
+"pede!"
 
 #: item_dispensing_machine.lua:339
 msgid "dispensingmachine"
-msgstr ""
+msgstr "dispensadora"
 
 #: item_exchange_table.lua:6
 msgid ""
 "EXCHANGE TABLE\n"
 "(Player to Player)"
 msgstr ""
+"MESA DE ESCAMBO\n"
+"(Jogador para Jogador)"
 
 #: item_exchange_table.lua:9
 msgid "Your inventory"
-msgstr ""
+msgstr "Seu inventário"
 
 #: item_exchange_table.lua:12 item_exchange_table.lua:20
 msgid "Open"
-msgstr ""
+msgstr "Abrir"
 
 #: item_exchange_table.lua:13 item_exchange_table.lua:21
 #, lua-format
 msgid "'%s' offer"
-msgstr ""
+msgstr "'%s' oferece"
 
 #: item_exchange_table.lua:14 item_exchange_table.lua:22
 msgid "Offer"
-msgstr ""
+msgstr "Oferecer"
 
 #: item_exchange_table.lua:15 item_exchange_table.lua:17
 #: item_exchange_table.lua:23 item_exchange_table.lua:25
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: item_exchange_table.lua:16 item_exchange_table.lua:24
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmar"
 
 #: item_exchange_table.lua:97 item_exchange_table.lua:103
 #: item_exchange_table.lua:113
@@ -239,40 +258,49 @@ msgid ""
 "* It makes safe exchanges from player to player without the need to put your "
 "items on the ground."
 msgstr ""
+"MESA DE ESCAMBO\n"
+"* Faz trocas seguras jogador a jogador sem a necessidade de colocar seu "
+"itens no chão."
 
 #: item_exchange_table.lua:175
 msgid "exchangetable"
-msgstr ""
+msgstr "mesadetroca"
 
 #: item_miner_cash.lua:6
 msgid ""
 "MINERCOIN\n"
 "* Basic craftable money with gold and steel."
 msgstr ""
+"MINERMOEDA\n"
+"* Dinheiro básico criado com ouro e aço."
 
 #: item_miner_cash.lua:28
 msgid "minercoin"
-msgstr ""
+msgstr "minermoeda"
 
 #: item_miner_cash.lua:35
 msgid ""
 "MINERMONEY\n"
 "* equals 09 Minercoins."
 msgstr ""
+"MINERCÉDULA\n"
+"* Equivale a 09 Minermoedas."
 
 #: item_miner_cash.lua:59
 msgid "minermoney"
-msgstr ""
+msgstr "minercedula"
 
 #: item_miner_cash.lua:67
 msgid ""
 "CHECK BANK\n"
 "* equals 09 Minermoneys."
 msgstr ""
+"COFRE PORQUINHO\n"
+"* Equivale a 09 Minercédulas."
 
 #: item_miner_cash.lua:91
-msgid "piggybank"
-msgstr ""
+msgid "checkbank"
+msgstr "cheque"
 
 #: item_miner_cash.lua:98
 msgid ""
@@ -281,15 +309,19 @@ msgid ""
 "* Allows you to access the bank account of the credit card owner anywhere in "
 "the world."
 msgstr ""
+"CARTÃO DE CRÉDITO (Sem Dono)\n"
+"* Equivale a 09 Cheques Bancários.\n"
+"* Permite acessar a conta bancária do proprietário do cartão de crédito em "
+"qualquer lugar do mundo."
 
 #: item_miner_cash.lua:112
 #, lua-format
 msgid "CREDIT CARD of '%s'"
-msgstr ""
+msgstr "CARTÃO DE CRÉDITO de '%s'"
 
 #: item_miner_cash.lua:125
 msgid "CREDIT CARD"
-msgstr ""
+msgstr "CARTÃO DE CRÉDITO"
 
 #: item_miner_cash.lua:126
 #, lua-format
@@ -297,15 +329,17 @@ msgid ""
 "Your name has been saved to this credit card. Anyone using this credit card "
 "will be able to access the '%s' bank account."
 msgstr ""
+"Seu nome foi salvo neste cartão de crédito. Qualquer pessoa que use este "
+"cartão de crédito poderá acessar a conta bancária '%s'."
 
 #: item_miner_cash.lua:138
 #, lua-format
 msgid "ACCOUNT BANK of '%s':"
-msgstr ""
+msgstr "CONTA BANCÁRA de '%s':"
 
 #: item_miner_cash.lua:163
 msgid "creditcard"
-msgstr ""
+msgstr "cartaodecredito"
 
 #: item_strongbox.lua:2
 msgid ""
@@ -313,6 +347,9 @@ msgid ""
 "* Save your money in this safe and withdraw your money at any shop that has "
 "an ATM."
 msgstr ""
+"COFRE\n"
+"* Guarde seu dinheiro neste cofre e retire seu dinheiro em qualquer loja que "
+"possua um Caixa Eletrônico."
 
 #: item_strongbox.lua:24 item_strongbox.lua:40
 #, lua-format
@@ -321,49 +358,53 @@ msgid ""
 "* Save your money in this safe and withdraw your money at any shop that has "
 "an ATM."
 msgstr ""
+"COFRE (Propriedade de '%s')\n"
+"* Guarde seu dinheiro neste cofre e retire seu dinheiro em qualquer loja que "
+"possua um Caixa Eletrônico."
 
 #: item_strongbox.lua:51
 #, lua-format
 msgid "STRONGBOX owned by '%s':"
-msgstr ""
+msgstr "COFRE FORTE de '%s':"
 
 #: item_strongbox.lua:56 item_strongbox.lua:62
 msgid "STRONGBOX"
-msgstr ""
+msgstr "COFRE"
 
 #: item_strongbox.lua:57
 #, lua-format
 msgid "The safe is going to work %02d seconds after it is installed!"
-msgstr ""
+msgstr "O cofre só vai funcionar %02d segundos depois de instalado!"
 
 #: item_strongbox.lua:63
 #, lua-format
 msgid "You do not have access to the safe belonging to '%s'!"
-msgstr ""
+msgstr "Você não tem acesso ao cofre pertencente a '%s'!"
 
 #: item_strongbox.lua:75 on_final.lua:9
 #, lua-format
 msgid "Saving strongbox from all players in the file '%s'!"
-msgstr ""
+msgstr "Salvando cofre de todos os jogadores no arquivo '%s'!"
 
 #: item_strongbox.lua:90
 msgid "strongbox"
-msgstr ""
+msgstr "caixaforte"
 
 #: payday.lua:2
 msgid "Only players with this privilege will receive a daily payment."
-msgstr ""
+msgstr "Somente jogadores com esse privilégio receberão um pagamento diário."
 
 #: payday.lua:34 payday.lua:41
 msgid "CITY HALL"
-msgstr ""
+msgstr "PREFEITURA"
 
 #: payday.lua:35
 #, lua-format
 msgid "Your Strongbox is full! %2d items weren't added in your bank account."
 msgstr ""
+"O seu cofre está cheio! %2d itens não foram adicionados à sua conta bancária."
 
 #: payday.lua:42
 #, lua-format
 msgid "The city hall deposited the %2d° salary in your bank account!"
-msgstr ""
+msgstr "A prefeitura depositou o %2d° salário em sua conta bancária!"
