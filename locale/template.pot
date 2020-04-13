@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 19:09-0300\n"
+"POT-Creation-Date: 2020-04-13 18:43-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,6 +41,33 @@ msgstr ""
 msgid "Player '%s' has removed %02d '%s' in his safe!"
 msgstr ""
 
+#: api.lua:182 api.lua:224 item_dispensing_machine.lua:16
+#: item_dispensing_machine.lua:204 item_dispensing_machine.lua:222
+#: item_dispensing_machine.lua:294
+msgid "DISPENSING MACHINE"
+msgstr ""
+
+#: api.lua:188
+#, lua-format
+msgid ""
+"A letter was sent by the dispensing machine '%s' to '%s' advising about '%s'!"
+msgstr ""
+
+#: api.lua:194
+msgid ""
+"Due to an unknown error, it was not possible to send an email through the "
+"dispensing machine!"
+msgstr ""
+
+#: api.lua:202 api.lua:208 api.lua:233
+#, lua-format
+msgid "The '%s' parameter must be of the non-empty string type!"
+msgstr ""
+
+#: api.lua:214
+msgid "The 'posMachine' parameter must be of the position type (x,y,z)!"
+msgstr ""
+
 #: commands.lua:2 commands.lua:9 commands.lua:27
 msgid "Lets you check the contents of another players strongbox."
 msgstr ""
@@ -67,7 +94,7 @@ msgid ""
 "or other ATM in the shops scattered around the map."
 msgstr ""
 
-#: item_atm.lua:73 item_atm.lua:100
+#: item_atm.lua:73 item_atm.lua:97
 msgid "ATM"
 msgstr ""
 
@@ -75,25 +102,18 @@ msgstr ""
 msgid "You can not install this 'ATM' too far from a 'Dispensing Machine'!"
 msgstr ""
 
-#: item_atm.lua:95
+#: item_atm.lua:92
 #, lua-format
 msgid "PUBLIC ATM - Account of '%s':"
 msgstr ""
 
-#: item_atm.lua:101
+#: item_atm.lua:98
 #, lua-format
 msgid "The ATM will only run %02d seconds after it is installed!"
 msgstr ""
 
-#: item_atm.lua:117
+#: item_atm.lua:114
 msgid "atm"
-msgstr ""
-
-#: item_dispensing_machine.lua:16 item_dispensing_machine.lua:204
-#: item_dispensing_machine.lua:222 item_dispensing_machine.lua:294
-#: item_dispensing_machine.lua:301 item_dispensing_machine.lua:306
-#: item_dispensing_machine.lua:311 item_dispensing_machine.lua:316
-msgid "DISPENSING MACHINE"
 msgstr ""
 
 #: item_dispensing_machine.lua:19
@@ -172,31 +192,30 @@ msgstr ""
 msgid "Dispending done!"
 msgstr ""
 
-#: item_dispensing_machine.lua:302
+#: item_dispensing_machine.lua:303
 #, lua-format
-msgid "The stock of '%s' is gone. Contact him!"
+msgid "Cannot deliver more items to '%s' because stock of '%s' is gone!"
 msgstr ""
 
-#: item_dispensing_machine.lua:307
+#: item_dispensing_machine.lua:310
 #, lua-format
 msgid ""
-"Without enough space in Dispensing Machine to receive the customer item. "
-"(Please, contact the seller '%s'!)"
+"Without enough space in Dispensing Machine to receive the customer item '%s'."
 msgstr ""
 
-#: item_dispensing_machine.lua:312
+#: item_dispensing_machine.lua:316
 msgid ""
 "Without enough space in Dispensing Machine to receive the seller's item. "
 "(Please, empty the receiving box!)"
 msgstr ""
 
-#: item_dispensing_machine.lua:317
+#: item_dispensing_machine.lua:321
 msgid ""
 "The dispending can not be done. Make sure you offer what the machine asks "
 "for!"
 msgstr ""
 
-#: item_dispensing_machine.lua:339
+#: item_dispensing_machine.lua:343
 msgid "dispensingmachine"
 msgstr ""
 
@@ -271,7 +290,7 @@ msgid ""
 msgstr ""
 
 #: item_miner_cash.lua:91
-msgid "piggybank"
+msgid "checkbank"
 msgstr ""
 
 #: item_miner_cash.lua:98
@@ -282,28 +301,28 @@ msgid ""
 "the world."
 msgstr ""
 
-#: item_miner_cash.lua:112
+#: item_miner_cash.lua:113
 #, lua-format
 msgid "CREDIT CARD of '%s'"
 msgstr ""
 
-#: item_miner_cash.lua:125
+#: item_miner_cash.lua:126
 msgid "CREDIT CARD"
 msgstr ""
 
-#: item_miner_cash.lua:126
+#: item_miner_cash.lua:127
 #, lua-format
 msgid ""
 "Your name has been saved to this credit card. Anyone using this credit card "
 "will be able to access the '%s' bank account."
 msgstr ""
 
-#: item_miner_cash.lua:138
+#: item_miner_cash.lua:135
 #, lua-format
 msgid "ACCOUNT BANK of '%s':"
 msgstr ""
 
-#: item_miner_cash.lua:163
+#: item_miner_cash.lua:159
 msgid "creditcard"
 msgstr ""
 
@@ -322,31 +341,31 @@ msgid ""
 "an ATM."
 msgstr ""
 
-#: item_strongbox.lua:51
+#: item_strongbox.lua:48
 #, lua-format
 msgid "STRONGBOX owned by '%s':"
 msgstr ""
 
-#: item_strongbox.lua:56 item_strongbox.lua:62
+#: item_strongbox.lua:53 item_strongbox.lua:60
 msgid "STRONGBOX"
 msgstr ""
 
-#: item_strongbox.lua:57
+#: item_strongbox.lua:54
 #, lua-format
 msgid "The safe is going to work %02d seconds after it is installed!"
 msgstr ""
 
-#: item_strongbox.lua:63
+#: item_strongbox.lua:61
 #, lua-format
 msgid "You do not have access to the safe belonging to '%s'!"
 msgstr ""
 
-#: item_strongbox.lua:75 on_final.lua:9
+#: item_strongbox.lua:73 on_final.lua:9
 #, lua-format
 msgid "Saving strongbox from all players in the file '%s'!"
 msgstr ""
 
-#: item_strongbox.lua:90
+#: item_strongbox.lua:88
 msgid "strongbox"
 msgstr ""
 

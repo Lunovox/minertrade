@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 19:09-0300\n"
-"PO-Revision-Date: 2020-04-08 20:03-0300\n"
+"POT-Creation-Date: 2020-04-13 18:43-0300\n"
+"PO-Revision-Date: 2020-04-13 18:44-0300\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.6\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: pt\n"
 
 #: api.lua:4
 msgid "Permission to open locked chests of other players"
@@ -41,6 +41,37 @@ msgstr "O jogador '%s' colocou %02d '%s' em seu cofre!"
 #, lua-format
 msgid "Player '%s' has removed %02d '%s' in his safe!"
 msgstr "O jogador '%s' retirou %02d '%s' em seu cofre!"
+
+#: api.lua:182 api.lua:224 item_dispensing_machine.lua:16
+#: item_dispensing_machine.lua:204 item_dispensing_machine.lua:222
+#: item_dispensing_machine.lua:294
+msgid "DISPENSING MACHINE"
+msgstr "MÁQUINA DE DISPENSADORA"
+
+#: api.lua:188
+#, lua-format
+msgid ""
+"A letter was sent by the dispensing machine '%s' to '%s' advising about '%s'!"
+msgstr ""
+"Uma carta foi enviada pela Máquina Dispensadora '%s' para '%s' informando "
+"sobre '%s'!"
+
+#: api.lua:194
+msgid ""
+"Due to an unknown error, it was not possible to send an email through the "
+"dispensing machine!"
+msgstr ""
+"Devido a um erro desconhecido, não foi possível enviar um email através da "
+"Máquina Dispensadora!"
+
+#: api.lua:202 api.lua:208 api.lua:233
+#, lua-format
+msgid "The '%s' parameter must be of the non-empty string type!"
+msgstr "O parâmetro '%s' deve ser do tipo de STRING não vazia!"
+
+#: api.lua:214
+msgid "The 'posMachine' parameter must be of the position type (x,y,z)!"
+msgstr "O parâmetro 'posMachine' deve ser do tipo de POSITION (x,y,z)!"
 
 #: commands.lua:2 commands.lua:9 commands.lua:27
 msgid "Lets you check the contents of another players strongbox."
@@ -74,7 +105,7 @@ msgstr ""
 "Cofre Pessoal ou qualquer outro Caixa Eletrônico nas lojas espalhadas pelo "
 "mapa."
 
-#: item_atm.lua:73 item_atm.lua:100
+#: item_atm.lua:73 item_atm.lua:97
 msgid "ATM"
 msgstr "CAIXA ELETRÔNICO"
 
@@ -84,26 +115,19 @@ msgstr ""
 "Você não pode instalar este 'Caixa Eletrônico' muito longe de uma 'Máquina "
 "Dispensadora'!"
 
-#: item_atm.lua:95
+#: item_atm.lua:92
 #, lua-format
 msgid "PUBLIC ATM - Account of '%s':"
 msgstr "CAIXA ELETRÔNICO - Conta de '%s':"
 
-#: item_atm.lua:101
+#: item_atm.lua:98
 #, lua-format
 msgid "The ATM will only run %02d seconds after it is installed!"
 msgstr "O Caixa Eletrônico só vai funcionar %02d segundos depois de instalado!"
 
-#: item_atm.lua:117
+#: item_atm.lua:114
 msgid "atm"
 msgstr "caixaeletronico"
-
-#: item_dispensing_machine.lua:16 item_dispensing_machine.lua:204
-#: item_dispensing_machine.lua:222 item_dispensing_machine.lua:294
-#: item_dispensing_machine.lua:301 item_dispensing_machine.lua:306
-#: item_dispensing_machine.lua:311 item_dispensing_machine.lua:316
-msgid "DISPENSING MACHINE"
-msgstr "MÁQUINA DE DISPENSADORA"
 
 #: item_dispensing_machine.lua:19
 msgid "Customer Offer"
@@ -183,21 +207,21 @@ msgstr "Você não pode trocar na sua própria maquina!"
 msgid "Dispending done!"
 msgstr "Dispensa Concluida!"
 
-#: item_dispensing_machine.lua:302
+#: item_dispensing_machine.lua:303
 #, lua-format
-msgid "The stock of '%s' is gone. Contact him!"
-msgstr "O estoque de '%s' acabou. Contacte-o!"
+msgid "Cannot deliver more items to '%s' because stock of '%s' is gone!"
+msgstr ""
+"Não é possível entregar mais itens para '%s' porque o estoque de '%s' acabou!"
 
-#: item_dispensing_machine.lua:307
+#: item_dispensing_machine.lua:310
 #, lua-format
 msgid ""
-"Without enough space in Dispensing Machine to receive the customer item. "
-"(Please, contact the seller '%s'!)"
+"Without enough space in Dispensing Machine to receive the customer item '%s'."
 msgstr ""
-"Sem espaço suficiente na Maquina Dispensadora para receber o item do "
-"cliente. (Por favor, entre em contato com o vendedor '%s'!)"
+"Sem espaço suficiente na Maquina Dispensadora para receber o item do cliente "
+"'%s'."
 
-#: item_dispensing_machine.lua:312
+#: item_dispensing_machine.lua:316
 msgid ""
 "Without enough space in Dispensing Machine to receive the seller's item. "
 "(Please, empty the receiving box!)"
@@ -205,15 +229,15 @@ msgstr ""
 "Sem espaço suficiente na Maquina Dispensadora para receber o item do "
 "vendedor. (Por favor, esvazie a caixa de recebimento!)"
 
-#: item_dispensing_machine.lua:317
+#: item_dispensing_machine.lua:321
 msgid ""
 "The dispending can not be done. Make sure you offer what the machine asks "
 "for!"
 msgstr ""
-"A dispensa não pode ser feita. Verifique se você ofereceu o que a máquina "
-"pede!"
+"A dispensa não pode ser feita. Verifique se você ofereceu o que a Maquina "
+"Dispensadora pede!"
 
-#: item_dispensing_machine.lua:339
+#: item_dispensing_machine.lua:343
 msgid "dispensingmachine"
 msgstr "dispensadora"
 
@@ -314,16 +338,16 @@ msgstr ""
 "* Permite acessar a conta bancária do proprietário do cartão de crédito em "
 "qualquer lugar do mundo."
 
-#: item_miner_cash.lua:112
+#: item_miner_cash.lua:113
 #, lua-format
 msgid "CREDIT CARD of '%s'"
 msgstr "CARTÃO DE CRÉDITO de '%s'"
 
-#: item_miner_cash.lua:125
+#: item_miner_cash.lua:126
 msgid "CREDIT CARD"
 msgstr "CARTÃO DE CRÉDITO"
 
-#: item_miner_cash.lua:126
+#: item_miner_cash.lua:127
 #, lua-format
 msgid ""
 "Your name has been saved to this credit card. Anyone using this credit card "
@@ -332,12 +356,12 @@ msgstr ""
 "Seu nome foi salvo neste cartão de crédito. Qualquer pessoa que use este "
 "cartão de crédito poderá acessar a conta bancária '%s'."
 
-#: item_miner_cash.lua:138
+#: item_miner_cash.lua:135
 #, lua-format
 msgid "ACCOUNT BANK of '%s':"
 msgstr "CONTA BANCÁRA de '%s':"
 
-#: item_miner_cash.lua:163
+#: item_miner_cash.lua:159
 msgid "creditcard"
 msgstr "cartaodecredito"
 
@@ -362,31 +386,31 @@ msgstr ""
 "* Guarde seu dinheiro neste cofre e retire seu dinheiro em qualquer loja que "
 "possua um Caixa Eletrônico."
 
-#: item_strongbox.lua:51
+#: item_strongbox.lua:48
 #, lua-format
 msgid "STRONGBOX owned by '%s':"
 msgstr "COFRE FORTE de '%s':"
 
-#: item_strongbox.lua:56 item_strongbox.lua:62
+#: item_strongbox.lua:53 item_strongbox.lua:60
 msgid "STRONGBOX"
 msgstr "COFRE"
 
-#: item_strongbox.lua:57
+#: item_strongbox.lua:54
 #, lua-format
 msgid "The safe is going to work %02d seconds after it is installed!"
 msgstr "O cofre só vai funcionar %02d segundos depois de instalado!"
 
-#: item_strongbox.lua:63
+#: item_strongbox.lua:61
 #, lua-format
 msgid "You do not have access to the safe belonging to '%s'!"
 msgstr "Você não tem acesso ao cofre pertencente a '%s'!"
 
-#: item_strongbox.lua:75 on_final.lua:9
+#: item_strongbox.lua:73 on_final.lua:9
 #, lua-format
 msgid "Saving strongbox from all players in the file '%s'!"
 msgstr "Salvando cofre de todos os jogadores no arquivo '%s'!"
 
-#: item_strongbox.lua:90
+#: item_strongbox.lua:88
 msgid "strongbox"
 msgstr "caixaforte"
 
@@ -408,3 +432,6 @@ msgstr ""
 #, lua-format
 msgid "The city hall deposited the %2d° salary in your bank account!"
 msgstr "A prefeitura depositou o %2d° salário em sua conta bancária!"
+
+#~ msgid "The stock of '%s' is gone. Contact him!"
+#~ msgstr "O estoque de '%s' acabou. Contacte-o!"

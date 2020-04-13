@@ -88,7 +88,7 @@ minetest.register_craft({
 
 
 minetest.register_alias(
-	modMinerTrade.translate("piggybank"), 
+	modMinerTrade.translate("checkbank"), 
 	"minertrade:checkbank"
 )
 

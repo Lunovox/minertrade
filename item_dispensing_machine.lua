@@ -211,31 +211,31 @@ minetest.register_node("minertrade:dispensingmachine", {
 
 minetest.register_on_player_receive_fields(function(sender, formname, fields)
 	if formname == "modMinerTrade.balcaodeloja_formspec" then
-		local name = sender:get_player_name()
-		local pos = modMinerTrade.dispensing.loja_atual[name]
+		local sendername = sender:get_player_name()
+		local pos = modMinerTrade.dispensing.loja_atual[sendername]
 		local meta = minetest.env:get_meta(pos)
-		local owner = meta:get_string("owner")
-		--minetest.chat_send_player(name,"owner('"..owner.."') == name('"..name.."')")
+		local ownername = meta:get_string("owner")
+		--minetest.chat_send_player(sendername,"ownername('"..ownername.."') == sendername('"..sendername.."')")
 		
-		if modMinerTrade.dispensing.canOpen(pos, name) and sender:get_player_control().aux1 then
-			minetest.chat_send_player(name,
+		if modMinerTrade.dispensing.canOpen(pos, sendername) and sender:get_player_control().aux1 then
+			minetest.chat_send_player(sendername,
 				core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")
 				..modMinerTrade.translate("You can not change your own machine!")
 			)
 			minetest.sound_play("sfx_alert", {object=sender, max_hear_distance=5.0,})
 			return
 		else
-			--minetest.chat_send_player(name,"fields="..dump(fields))
+			--minetest.chat_send_player(sendername,"fields="..dump(fields))
 			if fields.txtOffer ~= nil then
 				if fields.txtOffer ~= "" then
 					meta:set_string("offer", fields.txtOffer)
 					meta:set_string("infotext", 
-						modMinerTrade.translate("Dispensing Machine of '%s'."):format(owner).."\n\n"
+						modMinerTrade.translate("Dispensing Machine of '%s'."):format(ownername).."\n\n"
 						.."    * "..fields.txtOffer
 					)
 				else
 					meta:set_string("offer", "")
-					meta:set_string("infotext", modMinerTrade.translate("Dispensing Machine of '%s'."):format(owner))
+					meta:set_string("infotext", modMinerTrade.translate("Dispensing Machine of '%s'."):format(ownername))
 				end
 				minetest.sound_play("sfx_alert", {object=sender, max_hear_distance=5.0,})
 				return
@@ -290,34 +290,38 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 						minv:remove_item("stock",item) -- Remove do Estoque
 						pinv:add_item("customer_gets",item) -- Entrega ao jogador.
 					end
-					minetest.chat_send_player(name,
+					minetest.chat_send_player(sendername,
 						core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")
 						..modMinerTrade.translate("Dispending done!")
 					)
 					minetest.sound_play("sfx_cash_register", {object=sender, max_hear_distance=5.0,})
 				else
 					if error_name == "owners_fault" then
-						minetest.chat_send_player(name,
-							core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")
-							..modMinerTrade.translate("The stock of '%s' is gone. Contact him!"):format(owner)
+						minetest.errorDispensing(
+							modMinerTrade.translate(
+								--"The stock of '%s' is gone."
+								"Cannot deliver more items to '%s' because stock of '%s' is gone!"
+							):format(sendername, ownername)
+							,sender ,pos ,ownername
 						)
 					elseif error_name == "without_space_to_profit" then
-						minetest.chat_send_player(name,
-							core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")
-							..modMinerTrade.translate("Without enough space in Dispensing Machine to receive the customer item. (Please, contact the seller '%s'!)"):format(owner)
+						minetest.errorDispensing(
+							modMinerTrade.translate(
+								"Without enough space in Dispensing Machine to receive the customer item '%s'."
+							):format(sendername)
+							,sender ,pos ,ownername
 						)
 					elseif error_name == "without_space_to_offer" then
-						minetest.chat_send_player(name,
-							core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")
-							..modMinerTrade.translate("Without enough space in Dispensing Machine to receive the seller's item. (Please, empty the receiving box!)")
+						minetest.errorDispensing(
+							modMinerTrade.translate("Without enough space in Dispensing Machine to receive the seller's item. (Please, empty the receiving box!)")
+							,sender
 						)
 					else
-						minetest.chat_send_player(name,
-							core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")
-							..modMinerTrade.translate("The dispending can not be done. Make sure you offer what the machine asks for!")
+						minetest.errorDispensing( 
+							modMinerTrade.translate("The dispending can not be done. Make sure you offer what the machine asks for!")
+							,sender
 						)
 					end
-					minetest.sound_play("sfx_failure", {object=sender, max_hear_distance=5.0,})
 				end
 			end --if fields.quit==nil then
 		end

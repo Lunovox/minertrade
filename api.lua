@@ -157,3 +157,83 @@ modMinerTrade.showInventory = function(player, ownername, title)
 		modMinerTrade.getFormspec(ownername, title)
 	)
 end
+
+--##############################################################################
+modMinerTrade.floor_pos = function(pos)
+	return {
+		x=math.floor(pos.x),
+		y=math.floor(pos.y),
+		z=math.floor(pos.z)
+	}
+end
+
+modMinerTrade.sendMailMachine = function(posMachine, ownername, message)
+	if minetest.get_modpath("correio") then
+		local mailMachineInterval = (60*60)
+		if type(posMachine)=="table" and type(posMachine.x)=="number" and type(posMachine.y)=="number" and type(posMachine.z)=="number" then
+			local posMachineName = minetest.pos_to_string(modMinerTrade.floor_pos(posMachine))
+			if type(ownername)=="string" and ownername:trim()~="" and minetest.player_exists(ownername) then --Checks whether the owner really exists.
+				if type(message)=="string" and message:trim()~="" then
+					local agora = os.time()
+					if type(modMinerTrade.machine_flags)~="table" then modMinerTrade.machine_flags={}	end
+					if type(modMinerTrade.machine_flags[posMachineName])~="table" then modMinerTrade.machine_flags[posMachineName]={}	end
+					if type(modMinerTrade.machine_flags[posMachineName].lastalert)~="number" or modMinerTrade.machine_flags[posMachineName].lastalert + mailMachineInterval < agora then
+						local carta = modCorreio.set_mail(
+							modMinerTrade.translate("DISPENSING MACHINE").." "..posMachineName, 
+							ownername, 
+							message:trim()
+						)
+						if carta~=nil then
+							minetest.log('action',
+								modMinerTrade.translate("A letter was sent by the dispensing machine '%s' to '%s' advising about '%s'!"):
+								format(posMachineName, ownername , message)
+							)
+						else
+							minetest.log(
+								"error",("[modMinerTrade.sendMailMachine(posMachine='%s', ownername='%s', message='%s')] "):format(dump(posMachine), dump(ownername), dump(message))
+								..modMinerTrade.translate("Due to an unknown error, it was not possible to send an email through the dispensing machine!")
+							)
+						end
+						modMinerTrade.machine_flags[posMachineName].lastalert = agora
+					end --if type(modMinerTrade.machine_flags[posMachineName].lastalert)~="number" or modMinerTrade.machine_flags[posMachineName].lastalert + mailMachineInterval < agora then
+				else
+					minetest.log(
+						"error",("[modMinerTrade.sendMailMachine(posMachine='%s', ownername='%s', message='%s')] "):format(dump(posMachine), dump(ownername), dump(message))
+						..modMinerTrade.translate("The '%s' parameter must be of the non-empty string type!"):format("message")
+					)
+				end
+			else
+				minetest.log(
+					"error",("[modMinerTrade.sendMailMachine(posMachine='%s', ownername='%s', message='%s')] "):format(dump(posMachine), dump(ownername), dump(message))
+					..modMinerTrade.translate("The '%s' parameter must be of the non-empty string type!"):format("ownername")
+				)
+			end
+		else
+			minetest.log(
+				"error",("[modMinerTrade.sendMailMachine(posMachine='%s', ownername='%s', message='%s')] "):format(dump(posMachine), dump(ownername), dump(message))
+				..modMinerTrade.translate("The 'posMachine' parameter must be of the position type (x,y,z)!")
+			)
+		end
+	end --if minetest.get_modpath("correio") then
+end
+
+minetest.errorDispensing = function(erroMessage, player, pos, ownername)
+	if type(erroMessage)=="string" and erroMessage:trim()~="" then
+		if player:is_player() then
+			local playername = player:get_player_name()
+			minetest.chat_send_player(playername, core.colorize("#00ff00", "["..modMinerTrade.translate("DISPENSING MACHINE").."]: ")..erroMessage)
+			minetest.sound_play("sfx_failure", {object=player, max_hear_distance=5.0,})
+		end
+		if type(pos)~="nil" and type(ownername)=="string" and ownername:trim()~="" then
+			modMinerTrade.sendMailMachine(pos, ownername, erroMessage)
+		end
+	else
+		minetest.log(
+			"error",("[minetest.errorDispensing(erroMessage='%s', player, pos, ownername)] "):format(dump(erroMessage))
+			..modMinerTrade.translate("The '%s' parameter must be of the non-empty string type!"):format("erroMessage")
+		)
+	end
+end
+
+
+
