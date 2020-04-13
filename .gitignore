@@ -2,6 +2,7 @@
 .git
 *.old
 *~
+*.mo
 
 # Compiled Lua sources
 luac.out
