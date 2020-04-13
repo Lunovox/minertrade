@@ -87,12 +87,12 @@ minetest.register_node("minertrade:atm", {
 		local now = os.time() --Em milisegundos
 		if now >= opentime or minetest.get_player_privs(playername).server then
 			modMinerTrade.showInventory(
-					playername, 
+					clicker, 
 					playername, 
 					modMinerTrade.translate("PUBLIC ATM - Account of '%s':"):format(playername)
 				)
 		else
-			minetest.sound_play("sfx_failure", {player=playername, max_hear_distance=5.0,})
+			minetest.sound_play("sfx_failure", {object=clicker, max_hear_distance=5.0,})
 			minetest.chat_send_player(playername, 
 				core.colorize("#00ff00", "["..modMinerTrade.translate("ATM").."]: ")
 				..modMinerTrade.translate("The ATM will only run %02d seconds after it is installed!"):format(opentime-now)

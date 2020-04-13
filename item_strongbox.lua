@@ -43,19 +43,19 @@ minetest.register_node("minertrade:strongbox", {
 			local now = os.time() --Em milisegundos
 			if now >= opentime or minetest.get_player_privs(playername).server then
 				modMinerTrade.showInventory(
-					playername, 
+					clicker, 
 					ownername, 
 					modMinerTrade.translate("STRONGBOX owned by '%s':"):format(ownername)
 				)
 			else
-				minetest.sound_play("sfx_failure", {player=playername, max_hear_distance=5.0,})
+				minetest.sound_play("sfx_failure", {object=clicker, max_hear_distance=5.0,})
 				minetest.chat_send_player(playername, 
 					core.colorize("#00ff00", "["..modMinerTrade.translate("STRONGBOX").."]: ")
 					..modMinerTrade.translate("The safe is going to work %02d seconds after it is installed!"):format(opentime-now)
 				)
 			end
 		else
-			minetest.sound_play("sfx_failure", {player=playername, max_hear_distance=5.0,})
+			minetest.sound_play("sfx_failure", {object=clicker, max_hear_distance=5.0,})
 			minetest.chat_send_player(playername, 
 				core.colorize("#00ff00", "["..modMinerTrade.translate("STRONGBOX").."]: ")
 				..modMinerTrade.translate("You do not have access to the safe belonging to '%s'!"):format(ownername)

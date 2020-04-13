@@ -147,9 +147,10 @@ modMinerTrade.getDetachedInventory = function(playername)
 	return newInv
 end
 
-modMinerTrade.showInventory = function(playername, ownername, title)
+modMinerTrade.showInventory = function(player, ownername, title)
+	local playername = player:get_player_name()
     local inv = modMinerTrade.getDetachedInventory(ownername)
-    minetest.sound_play("sfx_alert", {player=playername, max_hear_distance=5.0,})
+    minetest.sound_play("sfx_alert", {object=player, max_hear_distance=5.0,})
 	minetest.show_formspec(
 		playername,
 		"safe_"..ownername,

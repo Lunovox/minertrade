@@ -130,7 +130,7 @@ minetest.register_craftitem("minertrade:creditcard", {
 			return itemstack
 		end
 		modMinerTrade.showInventory(
-			playername, 
+			player, 
 			tmpDatabase.ownername, 
 			modMinerTrade.translate("ACCOUNT BANK of '%s':"):format(tmpDatabase.ownername)
 		)
