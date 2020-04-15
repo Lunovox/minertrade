@@ -179,13 +179,50 @@ modMinerTrade.floor_pos = function(pos)
 	}
 end
 
-modMinerTrade.getPosMachineName = function(pos)
+modMinerTrade.getPosMachineName = function(posMachine)
 	if type(posMachine)=="table" and type(posMachine.x)=="number" and type(posMachine.y)=="number" and type(posMachine.z)=="number" then
 		return minetest.pos_to_string(modMinerTrade.floor_pos(posMachine))
 	else
 		minetest.log(
-			"error",("[modMinerTrade.sendMailMachine(pos='%s')] "):format(dump(posMachine), dump(ownername), dump(message))
-			..modMinerTrade.translate("The '%s' parameter must be of the position type (x,y,z)!"):format("pos")
+			"error",("[modMinerTrade.getPosMachineName(posMachine='%s')] "):format(dump(posMachine))
+			..modMinerTrade.translate("The '%s' parameter must be of the position type (x,y,z)!"):format("posMachine")
+		)
+	end
+end
+
+modMinerTrade.setMachineFlagsAlert = function (posMachine, value)
+	if type(posMachine)=="table" and type(posMachine.x)=="number" and type(posMachine.y)=="number" and type(posMachine.z)=="number" then
+		local posMachineName = modMinerTrade.getPosMachineName(posMachine)
+		
+		if type(modMinerTrade.machine_flags)~="table" then modMinerTrade.machine_flags={}	end
+		if type(modMinerTrade.machine_flags[posMachineName])~="table" then modMinerTrade.machine_flags[posMachineName]={}	end
+		if type(value)=="number" and value>=0  then
+			modMinerTrade.machine_flags[posMachineName].lastalert = value
+		else
+			minetest.log(
+				"error",("[modMinerTrade.setMachineFlagsAlert(posMachine='%s', value='%d')] "):format(dump(posMachine), dump(value))
+				..modMinerTrade.translate("The '%s' parameter must be of the non-empty string type!"):format("message")
+			)
+		end
+	else
+		minetest.log(
+			"error",("[modMinerTrade.setMachineFlagsAlert(posMachine='%s', value='%s')] "):format(dump(posMachine), dump(dump))
+			..modMinerTrade.translate("The '%s' parameter must be of the position type (x,y,z)!"):format("posMachine")
+		)
+	end
+end
+
+modMinerTrade.getMachineFlagsAlert = function (posMachine)
+	if type(posMachine)=="table" and type(posMachine.x)=="number" and type(posMachine.y)=="number" and type(posMachine.z)=="number" then
+		local posMachineName = modMinerTrade.getPosMachineName(posMachine)
+		if type(modMinerTrade.machine_flags)~="table" then modMinerTrade.machine_flags={}	end
+		if type(modMinerTrade.machine_flags[posMachineName])~="table" then modMinerTrade.machine_flags[posMachineName]={}	end
+		if type(modMinerTrade.machine_flags[posMachineName].lastalert)~="number" or modMinerTrade.machine_flags[posMachineName].lastalert < 0 then modMinerTrade.machine_flags[posMachineName].lastalert = 0 end
+		return modMinerTrade.machine_flags[posMachineName].lastalert
+	else
+		minetest.log(
+			"error",("[modMinerTrade.getMachineFlagsAlert(posMachine='%s', value='%s')] "):format(dump(posMachine), dump(dump))
+			..modMinerTrade.translate("The '%s' parameter must be of the position type (x,y,z)!"):format("posMachine")
 		)
 	end
 end
@@ -194,15 +231,13 @@ modMinerTrade.sendMailMachine = function(posMachine, ownername, message)
 	if minetest.get_modpath("correio") then
 		local mailMachineInterval = (60*60)
 		if type(posMachine)=="table" and type(posMachine.x)=="number" and type(posMachine.y)=="number" and type(posMachine.z)=="number" then
-			local posMachineName = modMinerTrade.getPosMachineName(posMachine)
 			if type(ownername)=="string" and ownername:trim()~="" and minetest.player_exists(ownername) then --Checks whether the owner really exists.
 				if type(message)=="string" and message:trim()~="" then
 					local agora = os.time()
-					if type(modMinerTrade.machine_flags)~="table" then modMinerTrade.machine_flags={}	end
-					if type(modMinerTrade.machine_flags[posMachineName])~="table" then modMinerTrade.machine_flags[posMachineName]={}	end
-					if type(modMinerTrade.machine_flags[posMachineName].lastalert)~="number" or modMinerTrade.machine_flags[posMachineName].lastalert + mailMachineInterval < agora then
+					local macFlag = modMinerTrade.getMachineFlagsAlert(posMachine)
+					if macFlag + mailMachineInterval < agora then
 						local carta = modCorreio.set_mail(
-							modMinerTrade.translate("DISPENSING MACHINE").." "..posMachineName, 
+							modMinerTrade.translate("DISPENSING MACHINE").." "..modMinerTrade.getPosMachineName(posMachine), 
 							ownername, 
 							message:trim()
 						)
@@ -217,7 +252,7 @@ modMinerTrade.sendMailMachine = function(posMachine, ownername, message)
 								..modMinerTrade.translate("Due to an unknown error, it was not possible to send an email through the dispensing machine!")
 							)
 						end
-						modMinerTrade.machine_flags[posMachineName].lastalert = agora
+						modMinerTrade.setMachineFlagsAlert(posMachine, agora)
 					end --if type(modMinerTrade.machine_flags[posMachineName].lastalert)~="number" or modMinerTrade.machine_flags[posMachineName].lastalert + mailMachineInterval < agora then
 				else
 					minetest.log(

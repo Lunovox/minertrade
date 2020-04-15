@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-14 21:11-0300\n"
-"PO-Revision-Date: 2020-04-14 21:19-0300\n"
+"POT-Creation-Date: 2020-04-15 20:34-0300\n"
+"PO-Revision-Date: 2020-04-15 20:36-0300\n"
 "Last-Translator: Lunovox Heavenfinder <lunovox@disroot.org>\n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -54,18 +54,23 @@ msgstr "O jogador '%s' colocou %02d '%s' em seu cofre!"
 msgid "Player '%s' has removed %02d '%s' in his safe!"
 msgstr "O jogador '%s' retirou %02d '%s' em seu cofre!"
 
-#: api.lua:188 api.lua:237
+#: api.lua:188 api.lua:210 api.lua:225 api.lua:272
 #, lua-format
 msgid "The '%s' parameter must be of the position type (x,y,z)!"
 msgstr "O parâmetro '%s' deve ser do tipo de POSITION (x,y,z)!"
 
-#: api.lua:205 api.lua:247 item_dispensing_machine.lua:13
-#: item_dispensing_machine.lua:203 item_dispensing_machine.lua:221
-#: item_dispensing_machine.lua:293
+#: api.lua:204 api.lua:260 api.lua:266 api.lua:291
+#, lua-format
+msgid "The '%s' parameter must be of the non-empty string type!"
+msgstr "O parâmetro '%s' deve ser do tipo de STRING não vazia!"
+
+#: api.lua:240 api.lua:282 item_dispensing_machine.lua:13
+#: item_dispensing_machine.lua:204 item_dispensing_machine.lua:224
+#: item_dispensing_machine.lua:296
 msgid "DISPENSING MACHINE"
 msgstr "MÁQUINA DE DISPENSADORA"
 
-#: api.lua:211
+#: api.lua:246
 #, lua-format
 msgid ""
 "A letter was sent by the dispensing machine '%s' to '%s' advising about '%s'!"
@@ -73,18 +78,13 @@ msgstr ""
 "Uma carta foi enviada pela Máquina Dispensadora '%s' para '%s' informando "
 "sobre '%s'!"
 
-#: api.lua:217
+#: api.lua:252
 msgid ""
 "Due to an unknown error, it was not possible to send an email through the "
 "dispensing machine!"
 msgstr ""
 "Devido a um erro desconhecido, não foi possível enviar um email através da "
 "Máquina Dispensadora!"
-
-#: api.lua:225 api.lua:231 api.lua:256
-#, lua-format
-msgid "The '%s' parameter must be of the non-empty string type!"
-msgstr "O parâmetro '%s' deve ser do tipo de STRING não vazia!"
 
 #: commands.lua:2 commands.lua:9 commands.lua:27
 msgid "Lets you check the contents of another players strongbox."
@@ -167,7 +167,7 @@ msgid "The Machine Offer"
 msgstr "Máquina Oferece"
 
 #: item_dispensing_machine.lua:47
-msgid "Items Received (Your Profit)"
+msgid "Received (Your Profit)"
 msgstr "Recebido (Seu Lucro)"
 
 #: item_dispensing_machine.lua:49
@@ -206,39 +206,43 @@ msgstr ""
 "MÁQUINA DE DISPENSADORA\n"
 "* Vende seus itens, mesmo se você não estiver online."
 
-#: item_dispensing_machine.lua:154 item_dispensing_machine.lua:232
-#: item_dispensing_machine.lua:237
+#: item_dispensing_machine.lua:154 item_dispensing_machine.lua:235
+#: item_dispensing_machine.lua:240
 #, lua-format
 msgid "Dispensing Machine of '%s'."
 msgstr "Maquina Dispensadora de '%s'."
 
-#: item_dispensing_machine.lua:204
+#: item_dispensing_machine.lua:205
 msgid "The Dispensing Machine can not be removed before being emptied!"
 msgstr "A Máquina Dispensadora não pode ser retirada antes de ser esvaziada!"
 
-#: item_dispensing_machine.lua:222
+#: item_dispensing_machine.lua:225
 msgid "You can not change your own machine!"
 msgstr "Você não pode trocar na sua própria maquina!"
 
-#: item_dispensing_machine.lua:294
+#: item_dispensing_machine.lua:297
 msgid "Dispending done!"
 msgstr "Dispensa Concluida!"
 
-#: item_dispensing_machine.lua:303
-#, lua-format
-msgid "Cannot deliver more items to '%s' because stock of '%s' is gone!"
-msgstr ""
-"Não é possível entregar mais itens para '%s' porque o estoque de '%s' acabou!"
-
-#: item_dispensing_machine.lua:310
+#: item_dispensing_machine.lua:306
 #, lua-format
 msgid ""
-"Without enough space in Dispensing Machine to receive the customer item '%s'."
+"The Dispensing Machine with offer '%s' cannot deliver more items to '%s' "
+"because stock of '%s' is empty!"
 msgstr ""
-"Sem espaço suficiente na Maquina Dispensadora para receber o item do cliente "
-"'%s'."
+"A Máquina Dispensadora com oferta '%s' não é possível entregar mais itens "
+"para '%s' porque o estoque de '%s' acabou!"
 
-#: item_dispensing_machine.lua:316
+#: item_dispensing_machine.lua:313
+#, lua-format
+msgid ""
+"The Dispensing Machine with offer '%s' is out of space to receive customer "
+"item '%s'."
+msgstr ""
+"A Maquina Dispensadora com oferta '%s' está sem espaço suficiente para "
+"receber o item do cliente '%s'."
+
+#: item_dispensing_machine.lua:319
 msgid ""
 "Without enough space in Dispensing Machine to receive the seller's item. "
 "(Please, empty the receiving box!)"
@@ -246,7 +250,7 @@ msgstr ""
 "Sem espaço suficiente na Maquina Dispensadora para receber o item do "
 "vendedor. (Por favor, esvazie a caixa de recebimento!)"
 
-#: item_dispensing_machine.lua:321
+#: item_dispensing_machine.lua:324
 msgid ""
 "The dispending can not be done. Make sure you offer what the machine asks "
 "for!"
@@ -254,7 +258,7 @@ msgstr ""
 "A dispensa não pode ser feita. Verifique se você ofereceu o que a Maquina "
 "Dispensadora pede!"
 
-#: item_dispensing_machine.lua:343
+#: item_dispensing_machine.lua:346
 msgid "dispensingmachine"
 msgstr "dispensadora"
 

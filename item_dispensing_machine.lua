@@ -44,7 +44,7 @@ modMinerTrade.dispensing.formspec = {
 		.."background[-0.25,-0.25;8.50,11.50;dispensador_traz.png]"
 		--listcolors[slot_bg_normal;slot_bg_hover;slot_border;tooltip_bgcolor;tooltip_fontcolor]
 		.."listcolors[#004400EE;#008800;#00FF00;#CCCC00;#FFFFFF]"
-		.."label[0,0;"..minetest.formspec_escape(modMinerTrade.translate("Items Received (Your Profit)"))..":]"
+		.."label[0,0;"..minetest.formspec_escape(modMinerTrade.translate("Received (Your Profit)"))..":]"
 		.."list["..list_name..";customers_gave;0,0.5;3,2;]"
 		.."label[0,2.5;"..minetest.formspec_escape(modMinerTrade.translate("Stock to Offer"))..":]"
 		.."list["..list_name..";stock;0,3;3,2;]"
@@ -160,6 +160,7 @@ minetest.register_node("minertrade:dispensingmachine", {
 		inv:set_size("stock", 3*2)
 		inv:set_size("owner_wants", 3*2)
 		inv:set_size("owner_gives", 3*2)
+		modMinerTrade.setMachineFlagsAlert(posMachine, 0)--0 = Can send new emails
 	end,
 	on_rightclick = function(pos, node, clicker, itemstack)
 		--print("minertrade:dispensing.on_rightclick aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
@@ -213,7 +214,9 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 		local sendername = sender:get_player_name()
 		local pos = modMinerTrade.dispensing.loja_atual[sendername]
 		local meta = minetest.env:get_meta(pos)
-		local ownername = meta:get_string("owner")
+		local ownername = meta:get_string("owner") or ""
+		local offer = meta:get_string("offer") or ""
+
 		--minetest.chat_send_player(sendername,"ownername('"..ownername.."') == sendername('"..sendername.."')")
 		
 		if modMinerTrade.dispensing.canOpen(pos, sendername) and sender:get_player_control().aux1 then
@@ -294,21 +297,21 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 						..modMinerTrade.translate("Dispending done!")
 					)
 					minetest.sound_play("sfx_cash_register", {object=sender, max_hear_distance=5.0,})
-					modMinerTrade.machine_flags[modMinerTrade.getPosMachineName(posMachine)].lastalert = 0 --0 = Can sedn emails
+					modMinerTrade.setMachineFlagsAlert(posMachine, 0)--0 = Can send new emails
 				else
 					if error_name == "owners_fault" then
 						minetest.errorDispensing(
 							modMinerTrade.translate(
 								--"The stock of '%s' is gone."
-								"Cannot deliver more items to '%s' because stock of '%s' is gone!"
-							):format(sendername, ownername)
+								"The Dispensing Machine with offer '%s' cannot deliver more items to '%s' because stock of '%s' is empty!"
+							):format(offer, sendername, ownername)
 							,sender ,pos ,ownername
 						)
 					elseif error_name == "without_space_to_profit" then
 						minetest.errorDispensing(
 							modMinerTrade.translate(
-								"Without enough space in Dispensing Machine to receive the customer item '%s'."
-							):format(sendername)
+								"The Dispensing Machine with offer '%s' is out of space to receive customer item '%s'."
+							):format(offer, sendername)
 							,sender ,pos ,ownername
 						)
 					elseif error_name == "without_space_to_offer" then
