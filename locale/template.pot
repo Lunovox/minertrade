@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-13 18:43-0300\n"
+"POT-Creation-Date: 2020-04-14 21:11-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,41 +31,54 @@ msgstr ""
 msgid "Opening '%s'!"
 msgstr ""
 
-#: api.lua:132
+#: api.lua:96
+msgid "REMOVE ALL"
+msgstr ""
+
+#: api.lua:97 api.lua:99
+msgid "Button under development (still not working)"
+msgstr ""
+
+#: api.lua:98
+msgid "DEPOSIT ALL"
+msgstr ""
+
+#: api.lua:144
 #, lua-format
 msgid "Player '%s' has placed %02d '%s' in his safe!"
 msgstr ""
 
-#: api.lua:136
+#: api.lua:148
 #, lua-format
 msgid "Player '%s' has removed %02d '%s' in his safe!"
 msgstr ""
 
-#: api.lua:182 api.lua:224 item_dispensing_machine.lua:16
-#: item_dispensing_machine.lua:204 item_dispensing_machine.lua:222
-#: item_dispensing_machine.lua:294
+#: api.lua:188 api.lua:237
+#, lua-format
+msgid "The '%s' parameter must be of the position type (x,y,z)!"
+msgstr ""
+
+#: api.lua:205 api.lua:247 item_dispensing_machine.lua:13
+#: item_dispensing_machine.lua:203 item_dispensing_machine.lua:221
+#: item_dispensing_machine.lua:293
 msgid "DISPENSING MACHINE"
 msgstr ""
 
-#: api.lua:188
+#: api.lua:211
 #, lua-format
 msgid ""
 "A letter was sent by the dispensing machine '%s' to '%s' advising about '%s'!"
 msgstr ""
 
-#: api.lua:194
+#: api.lua:217
 msgid ""
 "Due to an unknown error, it was not possible to send an email through the "
 "dispensing machine!"
 msgstr ""
 
-#: api.lua:202 api.lua:208 api.lua:233
+#: api.lua:225 api.lua:231 api.lua:256
 #, lua-format
 msgid "The '%s' parameter must be of the non-empty string type!"
-msgstr ""
-
-#: api.lua:214
-msgid "The 'posMachine' parameter must be of the position type (x,y,z)!"
 msgstr ""
 
 #: commands.lua:2 commands.lua:9 commands.lua:27
@@ -116,79 +129,83 @@ msgstr ""
 msgid "atm"
 msgstr ""
 
-#: item_dispensing_machine.lua:19
+#: item_dispensing_machine.lua:16
 msgid "Customer Offer"
 msgstr ""
 
-#: item_dispensing_machine.lua:22
+#: item_dispensing_machine.lua:19
 msgid "Customer Receive"
 msgstr ""
 
-#: item_dispensing_machine.lua:25
+#: item_dispensing_machine.lua:22
 msgid "ACCEPT"
 msgstr ""
 
-#: item_dispensing_machine.lua:27
+#: item_dispensing_machine.lua:24
 msgid "Current customer inventory"
 msgstr ""
 
-#: item_dispensing_machine.lua:32
+#: item_dispensing_machine.lua:29
 msgid "The Machine Need"
 msgstr ""
 
-#: item_dispensing_machine.lua:35
+#: item_dispensing_machine.lua:32
 msgid "The Machine Offer"
 msgstr ""
 
-#: item_dispensing_machine.lua:50
+#: item_dispensing_machine.lua:47
 msgid "Items Received (Your Profit)"
 msgstr ""
 
-#: item_dispensing_machine.lua:52
+#: item_dispensing_machine.lua:49
 msgid "Stock to Offer"
 msgstr ""
 
-#: item_dispensing_machine.lua:54
+#: item_dispensing_machine.lua:51
 msgid "You need"
 msgstr ""
 
-#: item_dispensing_machine.lua:56
+#: item_dispensing_machine.lua:53
 msgid "You offer"
 msgstr ""
 
-#: item_dispensing_machine.lua:61
+#: item_dispensing_machine.lua:58
 msgid "Make an announcement about what this machine will do"
 msgstr ""
 
-#: item_dispensing_machine.lua:65
+#: item_dispensing_machine.lua:63
+msgid "Save The Announcement"
+msgstr ""
+
+#: item_dispensing_machine.lua:64
 msgid "Seller current inventory"
 msgstr ""
 
-#: item_dispensing_machine.lua:67
+#: item_dispensing_machine.lua:66
 msgid "Ctrl + Right Click Mouse → Customer Interface"
 msgstr ""
 
-#: item_dispensing_machine.lua:132
+#: item_dispensing_machine.lua:131
 msgid ""
 "DISPENSING MACHINE\n"
 "* Sells your items, even if you are not online."
 msgstr ""
 
-#: item_dispensing_machine.lua:155 item_dispensing_machine.lua:233
-#: item_dispensing_machine.lua:238
+#: item_dispensing_machine.lua:154 item_dispensing_machine.lua:232
+#: item_dispensing_machine.lua:237
 #, lua-format
 msgid "Dispensing Machine of '%s'."
 msgstr ""
 
-#: item_dispensing_machine.lua:205
+#: item_dispensing_machine.lua:204
 msgid "The Dispensing Machine can not be removed before being emptied!"
 msgstr ""
 
-#: item_dispensing_machine.lua:223
+#: item_dispensing_machine.lua:222
 msgid "You can not change your own machine!"
 msgstr ""
 
-#: item_dispensing_machine.lua:295
+#: item_dispensing_machine.lua:294
 msgid "Dispending done!"
 msgstr ""
 

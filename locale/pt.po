@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-13 18:43-0300\n"
-"PO-Revision-Date: 2020-04-13 18:57-0300\n"
+"POT-Creation-Date: 2020-04-14 21:11-0300\n"
+"PO-Revision-Date: 2020-04-14 21:19-0300\n"
 "Last-Translator: Lunovox Heavenfinder <lunovox@disroot.org>\n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -32,23 +32,40 @@ msgstr "O arquivo '%s' não esta no formato de tabela!"
 msgid "Opening '%s'!"
 msgstr "Abrindo '%s'!"
 
-#: api.lua:132
+#: api.lua:96
+msgid "REMOVE ALL"
+msgstr "SACAR TUDO"
+
+#: api.lua:97 api.lua:99
+msgid "Button under development (still not working)"
+msgstr "Botão em desenvolvimento (ainda não está funcionando)"
+
+#: api.lua:98
+msgid "DEPOSIT ALL"
+msgstr "DEPOSITAR TUDO"
+
+#: api.lua:144
 #, lua-format
 msgid "Player '%s' has placed %02d '%s' in his safe!"
 msgstr "O jogador '%s' colocou %02d '%s' em seu cofre!"
 
-#: api.lua:136
+#: api.lua:148
 #, lua-format
 msgid "Player '%s' has removed %02d '%s' in his safe!"
 msgstr "O jogador '%s' retirou %02d '%s' em seu cofre!"
 
-#: api.lua:182 api.lua:224 item_dispensing_machine.lua:16
-#: item_dispensing_machine.lua:204 item_dispensing_machine.lua:222
-#: item_dispensing_machine.lua:294
+#: api.lua:188 api.lua:237
+#, lua-format
+msgid "The '%s' parameter must be of the position type (x,y,z)!"
+msgstr "O parâmetro '%s' deve ser do tipo de POSITION (x,y,z)!"
+
+#: api.lua:205 api.lua:247 item_dispensing_machine.lua:13
+#: item_dispensing_machine.lua:203 item_dispensing_machine.lua:221
+#: item_dispensing_machine.lua:293
 msgid "DISPENSING MACHINE"
 msgstr "MÁQUINA DE DISPENSADORA"
 
-#: api.lua:188
+#: api.lua:211
 #, lua-format
 msgid ""
 "A letter was sent by the dispensing machine '%s' to '%s' advising about '%s'!"
@@ -56,7 +73,7 @@ msgstr ""
 "Uma carta foi enviada pela Máquina Dispensadora '%s' para '%s' informando "
 "sobre '%s'!"
 
-#: api.lua:194
+#: api.lua:217
 msgid ""
 "Due to an unknown error, it was not possible to send an email through the "
 "dispensing machine!"
@@ -64,14 +81,10 @@ msgstr ""
 "Devido a um erro desconhecido, não foi possível enviar um email através da "
 "Máquina Dispensadora!"
 
-#: api.lua:202 api.lua:208 api.lua:233
+#: api.lua:225 api.lua:231 api.lua:256
 #, lua-format
 msgid "The '%s' parameter must be of the non-empty string type!"
 msgstr "O parâmetro '%s' deve ser do tipo de STRING não vazia!"
-
-#: api.lua:214
-msgid "The 'posMachine' parameter must be of the position type (x,y,z)!"
-msgstr "O parâmetro 'posMachine' deve ser do tipo de POSITION (x,y,z)!"
 
 #: commands.lua:2 commands.lua:9 commands.lua:27
 msgid "Lets you check the contents of another players strongbox."
@@ -129,59 +142,63 @@ msgstr "O Caixa Eletrônico só vai funcionar %02d segundos depois de instalado!
 msgid "atm"
 msgstr "caixaeletronico"
 
-#: item_dispensing_machine.lua:19
+#: item_dispensing_machine.lua:16
 msgid "Customer Offer"
 msgstr "Cliente Oferece"
 
-#: item_dispensing_machine.lua:22
+#: item_dispensing_machine.lua:19
 msgid "Customer Receive"
 msgstr "Cliente Recebe"
 
-#: item_dispensing_machine.lua:25
+#: item_dispensing_machine.lua:22
 msgid "ACCEPT"
 msgstr "ACEITAR"
 
-#: item_dispensing_machine.lua:27
+#: item_dispensing_machine.lua:24
 msgid "Current customer inventory"
 msgstr "Inventário atual do cliente"
 
-#: item_dispensing_machine.lua:32
+#: item_dispensing_machine.lua:29
 msgid "The Machine Need"
 msgstr "Máquina Precisa"
 
-#: item_dispensing_machine.lua:35
+#: item_dispensing_machine.lua:32
 msgid "The Machine Offer"
 msgstr "Máquina Oferece"
 
-#: item_dispensing_machine.lua:50
+#: item_dispensing_machine.lua:47
 msgid "Items Received (Your Profit)"
-msgstr "Itens Recebido (Seu Lucro)"
+msgstr "Recebido (Seu Lucro)"
 
-#: item_dispensing_machine.lua:52
+#: item_dispensing_machine.lua:49
 msgid "Stock to Offer"
 msgstr "Estoque a Oferetar"
 
-#: item_dispensing_machine.lua:54
+#: item_dispensing_machine.lua:51
 msgid "You need"
 msgstr "Você Precisa"
 
-#: item_dispensing_machine.lua:56
+#: item_dispensing_machine.lua:53
 msgid "You offer"
 msgstr "Você Oferece"
 
-#: item_dispensing_machine.lua:61
+#: item_dispensing_machine.lua:58
 msgid "Make an announcement about what this machine will do"
 msgstr "Faça um anúncio sobre o que esta máquina dispensará"
 
-#: item_dispensing_machine.lua:65
+#: item_dispensing_machine.lua:63
+msgid "Save The Announcement"
+msgstr "Salvar o anúncio"
+
+#: item_dispensing_machine.lua:64
 msgid "Seller current inventory"
 msgstr "Inventario atual do vendedor"
 
-#: item_dispensing_machine.lua:67
+#: item_dispensing_machine.lua:66
 msgid "Ctrl + Right Click Mouse → Customer Interface"
 msgstr "Ctrl + Clique Direito do Mouse → Interface do Cliente"
 
-#: item_dispensing_machine.lua:132
+#: item_dispensing_machine.lua:131
 msgid ""
 "DISPENSING MACHINE\n"
 "* Sells your items, even if you are not online."
@@ -189,21 +206,21 @@ msgstr ""
 "MÁQUINA DE DISPENSADORA\n"
 "* Vende seus itens, mesmo se você não estiver online."
 
-#: item_dispensing_machine.lua:155 item_dispensing_machine.lua:233
-#: item_dispensing_machine.lua:238
+#: item_dispensing_machine.lua:154 item_dispensing_machine.lua:232
+#: item_dispensing_machine.lua:237
 #, lua-format
 msgid "Dispensing Machine of '%s'."
 msgstr "Maquina Dispensadora de '%s'."
 
-#: item_dispensing_machine.lua:205
+#: item_dispensing_machine.lua:204
 msgid "The Dispensing Machine can not be removed before being emptied!"
 msgstr "A Máquina Dispensadora não pode ser retirada antes de ser esvaziada!"
 
-#: item_dispensing_machine.lua:223
+#: item_dispensing_machine.lua:222
 msgid "You can not change your own machine!"
 msgstr "Você não pode trocar na sua própria maquina!"
 
-#: item_dispensing_machine.lua:295
+#: item_dispensing_machine.lua:294
 msgid "Dispending done!"
 msgstr "Dispensa Concluida!"
 
@@ -432,6 +449,9 @@ msgstr ""
 #, lua-format
 msgid "The city hall deposited the %2d° salary in your bank account!"
 msgstr "A prefeitura depositou o %2d° salário em sua conta bancária!"
+
+#~ msgid "Save Machine Name"
+#~ msgstr "Salva o nome da máquina"
 
 #~ msgid "The stock of '%s' is gone. Contact him!"
 #~ msgstr "O estoque de '%s' acabou. Contacte-o!"

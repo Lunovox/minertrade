@@ -5,13 +5,10 @@ modMinerTrade.dispensing.formspec = {
 	customer = function(pos)
 		local list_name = "nodemeta:"..pos.x..','..pos.y..','..pos.z
 		local formspec = "size[8,10.5]"
-		--..default.gui_bg
-		--..default.gui_bg_img
-		--..default.gui_slots
-		.."bgcolor[#004400DD;false]"
-		--.."background[-0.5,0;8.5,11;dispensador_frente.png]"
+		--.."bgcolor[#00880033;false]"
+		.."background[-0.25,-0.25;8.50,11.50;dispensador_traz.png]"
 		--listcolors[slot_bg_normal;slot_bg_hover;slot_border;tooltip_bgcolor;tooltip_fontcolor]
-		.."listcolors[#00000055;#008800;#FFFFFF]"
+		.."listcolors[#004400EE;#008800;#00FF00;#CCCC00;#FFFFFF]"
 
 		.."label[2,-0.25;"..minetest.formspec_escape(modMinerTrade.translate("DISPENSING MACHINE")).."]"
 		.."label[0,0.25;"..minetest.formspec_escape("* "..minetest.env:get_meta(pos):get_string("offer")).."]"
@@ -43,10 +40,10 @@ modMinerTrade.dispensing.formspec = {
 	owner = function(pos)
 		local list_name = "nodemeta:"..pos.x..','..pos.y..','..pos.z
 		local formspec = "size[8,11]"
-		.."bgcolor[#000000CC;false]"
+		--.."bgcolor[#00880033;false]"
+		.."background[-0.25,-0.25;8.50,11.50;dispensador_traz.png]"
 		--listcolors[slot_bg_normal;slot_bg_hover;slot_border;tooltip_bgcolor;tooltip_fontcolor]
-		.."listcolors[#88888844;#888888;#FFFFFF]"
-		
+		.."listcolors[#004400EE;#008800;#00FF00;#CCCC00;#FFFFFF]"
 		.."label[0,0;"..minetest.formspec_escape(modMinerTrade.translate("Items Received (Your Profit)"))..":]"
 		.."list["..list_name..";customers_gave;0,0.5;3,2;]"
 		.."label[0,2.5;"..minetest.formspec_escape(modMinerTrade.translate("Stock to Offer"))..":]"
@@ -57,11 +54,13 @@ modMinerTrade.dispensing.formspec = {
 		.."list["..list_name..";owner_gives;5,3;3,2;]"
 		--.."label[0,5;Proprietario: Pressione (E) + Botao(RMB) no Mouse para a interface com o cliente]"
 		--.."label[0,5;Vendedor: Evite o estoque baixo e guardar lucros no balcao.]"
-		.."field[0.29,5.75;8,0.85;txtOffer;"
+		.."field[0.29,5.75;7.25,0.85;txtOffer;"
 			..minetest.formspec_escape(modMinerTrade.translate("Make an announcement about what this machine will do"))..":;"
 			..minetest.formspec_escape(
 				minetest.env:get_meta(pos):get_string("offer")
 			).."]"
+		.."image_button_exit[7.25,5.4;0.8,0.8;sbl_disket.png;btnSaveText;]"
+		.."tooltip[btnSaveText;"..minetest.formspec_escape(modMinerTrade.translate("Save The Announcement"))..";#CCCC00;#000000]"
 		.."label[0,6.25;"..minetest.formspec_escape(modMinerTrade.translate("Seller current inventory"))..":]"
 		.."list[current_player;main;0,6.75.0;8,4;]"
 		.."label[0,10.75;("..minetest.formspec_escape(modMinerTrade.translate("Ctrl + Right Click Mouse → Customer Interface"))..")]"
@@ -295,6 +294,7 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 						..modMinerTrade.translate("Dispending done!")
 					)
 					minetest.sound_play("sfx_cash_register", {object=sender, max_hear_distance=5.0,})
+					modMinerTrade.machine_flags[modMinerTrade.getPosMachineName(posMachine)].lastalert = 0 --0 = Can sedn emails
 				else
 					if error_name == "owners_fault" then
 						minetest.errorDispensing(

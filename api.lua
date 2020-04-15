@@ -74,18 +74,30 @@ end
 
 modMinerTrade.getFormspec = function(playername, title)
 	if not title then title = "" end
-	local formspec = "size[8,9]"
-		.."bgcolor[#636D76FF;false]"
+	local formspec = "size[9.5,10.5]"
+		--.."bgcolor[#636D76FF;false]"
 		--..default.gui_bg
 		--..default.gui_bg_img
-		..default.gui_slots
+		--..default.gui_slots
+		
+		--.."bgcolor[#636D76FF;false]"
+		.."background[-0.25,-0.25;10,11;safe_inside.png]"
+		--listcolors[slot_bg_normal;slot_bg_hover;slot_border;tooltip_bgcolor;tooltip_fontcolor]
+		.."listcolors[#3a4044CC;#636e7533;#74acd288;#CCCC00;#FFFFFF]"
+
+		
 		.."label[0,0;"..minetest.formspec_escape(title).."]"
 		.."list[detached:safe_"..playername .. ";safe;"
-			..((8 - modMinerTrade.size.width)/2)..","..(((4 - modMinerTrade.size.height)/2)+0.62)..";"
+			..((9.5 - modMinerTrade.size.width)/2)..","..(((4.6 - modMinerTrade.size.height)/2)+0.62)..";"
 			..modMinerTrade.size.width..","..modMinerTrade.size.height
 		..";]" -- <= ATENCAO: Nao pode esquecer o prefixo 'detached:xxxxxxx'
-		.."list[current_player;main;0,5;8,4;]"
+		.."list[current_player;main;0.75,6.25;8,4;]"
 		
+		.."button[0.75,5.25;3,1;btnRemoveAll;"..minetest.formspec_escape(modMinerTrade.translate("REMOVE ALL")).."]"
+		.."tooltip[btnRemoveAll;"..minetest.formspec_escape(modMinerTrade.translate("Button under development (still not working)"))..";#CCCC00;#000000]"		
+		.."button[5.75,5.25;3,1;btnDepositAll;"..minetest.formspec_escape(modMinerTrade.translate("DEPOSIT ALL")).."]"
+		.."tooltip[btnDepositAll;"..minetest.formspec_escape(modMinerTrade.translate("Button under development (still not working)"))..";#CCCC00;#000000]"		
+
 		.."listring[detached:safe_"..playername .. ";safe]"
 		.."listring[current_player;main]"
 	return formspec
@@ -167,11 +179,22 @@ modMinerTrade.floor_pos = function(pos)
 	}
 end
 
+modMinerTrade.getPosMachineName = function(pos)
+	if type(posMachine)=="table" and type(posMachine.x)=="number" and type(posMachine.y)=="number" and type(posMachine.z)=="number" then
+		return minetest.pos_to_string(modMinerTrade.floor_pos(posMachine))
+	else
+		minetest.log(
+			"error",("[modMinerTrade.sendMailMachine(pos='%s')] "):format(dump(posMachine), dump(ownername), dump(message))
+			..modMinerTrade.translate("The '%s' parameter must be of the position type (x,y,z)!"):format("pos")
+		)
+	end
+end
+
 modMinerTrade.sendMailMachine = function(posMachine, ownername, message)
 	if minetest.get_modpath("correio") then
 		local mailMachineInterval = (60*60)
 		if type(posMachine)=="table" and type(posMachine.x)=="number" and type(posMachine.y)=="number" and type(posMachine.z)=="number" then
-			local posMachineName = minetest.pos_to_string(modMinerTrade.floor_pos(posMachine))
+			local posMachineName = modMinerTrade.getPosMachineName(posMachine)
 			if type(ownername)=="string" and ownername:trim()~="" and minetest.player_exists(ownername) then --Checks whether the owner really exists.
 				if type(message)=="string" and message:trim()~="" then
 					local agora = os.time()
@@ -211,7 +234,7 @@ modMinerTrade.sendMailMachine = function(posMachine, ownername, message)
 		else
 			minetest.log(
 				"error",("[modMinerTrade.sendMailMachine(posMachine='%s', ownername='%s', message='%s')] "):format(dump(posMachine), dump(ownername), dump(message))
-				..modMinerTrade.translate("The 'posMachine' parameter must be of the position type (x,y,z)!")
+				..modMinerTrade.translate("The '%s' parameter must be of the position type (x,y,z)!"):format("posMachine")
 			)
 		end
 	end --if minetest.get_modpath("correio") then
