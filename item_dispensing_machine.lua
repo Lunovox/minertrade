@@ -160,7 +160,7 @@ minetest.register_node("minertrade:dispensingmachine", {
 		inv:set_size("stock", 3*2)
 		inv:set_size("owner_wants", 3*2)
 		inv:set_size("owner_gives", 3*2)
-		modMinerTrade.setMachineFlagsAlert(posMachine, 0)--0 = Can send new emails
+		modMinerTrade.setMachineFlagsAlert(pos, 0)--0 = Can send new emails
 	end,
 	on_rightclick = function(pos, node, clicker, itemstack)
 		--print("minertrade:dispensing.on_rightclick aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
@@ -297,7 +297,7 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 						..modMinerTrade.translate("Dispending done!")
 					)
 					minetest.sound_play("sfx_cash_register", {object=sender, max_hear_distance=5.0,})
-					modMinerTrade.setMachineFlagsAlert(posMachine, 0)--0 = Can send new emails
+					modMinerTrade.setMachineFlagsAlert(pos, 0)--0 = Can send new emails
 				else
 					if error_name == "owners_fault" then
 						minetest.errorDispensing(
