@@ -300,7 +300,7 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 					modMinerTrade.setMachineFlagsAlert(pos, 0)--0 = Can send new emails
 				else
 					if error_name == "owners_fault" then
-						minetest.errorDispensing(
+						modMinerTrade.errorDispensing(
 							modMinerTrade.translate(
 								--"The stock of '%s' is gone."
 								"The Dispensing Machine with offer '%s' cannot deliver more items to '%s' because stock of '%s' is empty!"
@@ -308,19 +308,19 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 							,sender ,pos ,ownername
 						)
 					elseif error_name == "without_space_to_profit" then
-						minetest.errorDispensing(
+						modMinerTrade.errorDispensing(
 							modMinerTrade.translate(
 								"The Dispensing Machine with offer '%s' is out of space to receive customer item '%s'."
 							):format(offer, sendername)
 							,sender ,pos ,ownername
 						)
 					elseif error_name == "without_space_to_offer" then
-						minetest.errorDispensing(
+						modMinerTrade.errorDispensing(
 							modMinerTrade.translate("Without enough space in Dispensing Machine to receive the seller's item. (Please, empty the receiving box!)")
 							,sender
 						)
 					else
-						minetest.errorDispensing( 
+						modMinerTrade.errorDispensing( 
 							modMinerTrade.translate("The dispending can not be done. Make sure you offer what the machine asks for!")
 							,sender
 						)

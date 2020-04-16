@@ -64,17 +64,6 @@ minetest.register_node("minertrade:strongbox", {
 	end,
 })
 
-minetest.register_on_player_receive_fields(function(sender, formname, fields)
-	local sendername = sender:get_player_name()
-	--minetest.chat_send_player(sendername, "formname="..formname.." fields="..dump(fields))
-	if formname == "safe_"..sendername then -- This is your form name
-		if fields.quit then
-			modMinerTrade.doSave()
-			minetest.log('action',"[STRONGBOX] "..modMinerTrade.translate("Saving strongbox from all players in the file '%s'!"):format(modMinerTrade.urlTabela))
-		end
-	end
-end)
-
 minetest.register_craft({
 	output = 'minertrade:strongbox',
 	recipe = {

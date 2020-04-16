@@ -47,7 +47,8 @@ modMinerTrade.doLoad = function()
 end
 
 modMinerTrade.setSafeInventory = function(playername, tblListInventory)
-	local newInv = minetest.create_detached_inventory_raw("safe_"..playername)
+	--local newInv = minetest.create_detached_inventory_raw("safe_"..playername)
+	local newInv = core.create_detached_inventory_raw("safe_"..playername, playername)
 	newInv:set_list("safe", tblListInventory)
 	local tamanho = newInv:get_size("safe")
 	modMinerTrade.safe[playername] = { }
@@ -58,7 +59,8 @@ end
 
 
 modMinerTrade.getSafeInventory = function(playername)
-	local newInv = minetest.create_detached_inventory_raw("safe_"..playername)
+	--local newInv = minetest.create_detached_inventory_raw("safe_"..playername)
+   local newInv = core.create_detached_inventory_raw("safe_"..playername, playername)
 	newInv:set_size("safe", modMinerTrade.size.width*modMinerTrade.size.height)	
 	--local listInventory = { }
 	for i=1,(modMinerTrade.size.width*modMinerTrade.size.height) do
@@ -170,6 +172,24 @@ modMinerTrade.showInventory = function(player, ownername, title)
 	)
 end
 
+modMinerTrade.delSafeInventory = function(ownername)
+   --core.detached_inventories["safe_"..ownername] = nil	
+   return core.remove_detached_inventory_raw("safe_"..ownername)
+   --return minetest.remove_detached_inventory_raw("safe_"..ownername)
+end
+
+minetest.register_on_player_receive_fields(function(sender, formname, fields)
+	local sendername = sender:get_player_name()
+	--minetest.chat_send_player(sendername, "formname="..formname.." fields="..dump(fields))
+	if formname == "safe_"..sendername then -- This is your form name
+		if fields.quit then
+			modMinerTrade.doSave()
+   modMinerTrade.delSafeInventory(sendername)
+			minetest.log('action',"[STRONGBOX] "..modMinerTrade.translate("Saving strongbox from all players in the file '%s'!"):format(modMinerTrade.urlTabela))
+		end
+	end
+end)
+
 --##############################################################################
 modMinerTrade.floor_pos = function(pos)
 	return {
@@ -275,7 +295,7 @@ modMinerTrade.sendMailMachine = function(posMachine, ownername, message)
 	end --if minetest.get_modpath("correio") then
 end
 
-minetest.errorDispensing = function(erroMessage, player, pos, ownername)
+modMinerTrade.errorDispensing = function(erroMessage, player, pos, ownername)
 	if type(erroMessage)=="string" and erroMessage:trim()~="" then
 		if player:is_player() then
 			local playername = player:get_player_name()
@@ -287,7 +307,7 @@ minetest.errorDispensing = function(erroMessage, player, pos, ownername)
 		end
 	else
 		minetest.log(
-			"error",("[minetest.errorDispensing(erroMessage='%s', player, pos, ownername)] "):format(dump(erroMessage))
+			"error",("[modMinerTrade.errorDispensing(erroMessage='%s', player, pos, ownername)] "):format(dump(erroMessage))
 			..modMinerTrade.translate("The '%s' parameter must be of the non-empty string type!"):format("erroMessage")
 		)
 	end
