@@ -74,7 +74,7 @@ modMinerTrade.getSafeInventory = function(playername)
 end
 
 
-modMinerTrade.getFormspec = function(playername, title)
+modMinerTrade.getFormspec = function(playername, ownername, title)
 	if not title then title = "" end
 	local formspec = "size[9.5,10.5]"
 		--.."bgcolor[#636D76FF;false]"
@@ -85,8 +85,10 @@ modMinerTrade.getFormspec = function(playername, title)
 		--.."bgcolor[#636D76FF;false]"
 		.."background[-0.25,-0.25;10,11;safe_inside.png]"
 		--listcolors[slot_bg_normal;slot_bg_hover;slot_border;tooltip_bgcolor;tooltip_fontcolor]
-		.."listcolors[#3a4044CC;#636e7533;#74acd288;#CCCC00;#FFFFFF]"
+		.."listcolors[#3a4044CC;#636e7533;#74acd288;#CCCC00;#000000]"
 
+		.."field[0,0;0,0;txtOwnerName;;"..minetest.formspec_escape(ownername).."]"
+		--.."hidden[ownername;"..minetest.formspec_escape(ownername)..";string]"
 		
 		.."label[0,0;"..minetest.formspec_escape(title).."]"
 		.."list[detached:safe_"..playername .. ";safe;"
@@ -95,10 +97,10 @@ modMinerTrade.getFormspec = function(playername, title)
 		..";]" -- <= ATENCAO: Nao pode esquecer o prefixo 'detached:xxxxxxx'
 		.."list[current_player;main;0.75,6.25;8,4;]"
 		
-		.."button[0.75,5.25;3,1;btnRemoveAll;"..minetest.formspec_escape(modMinerTrade.translate("REMOVE ALL")).."]"
-		.."tooltip[btnRemoveAll;"..minetest.formspec_escape(modMinerTrade.translate("Button under development (still not working)"))..";#CCCC00;#000000]"		
-		.."button[5.75,5.25;3,1;btnDepositAll;"..minetest.formspec_escape(modMinerTrade.translate("DEPOSIT ALL")).."]"
-		.."tooltip[btnDepositAll;"..minetest.formspec_escape(modMinerTrade.translate("Button under development (still not working)"))..";#CCCC00;#000000]"		
+		.."button[0.75,5.25;4,1;btnLootAll;"..minetest.formspec_escape(modMinerTrade.translate("LOOT ALL")).."]"
+		--.."tooltip[btnLootAll;"..minetest.formspec_escape(modMinerTrade.translate("Button under development (still not working)"))..";#CCCC00;#000000]"		
+		.."button[4.75,5.25;4,1;btnDepositAll;"..minetest.formspec_escape(modMinerTrade.translate("DEPOSIT ALL")).."]"
+		--.."tooltip[btnDepositAll;"..minetest.formspec_escape(modMinerTrade.translate("Button under development (still not working)"))..";#CCCC00;#000000]"		
 
 		.."listring[detached:safe_"..playername .. ";safe]"
 		.."listring[current_player;main]"
@@ -163,12 +165,12 @@ end
 
 modMinerTrade.showInventory = function(player, ownername, title)
 	local playername = player:get_player_name()
-    local inv = modMinerTrade.getDetachedInventory(ownername)
+   local inv = modMinerTrade.getDetachedInventory(ownername)
     minetest.sound_play("sfx_alert", {object=player, max_hear_distance=5.0,})
 	minetest.show_formspec(
 		playername,
 		"safe_"..ownername,
-		modMinerTrade.getFormspec(ownername, title)
+		modMinerTrade.getFormspec(ownername, ownername, title)
 	)
 end
 
@@ -178,13 +180,131 @@ modMinerTrade.delSafeInventory = function(ownername)
    --return minetest.remove_detached_inventory_raw("safe_"..ownername)
 end
 
+modMinerTrade.doRemoveAll = function(player, ownername)
+	if player and player:is_player() then
+		local playername = player:get_player_name()
+		local invPlayer = player:get_inventory()
+		minetest.log('action',"[STRONGBOX] "..modMinerTrade.translate("The player '%s' pressed the button'%s'!"):format(playername, modMinerTrade.translate("DEPOSIT ALL")))
+		if ownername and ownername:trim()~="" then
+			ownername = ownername:trim()
+			local invOwner = modMinerTrade.getDetachedInventory(ownername)
+			if not invOwner:is_empty("safe") then
+				local safe = invOwner:get_list("safe")
+				for i, item in pairs(safe) do
+					if invPlayer:room_for_item("main",item) then
+						invOwner:remove_item("safe",item)
+						invPlayer:add_item("main",item)
+						if invOwner:is_empty("safe") then
+							minetest.chat_send_player(playername,
+								core.colorize("#00ff00", "["..modMinerTrade.translate("STRONGBOX").."]: ")
+								..modMinerTrade.translate("Loot completed!")
+							)
+							minetest.sound_play("sfx_alert", {object=player, max_hear_distance=5.0,})
+							break
+						end
+					else
+						minetest.chat_send_player(
+							playername, 
+							core.colorize("#FF0000", "["..modMinerTrade.translate("STRONGBOX").."]: ")
+							..modMinerTrade.translate("The Inventory of '%s' is full!"):format(playername)
+						)
+						minetest.sound_play("sfx_failure", {object=player, max_hear_distance=5.0,})
+						break
+					end
+				--]]
+				end --for i, item in pairs(safe) do
+				modMinerTrade.setSafeInventory(ownername, invOwner:get_list("safe"))
+			else
+				minetest.chat_send_player(
+					playername, 
+					core.colorize("#FF0000", "["..modMinerTrade.translate("STRONGBOX").."]: ")
+					..modMinerTrade.translate("Everything has been withdrawn!")
+				)
+				minetest.sound_play("sfx_failure", {object=player, max_hear_distance=5.0,})
+			end
+		else
+			minetest.log(
+				"error",("[modMinerTrade.doRemoveAll(player='%s', ownername='%s')] "):format(dump(player), dump(ownername))
+				..modMinerTrade.translate("The '%s' parameter must be of the non-empty string type!"):format("ownername")
+			)
+		end
+	else
+		minetest.log(
+			"error",("[modMinerTrade.doRemoveAll(player='%s', ownername='%s')] "):format(dump(player), dump(ownername))
+			..modMinerTrade.translate("The '%s' parameter must be of the player object type!"):format("player")
+		)
+	end
+end
+
+modMinerTrade.doDepositAll = function(player, ownername)
+	if player and player:is_player() then
+		local playername = player:get_player_name()
+		local invPlayer = player:get_inventory()
+		--minetest.chat_send_player(playername, ">>>"..dump(ownername))
+		minetest.log('action',"[STRONGBOX] "..modMinerTrade.translate("The player '%s' pressed the button'%s'!"):format(playername, modMinerTrade.translate("REMOVE ALL")))
+		if ownername and ownername:trim()~="" then
+			ownername = ownername:trim()
+			local invOwner = modMinerTrade.getDetachedInventory(ownername)
+			if not invPlayer:is_empty("main") then
+				local main = invPlayer:get_list("main")
+				for i, item in pairs(main) do
+					if invOwner:room_for_item("safe",item) then
+						invPlayer:remove_item("main",item)
+						invOwner:add_item("safe",item)
+						if invPlayer:is_empty("main") then
+							minetest.chat_send_player(playername,
+								core.colorize("#00ff00", "["..modMinerTrade.translate("STRONGBOX").."]: ")
+								..modMinerTrade.translate("Deposit completed!")
+							)
+							minetest.sound_play("sfx_alert", {object=player, max_hear_distance=5.0,})
+							break
+						end
+					else
+						minetest.chat_send_player(
+							playername, 
+							core.colorize("#FF0000", "["..modMinerTrade.translate("STRONGBOX").."]: ")
+							..modMinerTrade.translate("The Safe of '%s' is full!"):format(playername)
+						)
+						minetest.sound_play("sfx_failure", {object=player, max_hear_distance=5.0,})
+						break
+					end
+				--]]
+				end --for i, item in pairs(safe) do
+				modMinerTrade.setSafeInventory(ownername, invOwner:get_list("safe"))
+			else
+				minetest.chat_send_player(
+					playername, 
+					core.colorize("#FF0000", "["..modMinerTrade.translate("STRONGBOX").."]: ")
+					..modMinerTrade.translate("The inventory of '%s' is empty!"):format(playername)
+				)
+				minetest.sound_play("sfx_failure", {object=player, max_hear_distance=5.0,})
+			end
+		else
+			minetest.log(
+				"error",("[modMinerTrade.doDepositAll(player='%s', ownername='%s')] "):format(dump(player), dump(ownername))
+				..modMinerTrade.translate("The '%s' parameter must be of the non-empty string type!"):format("ownername")
+			)
+		end
+	else
+		minetest.log(
+			"error",("[modMinerTrade.doDepositAll(player='%s', ownername='%s')] "):format(dump(player), dump(ownername))
+			..modMinerTrade.translate("The '%s' parameter must be of the player object type!"):format("player")
+		)
+	end
+end
+
+
 minetest.register_on_player_receive_fields(function(sender, formname, fields)
 	local sendername = sender:get_player_name()
 	--minetest.chat_send_player(sendername, "formname="..formname.." fields="..dump(fields))
 	if formname == "safe_"..sendername then -- This is your form name
-		if fields.quit then
+		if fields.txtOwnerName and fields.txtOwnerName:trim()~="" and fields.btnLootAll then
+			modMinerTrade.doRemoveAll(sender, fields.txtOwnerName:trim())
+		elseif fields.btnDepositAll then
+			modMinerTrade.doDepositAll(sender, fields.txtOwnerName:trim())
+		elseif fields.quit then
 			modMinerTrade.doSave()
-   modMinerTrade.delSafeInventory(sendername)
+			modMinerTrade.delSafeInventory(sendername)
 			minetest.log('action',"[STRONGBOX] "..modMinerTrade.translate("Saving strongbox from all players in the file '%s'!"):format(modMinerTrade.urlTabela))
 		end
 	end

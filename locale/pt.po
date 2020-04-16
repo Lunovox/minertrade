@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-15 20:34-0300\n"
-"PO-Revision-Date: 2020-04-15 20:36-0300\n"
+"POT-Creation-Date: 2020-04-16 17:54-0300\n"
+"PO-Revision-Date: 2020-04-16 17:55-0300\n"
 "Last-Translator: Lunovox Heavenfinder <lunovox@disroot.org>\n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -32,45 +32,92 @@ msgstr "O arquivo '%s' não esta no formato de tabela!"
 msgid "Opening '%s'!"
 msgstr "Abrindo '%s'!"
 
-#: api.lua:96
-msgid "REMOVE ALL"
+#: api.lua:100
+msgid "LOOT ALL"
 msgstr "SACAR TUDO"
 
-#: api.lua:97 api.lua:99
-msgid "Button under development (still not working)"
-msgstr "Botão em desenvolvimento (ainda não está funcionando)"
-
-#: api.lua:98
+#: api.lua:102 api.lua:187
 msgid "DEPOSIT ALL"
 msgstr "DEPOSITAR TUDO"
 
-#: api.lua:144
+#: api.lua:148
 #, lua-format
 msgid "Player '%s' has placed %02d '%s' in his safe!"
 msgstr "O jogador '%s' colocou %02d '%s' em seu cofre!"
 
-#: api.lua:148
+#: api.lua:152
 #, lua-format
 msgid "Player '%s' has removed %02d '%s' in his safe!"
 msgstr "O jogador '%s' retirou %02d '%s' em seu cofre!"
 
-#: api.lua:188 api.lua:210 api.lua:225 api.lua:272
+#: api.lua:187 api.lua:244
 #, lua-format
-msgid "The '%s' parameter must be of the position type (x,y,z)!"
-msgstr "O parâmetro '%s' deve ser do tipo de POSITION (x,y,z)!"
+msgid "The player '%s' pressed the button'%s'!"
+msgstr "O jogador '%s' pressionou o botão '%s'!"
 
-#: api.lua:204 api.lua:260 api.lua:266 api.lua:291
+#: api.lua:199 api.lua:208 api.lua:220 api.lua:256 api.lua:265 api.lua:277
+#: item_strongbox.lua:53 item_strongbox.lua:60
+msgid "STRONGBOX"
+msgstr "COFRE"
+
+#: api.lua:200
+msgid "Loot completed!"
+msgstr "Saque completo!"
+
+#: api.lua:209
+#, lua-format
+msgid "The Inventory of '%s' is full!"
+msgstr "O inventário de '%s' está cheio!"
+
+#: api.lua:221
+msgid "Everything has been withdrawn!"
+msgstr "Tudo foi retirado!"
+
+#: api.lua:228 api.lua:285 api.lua:344 api.lua:400 api.lua:406 api.lua:431
 #, lua-format
 msgid "The '%s' parameter must be of the non-empty string type!"
 msgstr "O parâmetro '%s' deve ser do tipo de STRING não vazia!"
 
-#: api.lua:240 api.lua:282 item_dispensing_machine.lua:13
+#: api.lua:234 api.lua:291
+#, lua-format
+msgid "The '%s' parameter must be of the player object type!"
+msgstr "O parâmetro '%s' deve ser do tipo objeto PLAYER!"
+
+#: api.lua:244
+msgid "REMOVE ALL"
+msgstr "SACAR TUDO"
+
+#: api.lua:257
+msgid "Deposit completed!"
+msgstr "Depósito completo!"
+
+#: api.lua:266
+#, lua-format
+msgid "The Safe of '%s' is full!"
+msgstr "O Cofre de '%s' está cheio!"
+
+#: api.lua:278
+#, lua-format
+msgid "The inventory of '%s' is empty!"
+msgstr "O inventário de '%s' está vazio!"
+
+#: api.lua:308 on_final.lua:9
+#, lua-format
+msgid "Saving strongbox from all players in the file '%s'!"
+msgstr "Salvando cofre de todos os jogadores no arquivo '%s'!"
+
+#: api.lua:328 api.lua:350 api.lua:365 api.lua:412
+#, lua-format
+msgid "The '%s' parameter must be of the position type (x,y,z)!"
+msgstr "O parâmetro '%s' deve ser do tipo de POSITION (x,y,z)!"
+
+#: api.lua:380 api.lua:422 item_dispensing_machine.lua:13
 #: item_dispensing_machine.lua:204 item_dispensing_machine.lua:224
 #: item_dispensing_machine.lua:296
 msgid "DISPENSING MACHINE"
 msgstr "MÁQUINA DE DISPENSADORA"
 
-#: api.lua:246
+#: api.lua:386
 #, lua-format
 msgid ""
 "A letter was sent by the dispensing machine '%s' to '%s' advising about '%s'!"
@@ -78,7 +125,7 @@ msgstr ""
 "Uma carta foi enviada pela Máquina Dispensadora '%s' para '%s' informando "
 "sobre '%s'!"
 
-#: api.lua:252
+#: api.lua:392
 msgid ""
 "Due to an unknown error, it was not possible to send an email through the "
 "dispensing machine!"
@@ -412,10 +459,6 @@ msgstr ""
 msgid "STRONGBOX owned by '%s':"
 msgstr "COFRE FORTE de '%s':"
 
-#: item_strongbox.lua:53 item_strongbox.lua:60
-msgid "STRONGBOX"
-msgstr "COFRE"
-
 #: item_strongbox.lua:54
 #, lua-format
 msgid "The safe is going to work %02d seconds after it is installed!"
@@ -426,12 +469,7 @@ msgstr "O cofre só vai funcionar %02d segundos depois de instalado!"
 msgid "You do not have access to the safe belonging to '%s'!"
 msgstr "Você não tem acesso ao cofre pertencente a '%s'!"
 
-#: item_strongbox.lua:73 on_final.lua:9
-#, lua-format
-msgid "Saving strongbox from all players in the file '%s'!"
-msgstr "Salvando cofre de todos os jogadores no arquivo '%s'!"
-
-#: item_strongbox.lua:88
+#: item_strongbox.lua:77
 msgid "strongbox"
 msgstr "caixaforte"
 
@@ -453,6 +491,12 @@ msgstr ""
 #, lua-format
 msgid "The city hall deposited the %2d° salary in your bank account!"
 msgstr "A prefeitura depositou o %2d° salário em sua conta bancária!"
+
+#~ msgid "The Player Inventory is empty!"
+#~ msgstr "O inventário do jogador está vazio!"
+
+#~ msgid "Button under development (still not working)"
+#~ msgstr "Botão em desenvolvimento (ainda não está funcionando)"
 
 #~ msgid "Save Machine Name"
 #~ msgstr "Salva o nome da máquina"
