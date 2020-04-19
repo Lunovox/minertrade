@@ -384,7 +384,7 @@ modMinerTrade.sendMailMachine = function(posMachine, ownername, message)
 						if carta~=nil then
 							minetest.log('action',
 								modMinerTrade.translate("A letter was sent by the dispensing machine '%s' to '%s' advising about '%s'!"):
-								format(posMachineName, ownername , message)
+								format(modMinerTrade.getPosMachineName(posMachine), ownername , message)
 							)
 						else
 							minetest.log(
@@ -393,7 +393,7 @@ modMinerTrade.sendMailMachine = function(posMachine, ownername, message)
 							)
 						end
 						modMinerTrade.setMachineFlagsAlert(posMachine, agora)
-					end --if type(modMinerTrade.machine_flags[posMachineName].lastalert)~="number" or modMinerTrade.machine_flags[posMachineName].lastalert + mailMachineInterval < agora then
+					end --if macFlag + mailMachineInterval < agora then
 				else
 					minetest.log(
 						"error",("[modMinerTrade.sendMailMachine(posMachine='%s', ownername='%s', message='%s')] "):format(dump(posMachine), dump(ownername), dump(message))
