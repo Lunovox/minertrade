@@ -28,6 +28,7 @@ minetest.after(3.5, function()
                      local stack = ItemStack(modMinerTrade.payday.salary) 
                      local leftover = inv:add_item(nameInvList, stack) 
                      modMinerTrade.setSafeInventory(playername, inv:get_list(nameInvList))
+         modMinerTrade.delSafeInventory(playername)
                      if leftover:get_count() > 0 then 
                         minetest.chat_send_player(
                            playername,
