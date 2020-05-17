@@ -3,34 +3,42 @@ minetest.register_privilege("checkstrongbox",  {
 	give_to_singleplayer=false,
 })
 
-modMinerTrade.propCheckStrongBox = function(playername, param)
+modMinerTrade.propCheckStrongBox = function(admname, param)
 		return {
 		params = "<PlayerName>",
 		description = modMinerTrade.translate("Lets you check the contents of another players strongbox."),
-		func = function(playername, param)
-			if minetest.get_player_privs(playername).checkstrongbox then
-				local targetname = string.match(param, "^([^ ]+)$")
-				if type(targetname)=="string" and targetname~="" then
-					if modMinerTrade.safe and modMinerTrade.safe[targetname] then
-
-						local inv = modMinerTrade.getDetachedInventory(targetname)
-						minetest.show_formspec(
-							playername,
-							"safe_"..targetname,
-							modMinerTrade.getFormspec(targetname)
-						)
-						return true
+		func = function(admname, param)
+			local player = minetest.get_player_by_name(admname)
+			if type(player)~="nil" and player:is_player() then --checha se o player que digitou o comando ainda esta online!
+				if minetest.get_player_privs(admname).checkstrongbox then
+					local targetname = string.match(param, "^([^ ]+)$")
+					if type(targetname)=="string" and targetname~="" then
+						if modMinerTrade.safe and modMinerTrade.safe[targetname] then
+							modMinerTrade.showInventory(player, targetname, 
+								modMinerTrade.translate("INVENTORY OF '%s':"):format(targetname)
+							)
+							return true
+						else
+							minetest.chat_send_player(admname, 
+								core.colorize("#ff0000","[MINERTRADE:ERRO] ")
+								..modMinerTrade.translate("The strongbox of %s was not created yet!"):format(dump(targetname))
+							)
+						end
 					else
-						minetest.chat_send_player(playername, "[MINERTRADE:ERRO] "..modMinerTrade.translate("The strongbox of %s was not created yet!"):format(dump(targetname)))
-					end
+						minetest.chat_send_player(admname, 
+							core.colorize("#ff0000","[MINERTRADE:ERRO] ")
+							.." /"..modMinerTrade.translate("checkstrongbox").." <PlayerName> | "..modMinerTrade.translate("Lets you check the contents of another players strongbox.")
+						)
+						end
 				else
-					minetest.chat_send_player(playername, "[MINERTRADE:ERRO] /"..modMinerTrade.translate("checkstrongbox").." <PlayerName> | "..modMinerTrade.translate("Lets you check the contents of another players strongbox."))
+					minetest.chat_send_player(admname, 
+					core.colorize("#ff0000","[MINERTRADE:ERRO] ")
+					..modMinerTrade.translate("You do not have permission to run this command without the privileges 'checkstrongbox'!")
+				)
 				end
-			else
-				minetest.chat_send_player(playername, "[MINERTRADE:ERRO] "..modMinerTrade.translate("You do not have permission to run this command without the privileges 'checkstrongbox'!"))
 			end
 			return false
-		end,
+		end, --FIM DE: func = function(admname, param)
 	}
 end
 
@@ -39,6 +47,7 @@ minetest.register_chatcommand("csb", modMinerTrade.propCheckStrongBox())
 
 --###############################################################################################################
 
+--[[
 minetest.register_chatcommand("minertrade", {
 	params = "",
 	description = "Exibe informações adicionais deste mod.",
@@ -80,3 +89,4 @@ minetest.register_chatcommand("minertrade", {
 		minetest.chat_send_player(name, name..", precione F10 e use a rolagem do mouse para ler todo este tutorial!!!", false)
 	end,
 })
+--]]
